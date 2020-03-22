@@ -110,27 +110,27 @@ bool Renderer::SetVSync(VSyncState state)
 	return false;
 }
 
-Drawing::VertBuf Renderer::NewVertBuf(BufferHint hint)
+SVertBuf Renderer::NewVertBuf(BufferHint hint)
 {
 	return std::make_shared<VertBuf>(hint);
 }
 
-Drawing::IndBuf Renderer::NewIndBuf(BufferHint hint)
+SIndBuf Renderer::NewIndBuf(BufferHint hint)
 {
 	return std::make_shared<IndBuf>(hint);
 }
 
-Drawing::ColBuf Renderer::NewColBuf(BufferHint hint)
+SColBuf Renderer::NewColBuf(BufferHint hint)
 {
 	return std::make_shared<ColBuf>(hint);
 }
 
-Drawing::UVBuf Renderer::NewUVBuf(BufferHint hint)
+SUVBuf Renderer::NewUVBuf(BufferHint hint)
 {
 	return std::make_shared<UVBuf>(hint);
 }
 
-Drawing::Texture Renderer::NewTexture(const TextureCreateInfo& info)
+STexture Renderer::NewTexture(const TextureCreateInfo& info)
 {
 	return std::make_shared<Texture>(info);
 }

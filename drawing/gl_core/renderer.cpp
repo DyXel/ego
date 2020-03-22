@@ -22,27 +22,27 @@ namespace GLCore
 Renderer::Renderer(SDL_Window* sdlWindow) : GLShared::Renderer(sdlWindow)
 {}
 
-Drawing::Scene Renderer::NewScene2D(const SceneCreateInfo& info)
+SScene Renderer::NewScene2D(const SceneCreateInfo& info)
 {
 	return std::make_shared<Scene2D>(sc, info);
 }
 
-Drawing::Scene Renderer::NewScene3D(const SceneCreateInfo& info)
+SScene Renderer::NewScene3D(const SceneCreateInfo& info)
 {
 	throw std::exception();
 }
 
-Drawing::Mesh Renderer::NewMesh(const MeshCreateInfo& info)
+SMesh Renderer::NewMesh(const MeshCreateInfo& info)
 {
 	return std::make_shared<Mesh>(info);
 }
 
-void Renderer::SetInitialScene(Drawing::Scene scene)
+void Renderer::SetInitialScene(SScene scene)
 {
 	initialScene = std::dynamic_pointer_cast<Scene>(scene);
 }
 
-Drawing::Scene Renderer::GetInitialScene()
+SScene Renderer::GetInitialScene()
 {
 	throw std::exception();
 }

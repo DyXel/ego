@@ -4,8 +4,6 @@
 #include <SDL.h>
 #include "drawing/sdlwindow.hpp"
 
-#include "drawing/scene_fwd.hpp"
-
 class GameInstance : public Drawing::SDLWindow
 {
 public:
@@ -27,7 +25,7 @@ private:
 	unsigned recording{0u}; // if non 0. Framerate being recorded at.
 	float elapsed{};
 	
-	Drawing::Scene scene;
+	Drawing::SScene scene;
 	
 	void OnEvent(const SDL_Event& e);
 	void Tick();

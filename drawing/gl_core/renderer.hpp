@@ -18,12 +18,12 @@ class Renderer final : public GLShared::Renderer
 public:
 	Renderer(SDL_Window* sdlWindow);
 	
-	Drawing::Scene NewScene2D(const SceneCreateInfo& info) override;
-	Drawing::Scene NewScene3D(const SceneCreateInfo& info) override;
-	Drawing::Mesh NewMesh(const MeshCreateInfo& info) override;
+	SScene NewScene2D(const SceneCreateInfo& info) override;
+	SScene NewScene3D(const SceneCreateInfo& info) override;
+	SMesh NewMesh(const MeshCreateInfo& info) override;
 	
-	void SetInitialScene(Drawing::Scene scene) override;
-	Drawing::Scene GetInitialScene() override;
+	void SetInitialScene(SScene scene) override;
+	SScene GetInitialScene() override;
 	
 	void DrawAllScenes() override;
 private:

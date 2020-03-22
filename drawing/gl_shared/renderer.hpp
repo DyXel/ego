@@ -23,11 +23,11 @@ public:
 	Renderer(SDL_Window* sdlWindow);
 	
 	bool SetVSync(VSyncState vsync) override;
-	Drawing::VertBuf NewVertBuf(BufferHint hint) override;
-	Drawing::IndBuf NewIndBuf(BufferHint hint) override;
-	Drawing::ColBuf NewColBuf(BufferHint hint) override;
-	Drawing::UVBuf NewUVBuf(BufferHint hint) override;
-	Drawing::Texture NewTexture(const TextureCreateInfo& info) override;
+	SVertBuf NewVertBuf(BufferHint hint) override;
+	SIndBuf NewIndBuf(BufferHint hint) override;
+	SColBuf NewColBuf(BufferHint hint) override;
+	SUVBuf NewUVBuf(BufferHint hint) override;
+	STexture NewTexture(const TextureCreateInfo& info) override;
 protected:
 	SDL_Window* sdlWindow{nullptr};
 };

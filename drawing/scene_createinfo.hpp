@@ -2,7 +2,8 @@
 #define DRAWING_SCENE_CREATEINFO_HPP
 #include <glm/mat4x4.hpp>
 #include <glm/vec4.hpp>
-#include "scene_fwd.hpp"
+
+#include "drawing.hpp"
 
 namespace Drawing
 {
@@ -48,7 +49,7 @@ struct SceneCreateInfo
 	// Mutable initial options
 	glm::mat4 viewProj;
 	glm::vec4 viewport; // x = x, y = y, z = width, w = height
-	Scene next;
+	SScene next;
 };
 
 } // namespace Drawing

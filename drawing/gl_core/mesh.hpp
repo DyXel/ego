@@ -45,11 +45,11 @@ public:
 	void SetTopology(MeshTopology value) override;
 	void SetRender(bool value) override;
 	void SetTransparent(bool value) override;
-	void SetVertBuf(Drawing::VertBuf object) override;
-	void SetIndBuf(Drawing::IndBuf object) override;
-	void SetColBuf(Drawing::ColBuf object) override;
-	void SetUVBuf(Drawing::UVBuf object) override;
-	void SetDiffuse(Drawing::Texture object) override;
+	void SetVertBuf(SVertBuf object) override;
+	void SetIndBuf(SIndBuf object) override;
+	void SetColBuf(SColBuf object) override;
+	void SetUVBuf(SUVBuf object) override;
+	void SetDiffuse(STexture object) override;
 	void SetClipRect(bool has, const glm::vec4& rect) override;
 	void SetModelMat4(const glm::mat4& mat) override;
 	glm::mat4 GetModelMat4() const override;

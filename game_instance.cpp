@@ -29,11 +29,11 @@ static bool GetDisplayIndexFromWindow(SDL_Window* window, int* displayIndex)
 	return true;
 }
 
-static Drawing::Texture TextureFromPath(Drawing::Renderer renderer,
+static Drawing::STexture TextureFromPath(Drawing::Detail::IRenderer& renderer,
                                         std::string_view path)
 {
 	using namespace Drawing;
-	auto tex = renderer->NewTexture({TEXTURE_FILTERING_LINEAR, TEXTURE_WRAP_REPEAT, TEXTURE_WRAP_REPEAT, 0, 0});
+	auto tex = renderer.NewTexture({TEXTURE_FILTERING_LINEAR, TEXTURE_WRAP_REPEAT, TEXTURE_WRAP_REPEAT, 0, 0});
 	SDL_Surface* image = IMG_Load(path.data());
 	if((image != nullptr) &&
 	   ((image = SDLU_SurfaceToRGBA32(image)) != nullptr))
@@ -121,7 +121,7 @@ GameInstance::GameInstance(const Drawing::Backend backend) :
 		indBuf,
 		colBuf,
 		uvBuf,
-		TextureFromPath(renderer, "image.png"),
+		TextureFromPath(*renderer, "image.png"),
 		false,
 		{50.0f, 50.0f, 200.0f, 200.0f},
 		glm::mat4(1.0f)

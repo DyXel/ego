@@ -49,7 +49,7 @@ void Mesh::SetTransparent(bool value)
 		scene->OnMeshTransparencyChange(*this);
 }
 
-void Mesh::SetVertBuf(Drawing::VertBuf object)
+void Mesh::SetVertBuf(SVertBuf object)
 {
 	using namespace GLShared;
 	vertBuf = std::dynamic_pointer_cast<VertBuf>(object);
@@ -68,7 +68,7 @@ void Mesh::SetVertBuf(Drawing::VertBuf object)
 	}
 }
 
-void Mesh::SetIndBuf(Drawing::IndBuf object)
+void Mesh::SetIndBuf(SIndBuf object)
 {
 	using namespace GLShared;
 	indBuf = std::dynamic_pointer_cast<IndBuf>(object);
@@ -84,7 +84,7 @@ void Mesh::SetIndBuf(Drawing::IndBuf object)
 	}
 }
 
-void Mesh::SetColBuf(Drawing::ColBuf object)
+void Mesh::SetColBuf(SColBuf object)
 {
 	using namespace GLShared;
 	colBuf = std::dynamic_pointer_cast<ColBuf>(object);
@@ -103,7 +103,7 @@ void Mesh::SetColBuf(Drawing::ColBuf object)
 	}
 }
 
-void Mesh::SetUVBuf(Drawing::UVBuf object)
+void Mesh::SetUVBuf(SUVBuf object)
 {
 	using namespace GLShared;
 	uvBuf = std::dynamic_pointer_cast<UVBuf>(object);
@@ -121,7 +121,7 @@ void Mesh::SetUVBuf(Drawing::UVBuf object)
 	}
 }
 
-void Mesh::SetDiffuse(Drawing::Texture object)
+void Mesh::SetDiffuse(STexture object)
 {
 	using namespace GLShared;
 	diffuse = std::dynamic_pointer_cast<Texture>(object);

@@ -4,7 +4,7 @@
 #include <vector>
 #include <SDL.h>
 
-#include "renderer_fwd.hpp"
+#include "drawing.hpp"
 
 namespace Drawing
 {
@@ -22,7 +22,7 @@ class SDLWindow
 public:
 	SDLWindow(const Backend backend);
 	~SDLWindow();
-	Renderer renderer;
+	SRenderer renderer;
 protected:
 	SDL_Window* window;
 private:

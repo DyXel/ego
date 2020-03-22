@@ -2,8 +2,7 @@
 #define DRAWING_SCENE_HPP
 #include <glm/mat4x4.hpp>
 #include <glm/vec4.hpp>
-#include "scene_fwd.hpp"
-#include "mesh_fwd.hpp"
+#include "drawing.hpp"
 
 namespace Drawing
 {
@@ -16,11 +15,11 @@ class IScene
 public:
 	virtual ~IScene() = default;
 	
-	virtual void Insert(Mesh obj) = 0;
-	virtual void Erase(Mesh obj) = 0;
+	virtual void Insert(SMesh obj) = 0;
+	virtual void Erase(SMesh obj) = 0;
 	virtual void SetViewProjectionMat4(const glm::mat4& mat) = 0;
 	virtual void SetViewport(const glm::vec4& rect) = 0;
-	virtual void SetNext(Scene next) = 0;
+	virtual void SetNext(SScene next) = 0;
 };
 
 } // namespace Detail

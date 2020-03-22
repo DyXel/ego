@@ -30,8 +30,8 @@ public:
 	virtual ~Scene2D() = default;
 	
 	// Drawing::Detail::IScene overrides
-	void Insert(Drawing::Mesh obj) override;
-	void Erase(Drawing::Mesh obj) override;
+	void Insert(SMesh obj) override;
+	void Erase(SMesh obj) override;
 	void SetViewProjectionMat4(const glm::mat4& mat) override;
 	
 	// Scene overrides

@@ -19,7 +19,7 @@ void Scene::SetViewport(const glm::vec4& rect)
 	viewport = GLShared::RectFromVec4(rect);
 }
 
-void Scene::SetNext(Drawing::Scene scene)
+void Scene::SetNext(SScene scene)
 {
 	next = std::dynamic_pointer_cast<Scene>(scene);
 }

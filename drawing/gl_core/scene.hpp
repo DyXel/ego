@@ -24,7 +24,7 @@ public:
 	Scene* GetNext() const;
 	
 	void SetViewport(const glm::vec4& rect) override;
-	void SetNext(Drawing::Scene scene) override;
+	void SetNext(SScene scene) override;
 	
 	virtual void Draw() = 0;
 	virtual void OnMeshTransparencyChange(Mesh& mesh) = 0;

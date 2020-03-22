@@ -22,7 +22,7 @@ Scene2D::Scene2D(std::shared_ptr<GLShared::ShadersContainer> sc, const SceneCrea
 	next = std::dynamic_pointer_cast<Scene>(info.next);
 }
 
-void Scene2D::Insert(Drawing::Mesh obj)
+void Scene2D::Insert(SMesh obj)
 {
 	auto mesh = std::dynamic_pointer_cast<Mesh>(obj);
 	meshes.remove(mesh);
@@ -32,7 +32,7 @@ void Scene2D::Insert(Drawing::Mesh obj)
 		CalculateMVP(*mesh);
 }
 
-void Scene2D::Erase(Drawing::Mesh obj)
+void Scene2D::Erase(SMesh obj)
 {
 	auto mesh = std::dynamic_pointer_cast<Mesh>(obj);
 	meshes.remove(mesh);
