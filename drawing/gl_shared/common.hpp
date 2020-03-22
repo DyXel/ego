@@ -1,0 +1,123 @@
+#ifndef DRAWING_GL_SHARED_COMMON_HPP
+#define DRAWING_GL_SHARED_COMMON_HPP
+#include <glm/vec4.hpp>
+#include "gl_include.hpp"
+#include "../enums.hpp"
+
+namespace Drawing
+{
+
+namespace Detail
+{
+
+namespace GLShared
+{
+
+enum Attribute
+{
+	ATTRIBUTE_VERTICES = 0, // Vertex positions
+	ATTRIBUTE_COLORS, // Color array
+	ATTRIBUTE_UVS, // Texture coordinates
+	ATTRIBUTE_COUNT // Total number of attributes
+};
+
+enum Uniform
+{
+	UNIFORM_MVP_MAT = 0, // mat4: Model-View-Projection matrix
+	UNIFORM_HAS_CLIP_RECT, // bool: Has clip rectangle
+	UNIFORM_CLIP_RECT, // vec4: clip rectangle
+	UNIFORM_COUNT // Total number of uniforms
+};
+
+struct Rect
+{
+	GLint x;
+	GLint y;
+	GLsizei w;
+	GLsizei h;
+};
+
+constexpr const char* ATTRIBUTE_NAMES[ATTRIBUTE_COUNT] =
+{
+	"in_pos",
+	"in_color",
+	"in_uv",
+};
+
+constexpr const char* UNIFORM_NAMES[UNIFORM_COUNT] =
+{
+	"in_mvp",
+	"in_hasClipRect",
+	"in_clipRect",
+};
+
+constexpr Rect RectFromVec4(const glm::vec4& v)
+{
+	return
+	{
+		static_cast<GLint>(v.x),
+		static_cast<GLint>(v.y),
+		static_cast<GLsizei>(v.z),
+		static_cast<GLsizei>(v.w)
+	};
+}
+
+constexpr GLenum GLBufferHintFromEnum(BufferHint hint)
+{
+	if(hint == BUFFER_HINT_STREAM)
+		return GL_STREAM_DRAW;
+	else if(hint == BUFFER_HINT_STATIC)
+		return GL_STATIC_DRAW;
+	else if(hint == BUFFER_HINT_DYNAMIC)
+		return GL_DYNAMIC_DRAW;
+	else
+		return static_cast<GLenum>(0); // Should be unreachable
+}
+
+constexpr GLfloat GLTextureFilteringFromEnum(TextureFiltering filtering)
+{
+	if(filtering == TEXTURE_FILTERING_NEAREST)
+		return GL_NEAREST;
+	else if(filtering == TEXTURE_FILTERING_LINEAR)
+		return GL_LINEAR;
+	else
+		return static_cast<GLenum>(0); // Should be unreachable
+}
+
+constexpr GLint GLTextureWrapFromEnum(TextureWrap wrap)
+{
+	if(wrap == TEXTURE_WRAP_REPEAT)
+		return GL_REPEAT;
+	else if(wrap == TEXTURE_WRAP_MIRRORED_REPEAT)
+		return GL_MIRRORED_REPEAT;
+	else if(wrap == TEXTURE_WRAP_CLAMP_TO_EDGE)
+		return GL_CLAMP_TO_EDGE;
+	else
+		return static_cast<GLenum>(0); // Should be unreachable
+}
+
+constexpr GLenum GLTopologyFromEnum(MeshTopology topology)
+{
+	if(topology == MESH_TOPOLOGY_POINT_LIST)
+		return GL_POINTS;
+	else if(topology == MESH_TOPOLOGY_LINE_LIST)
+		return GL_LINES;
+	else if(topology == MESH_TOPOLOGY_LINE_STRIP)
+		return GL_LINE_STRIP;
+	else if(topology == MESH_TOPOLOGY_TRIANGLE_LIST)
+		return GL_TRIANGLES;
+	else if(topology == MESH_TOPOLOGY_TRIANGLE_STRIP)
+		return GL_TRIANGLE_STRIP;
+	else if(topology == MESH_TOPOLOGY_TRIANGLE_FAN)
+		return GL_TRIANGLE_FAN;
+	else
+		return static_cast<GLenum>(0); // Should be unreachable
+}
+
+} // GLShared
+
+} // Detail
+
+} // Drawing
+
+#endif // DRAWING_GL_SHARED_COMMON_HPP
