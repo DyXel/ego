@@ -2,6 +2,7 @@
 #define DRAWING_SCENE_HPP
 #include <glm/mat4x4.hpp>
 #include <glm/vec4.hpp>
+
 #include "drawing.hpp"
 
 namespace Drawing

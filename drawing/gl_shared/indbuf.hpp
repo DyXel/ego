@@ -1,9 +1,8 @@
 #ifndef DRAWING_GL_SHARED_INDBUF_HPP
 #define DRAWING_GL_SHARED_INDBUF_HPP
+#include "gl_include.hpp"
 #include "../indbuf.hpp"
 #include "../enums.hpp"
-
-#include "gl_include.hpp"
 
 namespace Drawing
 {

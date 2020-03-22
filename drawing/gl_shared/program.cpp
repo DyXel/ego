@@ -1,10 +1,10 @@
 #include "program.hpp"
+
 #include <SDL_log.h>
+#include <glm/gtc/type_ptr.hpp>
 
 #include "common.hpp"
 #include "shader.hpp"
-
-#include <glm/gtc/type_ptr.hpp>
 
 namespace Drawing
 {

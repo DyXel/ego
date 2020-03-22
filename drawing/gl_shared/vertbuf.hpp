@@ -1,9 +1,8 @@
 #ifndef DRAWING_GL_SHARED_VERTBUF_HPP
 #define DRAWING_GL_SHARED_VERTBUF_HPP
-#include "../vertbuf.hpp"
-#include "../enums.hpp"
-
 #include "gl_include.hpp"
+#include "../enums.hpp"
+#include "../vertbuf.hpp"
 
 namespace Drawing
 {

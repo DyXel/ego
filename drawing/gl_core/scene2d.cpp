@@ -1,6 +1,7 @@
 #include "scene2d.hpp"
 
 #include <glm/gtc/type_ptr.hpp>
+
 #include "../gl_shared/gl_include.hpp"
 #include "../gl_shared/program.hpp"
 

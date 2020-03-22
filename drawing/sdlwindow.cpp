@@ -2,11 +2,10 @@
 
 #include <string>
 
-#include "gl_shared/gl_include.hpp"
 #include "renderer.hpp"
-
 #include "gl_core/renderer.hpp"
 // #include "gl_es/renderer.hpp"
+#include "gl_shared/gl_include.hpp"
 
 namespace Drawing
 {

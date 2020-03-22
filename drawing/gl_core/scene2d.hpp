@@ -4,7 +4,6 @@
 #include "scene.hpp"
 #include "mesh.hpp"
 #include "../scene_createinfo.hpp"
-
 #include "../gl_shared/shaders_container.hpp"
 
 namespace Drawing

@@ -1,8 +1,7 @@
 #ifndef DRAWING_GL_SHARED_RENDERER_HPP
 #define DRAWING_GL_SHARED_RENDERER_HPP
-#include "../renderer.hpp"
-
 #include "shaders_container.hpp"
+#include "../renderer.hpp"
 
 struct SDL_Window;
 

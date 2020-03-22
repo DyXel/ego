@@ -1,9 +1,8 @@
 #ifndef DRAWING_GL_SHARED_COLBUF_HPP
 #define DRAWING_GL_SHARED_COLBUF_HPP
-#include "../colbuf.hpp"
-#include "../enums.hpp"
-
 #include "gl_include.hpp"
+#include "../enums.hpp"
+#include "../colbuf.hpp"
 
 namespace Drawing
 {

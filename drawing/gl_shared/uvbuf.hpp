@@ -1,9 +1,8 @@
 #ifndef DRAWING_GL_SHARED_UVBUF_HPP
 #define DRAWING_GL_SHARED_UVBUF_HPP
-#include "../uvbuf.hpp"
-#include "../enums.hpp"
-
 #include "gl_include.hpp"
+#include "../enums.hpp"
+#include "../uvbuf.hpp"
 
 namespace Drawing
 {

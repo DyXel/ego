@@ -2,7 +2,6 @@
 #define DRAWING_GL_CORE_MESH_HPP
 #include "../mesh_createinfo.hpp"
 #include "../mesh.hpp"
-
 #include "../gl_shared/common.hpp"
 #include "../gl_shared/colbuf.hpp"
 #include "../gl_shared/indbuf.hpp"
