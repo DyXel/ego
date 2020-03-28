@@ -9,7 +9,7 @@ extern "C" int main([[maybe_unused]] int argc, [[maybe_unused]] char *argv[])
 {
 	int exitCode = 0;
 	std::unique_ptr<GameInstance> gi;
-	if(SDL_Init(SDL_INIT_EVERYTHING) != 0)
+	if(SDL_Init(SDL_INIT_VIDEO) != 0)
 	{
 		SDL_LogCritical(SDL_LOG_CATEGORY_APPLICATION,
 		                "Unable to initialize SDL: %s\n", SDL_GetError());
