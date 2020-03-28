@@ -2,7 +2,6 @@
 #define DRAWING_GL_CORE_SCENE_2D_HPP
 #include <list>
 #include "scene.hpp"
-#include "mesh.hpp"
 #include "../scene_createinfo.hpp"
 #include "../gl_shared/shaders_container.hpp"
 
@@ -11,13 +10,6 @@ namespace Drawing
 
 namespace Detail
 {
-
-namespace GLShared
-{
-
-class Program;
-
-}
 
 namespace GLCore
 {
@@ -31,7 +23,6 @@ public:
 	// Drawing::Detail::IScene overrides
 	void Insert(SMesh obj) override;
 	void Erase(SMesh obj) override;
-	void SetViewProjectionMat4(const glm::mat4& mat) override;
 	
 	// Scene overrides
 	void Draw() override;
@@ -40,11 +31,7 @@ public:
 private:
 	std::shared_ptr<GLShared::ShadersContainer> sc;
 	std::list<std::shared_ptr<Mesh>> meshes;
-	glm::mat4 viewProj;
-	bool vpMatChanged;
 	bool scissorTest;
-	
-	void CalculateMVP(Mesh& mesh);
 };
 
 } // namespace GLCore

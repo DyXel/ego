@@ -2,6 +2,7 @@
 
 #include <glm/gtc/type_ptr.hpp>
 
+#include "mesh.hpp"
 #include "../gl_shared/gl_include.hpp"
 #include "../gl_shared/program.hpp"
 
@@ -20,7 +21,7 @@ Scene2D::Scene2D(std::shared_ptr<GLShared::ShadersContainer> sc, const SceneCrea
 {
 	SetViewProjectionMat4(info.viewProj);
 	SetViewport(info.viewport);
-	next = std::dynamic_pointer_cast<Scene>(info.next);
+	SetNext(info.next);
 }
 
 void Scene2D::Insert(SMesh obj)
@@ -29,7 +30,7 @@ void Scene2D::Insert(SMesh obj)
 	meshes.remove(mesh);
 	meshes.push_back(mesh);
 	mesh->scene = this;
-	if(!vpMatChanged)
+	if(!WasViewProjectionSet())
 		CalculateMVP(*mesh);
 }
 
@@ -40,26 +41,19 @@ void Scene2D::Erase(SMesh obj)
 	mesh->scene = nullptr;
 }
 
-void Scene2D::SetViewProjectionMat4(const glm::mat4& mat)
-{
-	viewProj = mat;
-	vpMatChanged = true;
-}
-
 void Scene2D::Draw()
 {
-	glViewport(viewport.x, viewport.y, viewport.w, viewport.h);
-	if(vpMatChanged)
+	if(WasViewProjectionSet(true))
 	{
 		for(auto& mesh : meshes)
 			CalculateMVP(*mesh);
-		vpMatChanged = false;
 	}
+	ApplyViewport();
 	for(auto& mesh : meshes)
 	{
-		if(!mesh->render || !mesh->vertBuf || !mesh->indBuf)
+		if(!mesh->render || !mesh->vertBuf || !mesh->indBuf) // ShouldDrawMesh
 			continue;
-		if(!mesh->diffuse)
+		if(!mesh->diffuse) // ChangeProgramBasedOnMesh
 		{
 			glUseProgram(sc->sp1.spo);
 		}
@@ -68,7 +62,7 @@ void Scene2D::Draw()
 			glUseProgram(sc->sp2.spo);
 			glBindTexture(GL_TEXTURE_2D, mesh->diffuse->to);
 		}
-		if(mesh->hasScissor)
+		if(mesh->hasScissor) // ApplyScissor
 		{
 			if(!scissorTest)
 			{
@@ -85,6 +79,7 @@ void Scene2D::Draw()
 				glDisable(GL_SCISSOR_TEST);
 			}
 		}
+		
 		glUniformMatrix4fv(sc->sp1.GetUniformLocation(GLShared::UNIFORM_MVP_MAT),
 		                   1, GL_FALSE, glm::value_ptr(mesh->mvp));
 		glBindVertexArray(mesh->vao);
@@ -97,14 +92,9 @@ void Scene2D::OnMeshTransparencyChange([[maybe_unused]] Mesh& mesh)
 
 void Scene2D::OnMeshModelMatChange(Mesh& mesh)
 {
-	if(vpMatChanged)
+	if(WasViewProjectionSet())
 		return;
 	CalculateMVP(mesh);
-}
-
-void Scene2D::CalculateMVP(Mesh& mesh)
-{
-	mesh.mvp = viewProj * mesh.model;
 }
 
 } // namespace GLCore

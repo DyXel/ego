@@ -41,6 +41,7 @@ public:
 	Mesh(const MeshCreateInfo& info);
 	virtual ~Mesh();
 	
+	// Drawing::Detail::IMesh overrides
 	void SetTopology(MeshTopology value) override;
 	void SetRender(bool value) override;
 	void SetTransparent(bool value) override;
