@@ -20,7 +20,10 @@ namespace Detail
 namespace GLShared
 {
 
-static const GLchar* COLORED_MESH_VS_SRC =
+
+static const GLchar* VERTEX_SHADER_SRC[PROGRAM_TYPES_COUNT] =
+{
+// PROGRAM_ONLY_COLOR
 R"(#version 100
 attribute vec3 in_pos;
 attribute vec4 in_color;
@@ -30,18 +33,8 @@ void main()
 {
 	gl_Position = in_mvp * vec4(in_pos, 1.0);
 	out_color = in_color;
-})";
-static const GLchar* COLORED_MESH_FS_SRC =
-R"(#version 100
-precision mediump float;
-varying vec4 out_color; // input from vertex shader
-uniform bool in_hasClipRect;
-uniform vec4 in_clipRect;
-void main()
-{
-	gl_FragColor = out_color;
-})";
-static const GLchar* TEXTURED_MESH_VS_SRC =
+})",
+// PROGRAM_TEXTURE_PLUS_COLOR
 R"(#version 100
 attribute vec3 in_pos;
 attribute vec4 in_color;
@@ -54,8 +47,22 @@ void main()
 	gl_Position = in_mvp * vec4(in_pos, 1.0);
 	out_color = in_color;
 	out_uv = in_uv;
-})";
-static const GLchar* TEXTURED_MESH_FS_SRC =
+})",
+};
+
+static const GLchar* FRAGMENT_SHADER_SRC[PROGRAM_TYPES_COUNT] =
+{
+// PROGRAM_ONLY_COLOR
+R"(#version 100
+precision mediump float;
+varying vec4 out_color; // input from vertex shader
+uniform bool in_hasClipRect;
+uniform vec4 in_clipRect;
+void main()
+{
+	gl_FragColor = out_color;
+})",
+// PROGRAM_TEXTURE_PLUS_COLOR
 R"(#version 100
 precision mediump float;
 varying vec4 out_color; // input from vertex shader
@@ -64,7 +71,8 @@ uniform sampler2D in_tex;
 void main()
 {
 	gl_FragColor = texture2D(in_tex, out_uv) + out_color;
-})";
+})",
+};
 
 Renderer::Renderer(SDL_Window* sdlWindow) : sdlWindow(sdlWindow), initialScene(nullptr)
 {
@@ -72,20 +80,13 @@ Renderer::Renderer(SDL_Window* sdlWindow) : sdlWindow(sdlWindow), initialScene(n
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+	for(std::size_t i = 0; i < PROGRAM_TYPES_COUNT; i++)
 	{
-		GLShared::Shader vs(GL_VERTEX_SHADER, COLORED_MESH_VS_SRC);
-		GLShared::Shader fs(GL_FRAGMENT_SHADER, COLORED_MESH_FS_SRC);
-		programs[PROGRAM_ONLY_COLOR].Attach(vs);
-		programs[PROGRAM_ONLY_COLOR].Attach(fs);
-		programs[PROGRAM_ONLY_COLOR].Link();
-	}
-	
-	{
-		GLShared::Shader vs(GL_VERTEX_SHADER, TEXTURED_MESH_VS_SRC);
-		GLShared::Shader fs(GL_FRAGMENT_SHADER, TEXTURED_MESH_FS_SRC);
-		programs[PROGRAM_TEXTURE_PLUS_COLOR].Attach(vs);
-		programs[PROGRAM_TEXTURE_PLUS_COLOR].Attach(fs);
-		programs[PROGRAM_TEXTURE_PLUS_COLOR].Link();
+		GLShared::Shader vs(GL_VERTEX_SHADER, VERTEX_SHADER_SRC[i]);
+		GLShared::Shader fs(GL_FRAGMENT_SHADER, FRAGMENT_SHADER_SRC[i]);
+		programs[i].Attach(vs);
+		programs[i].Attach(fs);
+		programs[i].Link();
 	}
 }
 
