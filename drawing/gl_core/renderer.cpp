@@ -37,37 +37,6 @@ SMesh Renderer::NewMesh(const MeshCreateInfo& info)
 	return std::make_shared<Mesh>(info);
 }
 
-void Renderer::SetInitialScene(SScene scene)
-{
-	initialScene = std::dynamic_pointer_cast<Scene>(scene);
-}
-
-SScene Renderer::GetInitialScene()
-{
-	throw std::exception();
-}
-
-void Renderer::DrawAllScenes()
-{
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
-	if(initialScene == nullptr)
-	{
-		SDL_GL_SwapWindow(sdlWindow);
-		return;
-	}
-	
-	Scene* currScene = initialScene.get();
-	do
-	{
-		currScene->Draw();
-		currScene = currScene->GetNext();
-	}while(currScene != nullptr);
-	
-	SDL_GL_SwapWindow(sdlWindow);
-}
-
 } // GLCore
 
 } // Detail

@@ -2,13 +2,15 @@
 
 #include <SDL.h>
 
-#include "gl_include.hpp"
 #include "colbuf.hpp"
-#include "vertbuf.hpp"
+#include "gl_include.hpp"
 #include "indbuf.hpp"
-#include "uvbuf.hpp"
+#include "scene.hpp"
 #include "shader.hpp"
+#include "shaders_container.hpp"
 #include "texture.hpp"
+#include "uvbuf.hpp"
+#include "vertbuf.hpp"
 
 namespace Drawing
 {
@@ -65,7 +67,7 @@ void main()
 	gl_FragColor = texture2D(in_tex, out_uv) + out_color;
 })";
 
-Renderer::Renderer(SDL_Window* sdlWindow) : sdlWindow(sdlWindow)
+Renderer::Renderer(SDL_Window* sdlWindow) : sdlWindow(sdlWindow), initialScene(nullptr)
 {
 	// Enable additive blending
 	glEnable(GL_BLEND);
@@ -133,6 +135,37 @@ SUVBuf Renderer::NewUVBuf(BufferHint hint)
 STexture Renderer::NewTexture(const TextureCreateInfo& info)
 {
 	return std::make_shared<Texture>(info);
+}
+
+void Renderer::SetInitialScene(SScene scene)
+{
+	initialScene = std::dynamic_pointer_cast<Scene>(scene);
+}
+
+SScene Renderer::GetInitialScene()
+{
+	throw std::exception();
+}
+
+void Renderer::DrawAllScenes()
+{
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	
+	if(initialScene == nullptr)
+	{
+		SDL_GL_SwapWindow(sdlWindow);
+		return;
+	}
+	
+	Scene* currScene = initialScene.get();
+	do
+	{
+		currScene->Draw();
+		currScene = currScene->GetNext();
+	}while(currScene != nullptr);
+	
+	SDL_GL_SwapWindow(sdlWindow);
 }
 
 } // GLCore

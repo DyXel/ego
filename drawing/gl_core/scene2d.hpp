@@ -24,8 +24,10 @@ public:
 	void Insert(SMesh obj) override;
 	void Erase(SMesh obj) override;
 	
-	// Scene overrides
+	// GLShared::Scene overrides
 	void Draw() override;
+	
+	// Scene overrides
 	void OnMeshTransparencyChange(Mesh& mesh) override;
 	void OnMeshModelMatChange(Mesh& mesh) override;
 private:
