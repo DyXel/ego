@@ -1,7 +1,6 @@
 #include "mesh.hpp"
 
 #include "../gl_shared/common.hpp"
-#include "scene.hpp"
 
 namespace Drawing
 {

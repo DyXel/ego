@@ -4,7 +4,6 @@
 #include <SDL.h>
 
 #include "mesh.hpp"
-#include "scene.hpp"
 #include "scene2d.hpp"
 #include "../gl_shared/gl_include.hpp"
 #include "../gl_shared/shader.hpp"
