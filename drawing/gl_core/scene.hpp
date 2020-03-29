@@ -21,10 +21,6 @@ class Scene : public GLShared::Scene
 {
 public:
 	virtual ~Scene() = default;
-	
-	virtual void OnMeshTransparencyChange(Mesh& mesh) = 0;
-	virtual void OnMeshModelMatChange(Mesh& mesh) = 0;
-	
 protected:
 	void CalculateMVP(Mesh& mesh) const;
 };

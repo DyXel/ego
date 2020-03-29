@@ -26,10 +26,8 @@ public:
 	
 	// GLShared::Scene overrides
 	void Draw() override;
-	
-	// Scene overrides
-	void OnMeshTransparencyChange(Mesh& mesh) override;
-	void OnMeshModelMatChange(Mesh& mesh) override;
+	void OnMeshTransparencyChange(GLShared::Mesh& mesh) override;
+	void OnMeshModelMatChange(GLShared::Mesh& mesh) override;
 private:
 	std::shared_ptr<GLShared::ShadersContainer> sc;
 	std::list<std::shared_ptr<Mesh>> meshes;

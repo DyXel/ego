@@ -22,6 +22,8 @@ public:
 	virtual ~Scene() = default;
 	
 	virtual void Draw() = 0;
+	virtual void OnMeshTransparencyChange(Mesh& mesh) = 0;
+	virtual void OnMeshModelMatChange(Mesh& mesh) = 0;
 	
 	// Drawing::Detail::IScene overrides
 	void SetViewport(const glm::vec4& rect) override;

@@ -102,8 +102,9 @@ void Scene3D::Draw()
 	
 }
 
-void Scene3D::OnMeshTransparencyChange(Mesh& mesh)
+void Scene3D::OnMeshTransparencyChange(GLShared::Mesh& glSharedMesh)
 {
+	auto& mesh = dynamic_cast<Mesh&>(glSharedMesh);
 	solidMeshes.erase(&mesh);
 	EraseIf(alphaMeshes,
 	[val = &mesh](const decltype(alphaMeshes)::value_type& kv)
@@ -128,8 +129,9 @@ void Scene3D::OnMeshTransparencyChange(Mesh& mesh)
 	}
 }
 
-void Scene3D::OnMeshModelMatChange(Mesh& mesh)
+void Scene3D::OnMeshModelMatChange(GLShared::Mesh& glSharedMesh)
 {
+	auto& mesh = dynamic_cast<Mesh&>(glSharedMesh);
 	if(WasViewProjectionSet())
 		return;
 	CalculateMVP(mesh);

@@ -12,41 +12,18 @@ namespace Detail
 namespace GLCore
 {
 
-Mesh::Mesh(const MeshCreateInfo& info)
+Mesh::Mesh(const MeshCreateInfo& info) : GLShared::Mesh(info)
 {
 	glGenVertexArrays(1, &vao);
-	SetTopology(info.topology);
-	SetRender(info.render);
-	SetTransparent(info.transparent);
 	SetVertBuf(info.vertBuf);
 	SetIndBuf(info.indBuf);
 	SetColBuf(info.colBuf);
 	SetUVBuf(info.uvBuf);
-	SetDiffuse(info.diffuse);
-	SetClipRect(info.hasClipRect, info.clipRect);
-	SetModelMat4(info.model);
 }
 
 Mesh::~Mesh()
 {
 	glDeleteVertexArrays(1, &vao);
-}
-
-void Mesh::SetTopology(MeshTopology value)
-{
-	topology = GLShared::GLTopologyFromEnum(value);
-}
-
-void Mesh::SetRender(bool value)
-{
-	render = value;
-}
-
-void Mesh::SetTransparent(bool value)
-{
-	transparent = value;
-	if(scene)
-		scene->OnMeshTransparencyChange(*this);
 }
 
 void Mesh::SetVertBuf(SVertBuf object)
@@ -119,31 +96,6 @@ void Mesh::SetUVBuf(SUVBuf object)
 		glBindVertexArray(vao);
 		glDisableVertexAttribArray(ATTRIBUTE_UVS);
 	}
-}
-
-void Mesh::SetDiffuse(STexture object)
-{
-	using namespace GLShared;
-	diffuse = std::dynamic_pointer_cast<Texture>(object);
-}
-
-void Mesh::SetClipRect(bool has, const glm::vec4& rect)
-{
-	hasScissor = has;
-	if(hasScissor)
-		sci = GLShared::RectFromVec4(rect);
-}
-
-void Mesh::SetModelMat4(const glm::mat4& mat)
-{
-	model = mat;
-	if(scene)
-		scene->OnMeshModelMatChange(*this);
-}
-
-glm::mat4 Mesh::GetModelMat4() const
-{
-	return model;
 }
 
 } // namespace GLCore

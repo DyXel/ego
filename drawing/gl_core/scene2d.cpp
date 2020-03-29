@@ -87,14 +87,14 @@ void Scene2D::Draw()
 	}
 }
 
-void Scene2D::OnMeshTransparencyChange([[maybe_unused]] Mesh& mesh)
+void Scene2D::OnMeshTransparencyChange([[maybe_unused]] GLShared::Mesh& mesh)
 {}
 
-void Scene2D::OnMeshModelMatChange(Mesh& mesh)
+void Scene2D::OnMeshModelMatChange(GLShared::Mesh& mesh)
 {
 	if(WasViewProjectionSet())
 		return;
-	CalculateMVP(mesh);
+	CalculateMVP(dynamic_cast<Mesh&>(mesh));
 }
 
 } // namespace GLCore
