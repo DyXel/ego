@@ -93,8 +93,34 @@ void Scene3D::Draw()
 		}
 	}
 	ApplyViewport();
-	// Draw solid elements
-	
+	// NOTE: since all shaders have the same uniforms, it doesnt matter
+	// which shader we retrieve the location from.
+	auto& p = pp.GetProgram(GLShared::PROGRAM_ONLY_COLOR);
+	const GLint mvpLoc = p.GetUniformLocation(GLShared::UNIFORM_MVP_MAT);
+	// Draw solid meshes
+	for(auto& meshPtr : solidMeshes)
+	{
+		auto& mesh = *meshPtr;
+		if(!mesh.render || !mesh.vertBuf || !mesh.indBuf)
+			continue;
+		UseMeshProgram(mesh);
+		UseMeshScissor(mesh);
+		glUniformMatrix4fv(mvpLoc, 1, GL_FALSE, glm::value_ptr(mesh.mvp));
+		glBindVertexArray(mesh.vao);
+		glDrawElements(mesh.topology, mesh.indBuf->count, GL_UNSIGNED_SHORT, nullptr);
+	}
+	// Draw transparent meshes
+	for(auto& kv : alphaMeshes)
+	{
+		auto& mesh = *kv.second;
+		if(!mesh.render || !mesh.vertBuf || !mesh.indBuf)
+			continue;
+		UseMeshProgram(mesh);
+		UseMeshScissor(mesh);
+		glUniformMatrix4fv(mvpLoc, 1, GL_FALSE, glm::value_ptr(mesh.mvp));
+		glBindVertexArray(mesh.vao);
+		glDrawElements(mesh.topology, mesh.indBuf->count, GL_UNSIGNED_SHORT, nullptr);
+	}
 }
 
 void Scene3D::OnMeshTransparencyChange(GLShared::Mesh& glSharedMesh)

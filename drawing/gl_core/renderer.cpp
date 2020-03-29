@@ -5,6 +5,7 @@
 
 #include "mesh.hpp"
 #include "scene2d.hpp"
+#include "scene3d.hpp"
 #include "../gl_shared/gl_include.hpp"
 #include "../gl_shared/shader.hpp"
 #include "../gl_shared/program.hpp"
@@ -28,7 +29,7 @@ SScene Renderer::NewScene2D(const SceneCreateInfo& info)
 
 SScene Renderer::NewScene3D(const SceneCreateInfo& info)
 {
-	throw std::exception();
+	return std::make_shared<Scene3D>(*this, info);
 }
 
 SMesh Renderer::NewMesh(const MeshCreateInfo& info)
