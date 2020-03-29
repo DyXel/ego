@@ -1,6 +1,6 @@
 #ifndef DRAWING_INDBUF_HPP
 #define DRAWING_INDBUF_HPP
-#include <cstddef> // std::size_t
+#include "submittable.hpp"
 
 namespace Drawing
 {
@@ -8,11 +8,8 @@ namespace Drawing
 namespace Detail
 {
 
-class IIndBuf
-{
-public:
-	virtual void Submit(const short* data, std::size_t length) = 0;
-};
+class IIndBuf : public Submittable<short>
+{};
 
 } // namespace Detail
 

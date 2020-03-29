@@ -2,17 +2,16 @@
 #define DRAWING_VERTBUF_HPP
 #include <glm/vec3.hpp>
 
+#include "submittable.hpp"
+
 namespace Drawing
 {
 
 namespace Detail
 {
 
-class IVertBuf
-{
-public:
-	virtual void Submit(const glm::vec3* data, std::size_t length) = 0;
-};
+class IVertBuf : public Submittable<glm::vec3>
+{};
 
 } // namespace Detail
 

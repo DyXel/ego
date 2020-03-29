@@ -2,17 +2,16 @@
 #define DRAWING_COLBUF_HPP
 #include <glm/vec4.hpp>
 
+#include "submittable.hpp"
+
 namespace Drawing
 {
 
 namespace Detail
 {
 
-class IColBuf
-{
-public:
-	virtual void Submit(const glm::vec4* data, std::size_t length) = 0;
-};
+class IColBuf : public Submittable<glm::vec4>
+{};
 
 } // namespace Detail
 

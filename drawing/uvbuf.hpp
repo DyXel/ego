@@ -2,17 +2,16 @@
 #define DRAWING_UVBUF_HPP
 #include <glm/vec2.hpp>
 
+#include "submittable.hpp"
+
 namespace Drawing
 {
 
 namespace Detail
 {
 
-class IUVBuf
-{
-public:
-	virtual void Submit(const glm::vec2* data, std::size_t length) = 0;
-};
+class IUVBuf : public Submittable<glm::vec2>
+{};
 
 } // namespace Detail
 
