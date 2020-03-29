@@ -44,19 +44,18 @@ void Scene2D::Draw()
 			CalculateMVP(*mesh);
 	}
 	ApplyViewport();
-	for(auto& mesh : meshes)
+	for(auto& meshPtr : meshes)
 	{
-		if(!mesh->render || !mesh->vertBuf || !mesh->indBuf)
+		auto& mesh = *meshPtr;
+		if(!mesh.render || !mesh.vertBuf || !mesh.indBuf)
 			continue;
-		UseMeshProgram(*mesh);
-		UseMeshScissor(*mesh);
-		// NOTE: since all shaders have the same uniforms, it doesnt matter
-		// which shader we retrieve the location from.
+		UseMeshProgram(mesh);
+		UseMeshScissor(mesh);
 		auto& p = pp.GetProgram(GLShared::PROGRAM_ONLY_COLOR);
 		glUniformMatrix4fv(p.GetUniformLocation(GLShared::UNIFORM_MVP_MAT),
-		                   1, GL_FALSE, glm::value_ptr(mesh->mvp));
-		glBindVertexArray(mesh->vao);
-		glDrawElements(mesh->topology, mesh->indBuf->count, GL_UNSIGNED_SHORT, nullptr);
+		                   1, GL_FALSE, glm::value_ptr(mesh.mvp));
+		glBindVertexArray(mesh.vao);
+		glDrawElements(mesh.topology, mesh.indBuf->count, GL_UNSIGNED_SHORT, nullptr);
 	}
 }
 
