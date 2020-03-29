@@ -1,7 +1,6 @@
 #include "scene.hpp"
 
 #include "mesh.hpp"
-#include "shaders_container.hpp"
 
 namespace Drawing
 {
@@ -12,8 +11,8 @@ namespace Detail
 namespace GLShared
 {
 
-Scene::Scene(std::shared_ptr<GLShared::ShadersContainer> sc, const SceneCreateInfo& info) :
-	sc(sc)
+Scene::Scene(IProgramProvider& pp, const SceneCreateInfo& info) :
+	pp(pp)
 {
 	SetViewProjectionMat4(info.viewProj);
 	SetViewport(info.viewport);
@@ -75,9 +74,9 @@ void Scene::UseMeshProgram(const Mesh& mesh)
 	bool textured;
 	GLuint programToUse;
 	if((textured = !!mesh.diffuse))
-		programToUse = sc->sp2.spo;
+		programToUse = pp.GetProgram(PROGRAM_TEXTURE_PLUS_COLOR).spo;
 	else
-		programToUse = sc->sp1.spo;
+		programToUse = pp.GetProgram(PROGRAM_ONLY_COLOR).spo;
 	if(programToUse != cache.lastProgram)
 		glUseProgram(cache.lastProgram = programToUse);
 	if(textured)

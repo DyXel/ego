@@ -29,9 +29,9 @@ void EraseIf(Container& c, Pred pred)
 	}
 }
 
-Scene3D::Scene3D(std::shared_ptr<GLShared::ShadersContainer> sc, const SceneCreateInfo& info) :
-	GLShared::Scene(sc, info),
-	sc(*sc)
+Scene3D::Scene3D(GLShared::IProgramProvider& pp, const SceneCreateInfo& info) :
+	GLShared::Scene(pp, info),
+	pp(pp)
 {}
 
 void Scene3D::Insert(SMesh obj)

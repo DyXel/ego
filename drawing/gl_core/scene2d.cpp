@@ -4,7 +4,6 @@
 
 #include "mesh.hpp"
 #include "../gl_shared/gl_include.hpp"
-#include "../gl_shared/shaders_container.hpp"
 
 namespace Drawing
 {
@@ -15,9 +14,9 @@ namespace Detail
 namespace GLCore
 {
 
-Scene2D::Scene2D(std::shared_ptr<GLShared::ShadersContainer> sc, const SceneCreateInfo& info) :
-	GLShared::Scene(sc, info),
-	sc(*sc)
+Scene2D::Scene2D(GLShared::IProgramProvider& pp, const SceneCreateInfo& info) :
+	GLShared::Scene(pp, info),
+	pp(pp)
 {}
 
 void Scene2D::Insert(SMesh obj)
@@ -51,8 +50,10 @@ void Scene2D::Draw()
 			continue;
 		UseMeshProgram(*mesh);
 		UseMeshScissor(*mesh);
-	
-		glUniformMatrix4fv(sc.sp1.GetUniformLocation(GLShared::UNIFORM_MVP_MAT),
+		// NOTE: since all shaders have the same uniforms, it doesnt matter
+		// which shader we retrieve the location from.
+		auto& p = pp.GetProgram(GLShared::PROGRAM_ONLY_COLOR);
+		glUniformMatrix4fv(p.GetUniformLocation(GLShared::UNIFORM_MVP_MAT),
 		                   1, GL_FALSE, glm::value_ptr(mesh->mvp));
 		glBindVertexArray(mesh->vao);
 		glDrawElements(mesh->topology, mesh->indBuf->count, GL_UNSIGNED_SHORT, nullptr);

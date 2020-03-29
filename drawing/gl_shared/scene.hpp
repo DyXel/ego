@@ -3,6 +3,7 @@
 #include <memory>
 
 #include "common.hpp"
+#include "program_provider.hpp"
 #include "../scene_createinfo.hpp"
 #include "../scene.hpp"
 
@@ -16,12 +17,11 @@ namespace GLShared
 {
 
 class Mesh;
-class ShadersContainer;
 
 class Scene : public IScene
 {
 public:
-	Scene(std::shared_ptr<ShadersContainer> sc, const SceneCreateInfo& info);
+	Scene(IProgramProvider& pp, const SceneCreateInfo& info);
 	virtual ~Scene() = default;
 	
 	virtual void Draw() = 0;
@@ -43,7 +43,7 @@ protected:
 	void UseMeshProgram(const Mesh& mesh);
 	void UseMeshScissor(const Mesh& mesh);
 private:
-	std::shared_ptr<ShadersContainer> sc;
+	IProgramProvider& pp;
 	GLShared::Rect viewport;
 	std::shared_ptr<Scene> next;
 	glm::mat4 viewProj;

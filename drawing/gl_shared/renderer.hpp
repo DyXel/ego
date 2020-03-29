@@ -1,5 +1,6 @@
 #ifndef DRAWING_GL_SHARED_RENDERER_HPP
 #define DRAWING_GL_SHARED_RENDERER_HPP
+#include "program_provider.hpp"
 #include "../renderer.hpp"
 
 struct SDL_Window;
@@ -14,13 +15,16 @@ namespace GLShared
 {
 
 class Scene;
-class ShadersContainer;
 
-class Renderer : public IRenderer
+class Renderer : public IProgramProvider, public IRenderer
 {
 public:
 	Renderer(SDL_Window* sdlWindow);
 	
+	// GLShared::IProgramProvider overrides
+	const Program& GetProgram(ProgramTypes value) const override;
+	
+	// Drawing::IRenderer overrides
 	bool SetVSync(VSyncState vsync) override;
 	
 	SVertBuf NewVertBuf(BufferHint hint) override;
@@ -36,7 +40,7 @@ public:
 protected:
 	SDL_Window* sdlWindow;
 	std::shared_ptr<Scene> initialScene;
-	std::shared_ptr<ShadersContainer> sc;
+	std::array<Program, PROGRAM_TYPES_COUNT> programs;
 };
 
 } // GLShared

@@ -7,7 +7,6 @@
 #include "indbuf.hpp"
 #include "scene.hpp"
 #include "shader.hpp"
-#include "shaders_container.hpp"
 #include "texture.hpp"
 #include "uvbuf.hpp"
 #include "vertbuf.hpp"
@@ -72,24 +71,27 @@ Renderer::Renderer(SDL_Window* sdlWindow) : sdlWindow(sdlWindow), initialScene(n
 	// Enable additive blending
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	
-	sc = std::make_shared<ShadersContainer>();
-	
+
 	{
 		GLShared::Shader vs(GL_VERTEX_SHADER, COLORED_MESH_VS_SRC);
 		GLShared::Shader fs(GL_FRAGMENT_SHADER, COLORED_MESH_FS_SRC);
-		sc->sp1.Attach(vs);
-		sc->sp1.Attach(fs);
-		sc->sp1.Link();
+		programs[PROGRAM_ONLY_COLOR].Attach(vs);
+		programs[PROGRAM_ONLY_COLOR].Attach(fs);
+		programs[PROGRAM_ONLY_COLOR].Link();
 	}
 	
 	{
 		GLShared::Shader vs(GL_VERTEX_SHADER, TEXTURED_MESH_VS_SRC);
 		GLShared::Shader fs(GL_FRAGMENT_SHADER, TEXTURED_MESH_FS_SRC);
-		sc->sp2.Attach(vs);
-		sc->sp2.Attach(fs);
-		sc->sp2.Link();
+		programs[PROGRAM_TEXTURE_PLUS_COLOR].Attach(vs);
+		programs[PROGRAM_TEXTURE_PLUS_COLOR].Attach(fs);
+		programs[PROGRAM_TEXTURE_PLUS_COLOR].Link();
 	}
+}
+
+const Program& Renderer::GetProgram(ProgramTypes value) const
+{
+	return programs[value];
 }
 
 bool Renderer::SetVSync(VSyncState state)

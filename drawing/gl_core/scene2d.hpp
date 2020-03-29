@@ -3,19 +3,13 @@
 #include <list>
 #include "../scene_createinfo.hpp"
 #include "../gl_shared/scene.hpp"
+#include "../gl_shared/program_provider.hpp"
 
 namespace Drawing
 {
 
 namespace Detail
 {
-
-namespace GLShared
-{
-
-class ShadersContainer;
-
-} // namespace GLShared
 
 namespace GLCore
 {
@@ -25,7 +19,7 @@ class Mesh;
 class Scene2D final : public GLShared::Scene
 {
 public:
-	Scene2D(std::shared_ptr<GLShared::ShadersContainer> sc, const SceneCreateInfo& info);
+	Scene2D(GLShared::IProgramProvider& pp, const SceneCreateInfo& info);
 	virtual ~Scene2D() = default;
 	
 	// Drawing::Detail::IScene overrides
@@ -37,7 +31,7 @@ public:
 	void OnMeshTransparencyChange(GLShared::Mesh& mesh) override;
 	void OnMeshModelMatChange(GLShared::Mesh& mesh) override;
 private:
-	GLShared::ShadersContainer& sc;
+	GLShared::IProgramProvider& pp;
 	std::list<std::shared_ptr<Mesh>> meshes;
 };
 

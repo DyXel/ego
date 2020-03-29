@@ -23,7 +23,7 @@ Renderer::Renderer(SDL_Window* sdlWindow) : GLShared::Renderer(sdlWindow)
 
 SScene Renderer::NewScene2D(const SceneCreateInfo& info)
 {
-	return std::make_shared<Scene2D>(sc, info);
+	return std::make_shared<Scene2D>(*this, info);
 }
 
 SScene Renderer::NewScene3D(const SceneCreateInfo& info)
