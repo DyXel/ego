@@ -38,6 +38,7 @@ void Scene3D::Insert(SMesh obj)
 {
 	auto mesh = std::dynamic_pointer_cast<Mesh>(obj);
 	meshes.insert(mesh);
+	mesh->scene = this;
 	if(mesh->transparent)
 	{
 		if(WasViewProjectionSet())
@@ -152,9 +153,9 @@ void Scene3D::OnMeshTransparencyChange(GLShared::Mesh& glSharedMesh)
 
 void Scene3D::OnMeshModelMatChange(GLShared::Mesh& glSharedMesh)
 {
-	auto& mesh = dynamic_cast<Mesh&>(glSharedMesh);
 	if(WasViewProjectionSet())
 		return;
+	auto& mesh = dynamic_cast<Mesh&>(glSharedMesh);
 	CalculateMVP(mesh);
 	if(!mesh.transparent)
 		return;
