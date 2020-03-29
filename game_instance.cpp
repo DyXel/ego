@@ -92,7 +92,7 @@ GameInstance::GameInstance(const Drawing::Backend backend) :
 	{
 		0, 1, 2
 	};
-	indBuf->Submit(test2, 3);
+	indBuf->Submit(test2);
 	
 	auto vertBuf = renderer->NewVertBuf(Drawing::BUFFER_HINT_STATIC);
 	glm::vec3 test3[3] =
@@ -101,7 +101,7 @@ GameInstance::GameInstance(const Drawing::Backend backend) :
 		{0.0f, 1.0f, 0.0f},
 		{1.0f, -1.0f, 0.0f},
 	};
-	vertBuf->Submit(test3, 3);
+	vertBuf->Submit(test3);
 	
 	auto uvBuf = renderer->NewUVBuf(Drawing::BUFFER_HINT_STATIC);
 	glm::vec2 test4[3] =
@@ -110,7 +110,7 @@ GameInstance::GameInstance(const Drawing::Backend backend) :
 		{0.5f, 0.0f},
 		{1.0f, 1.0f},
 	};
-	uvBuf->Submit(test4, 3);
+	uvBuf->Submit(test4);
 	
 	const Drawing::MeshCreateInfo mInfo =
 	{
@@ -126,7 +126,7 @@ GameInstance::GameInstance(const Drawing::Backend backend) :
 		{50.0f, 50.0f, 200.0f, 200.0f},
 		glm::mat4(1.0f)
 	};
-	auto mesh = renderer->NewMesh(mInfo);
+	mesh = renderer->NewMesh(mInfo);
 	
 	const Drawing::SceneCreateInfo sInfo =
 	{
@@ -137,7 +137,7 @@ GameInstance::GameInstance(const Drawing::Backend backend) :
 		glm::vec4(),
 		nullptr
 	};
-	scene = renderer->NewScene2D(sInfo);
+	scene = renderer->NewScene3D(sInfo);
 	scene->Insert(mesh);
 	
 	renderer->SetInitialScene(scene);
@@ -177,6 +177,14 @@ void GameInstance::OnEvent(const SDL_Event& e)
 		SDL_GL_GetDrawableSize(window, &width, &height);
 		SDL_Log("Resized to (%i, %i)", width, height);
 		scene->SetViewport({0, 0, width, height});
+	}
+	if(eType == SDL_KEYDOWN && e.key.keysym.scancode == SDL_SCANCODE_R)
+	{
+		scene->SetViewProjectionMat4(glm::mat4(1.0f));
+	}
+	if(eType == SDL_KEYDOWN && e.key.keysym.scancode == SDL_SCANCODE_I)
+	{
+		mesh->SetModelMat4(glm::mat4(1.0f));
 	}
 	
 	// event stuff here

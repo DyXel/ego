@@ -26,6 +26,7 @@ private:
 	float elapsed{};
 	
 	Drawing::SScene scene;
+	Drawing::SMesh mesh;
 	
 	void OnEvent(const SDL_Event& e);
 	void Tick();
