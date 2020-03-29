@@ -1,9 +1,8 @@
 #ifndef DRAWING_GL_CORE_SCENE_2D_HPP
 #define DRAWING_GL_CORE_SCENE_2D_HPP
 #include <list>
-#include "scene.hpp"
 #include "../scene_createinfo.hpp"
-#include "../gl_shared/shaders_container.hpp"
+#include "../gl_shared/scene.hpp"
 
 namespace Drawing
 {
@@ -11,10 +10,19 @@ namespace Drawing
 namespace Detail
 {
 
+namespace GLShared
+{
+
+class ShadersContainer;
+
+} // namespace GLShared
+
 namespace GLCore
 {
 
-class Scene2D final : public Scene
+class Mesh;
+
+class Scene2D final : public GLShared::Scene
 {
 public:
 	Scene2D(std::shared_ptr<GLShared::ShadersContainer> sc, const SceneCreateInfo& info);
@@ -29,9 +37,8 @@ public:
 	void OnMeshTransparencyChange(GLShared::Mesh& mesh) override;
 	void OnMeshModelMatChange(GLShared::Mesh& mesh) override;
 private:
-	std::shared_ptr<GLShared::ShadersContainer> sc;
+	GLShared::ShadersContainer& sc;
 	std::list<std::shared_ptr<Mesh>> meshes;
-	bool scissorTest;
 };
 
 } // namespace GLCore

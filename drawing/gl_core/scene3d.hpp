@@ -3,9 +3,8 @@
 #include <set>
 #include <map>
 
-#include "scene.hpp"
 #include "../scene_createinfo.hpp"
-#include "../gl_shared/shaders_container.hpp"
+#include "../gl_shared/scene.hpp"
 
 namespace Drawing
 {
@@ -13,10 +12,19 @@ namespace Drawing
 namespace Detail
 {
 
+namespace GLShared
+{
+
+class ShadersContainer;
+
+} // namespace GLShared
+
 namespace GLCore
 {
 
-class Scene3D final : public Scene
+class Mesh;
+
+class Scene3D final : public GLShared::Scene
 {
 public:
 	Scene3D(std::shared_ptr<GLShared::ShadersContainer> sc, const SceneCreateInfo& info);
@@ -31,11 +39,10 @@ public:
 	void OnMeshTransparencyChange(GLShared::Mesh& mesh) override;
 	void OnMeshModelMatChange(GLShared::Mesh& mesh) override;
 private:
-	std::shared_ptr<GLShared::ShadersContainer> sc;
+	GLShared::ShadersContainer& sc;
 	std::set<std::shared_ptr<Mesh>> meshes;
 	std::set<Mesh*> solidMeshes;
 	std::multimap<float, Mesh*> alphaMeshes;
-	bool scissorTest;
 	
 	float DistanceToVP(const Mesh& mesh) const;
 };

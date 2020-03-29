@@ -1,5 +1,8 @@
 #include "scene.hpp"
 
+#include "mesh.hpp"
+#include "shaders_container.hpp"
+
 namespace Drawing
 {
 
@@ -8,6 +11,14 @@ namespace Detail
 
 namespace GLShared
 {
+
+Scene::Scene(std::shared_ptr<GLShared::ShadersContainer> sc, const SceneCreateInfo& info) :
+	sc(sc)
+{
+	SetViewProjectionMat4(info.viewProj);
+	SetViewport(info.viewport);
+	SetNext(info.next);
+}
 
 void Scene::SetViewport(const glm::vec4& rect)
 {
@@ -42,6 +53,11 @@ const glm::mat4& Scene::ViewProjection() const
 	return viewProj;
 }
 
+void Scene::CalculateMVP(Mesh& mesh) const
+{
+	mesh.mvp = viewProj * mesh.model;
+}
+
 bool Scene::WasViewProjectionSet() const
 {
 	return viewProjChanged;
@@ -50,8 +66,40 @@ bool Scene::WasViewProjectionSet() const
 bool Scene::WasViewProjectionSet([[maybe_unused]] bool ignored)
 {
 	bool tmp = viewProjChanged;
-	viewProjChanged = true;
+	viewProjChanged = false;
 	return tmp;
+}
+
+void Scene::UseMeshProgram(const Mesh& mesh)
+{
+	bool textured;
+	GLuint programToUse;
+	if((textured = !!mesh.diffuse))
+		programToUse = sc->sp2.spo;
+	else
+		programToUse = sc->sp1.spo;
+	if(programToUse != cache.lastProgram)
+		glUseProgram(cache.lastProgram = programToUse);
+	if(textured)
+		glBindTexture(GL_TEXTURE_2D, mesh.diffuse->to);
+}
+
+void Scene::UseMeshScissor(const Mesh& mesh)
+{
+	if(mesh.hasScissor)
+	{
+		if(!cache.usingScissor)
+		{
+			cache.usingScissor = true;
+			glEnable(GL_SCISSOR_TEST);
+		}
+		glScissor(mesh.sci.x, mesh.sci.y, mesh.sci.w, mesh.sci.h);
+	}
+	else if(cache.usingScissor)
+	{
+		cache.usingScissor = false;
+		glDisable(GL_SCISSOR_TEST);
+	}
 }
 
 } // namespace GLShared

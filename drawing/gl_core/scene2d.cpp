@@ -4,7 +4,7 @@
 
 #include "mesh.hpp"
 #include "../gl_shared/gl_include.hpp"
-#include "../gl_shared/program.hpp"
+#include "../gl_shared/shaders_container.hpp"
 
 namespace Drawing
 {
@@ -16,13 +16,9 @@ namespace GLCore
 {
 
 Scene2D::Scene2D(std::shared_ptr<GLShared::ShadersContainer> sc, const SceneCreateInfo& info) :
-	sc(sc),
-	scissorTest(false)
-{
-	SetViewProjectionMat4(info.viewProj);
-	SetViewport(info.viewport);
-	SetNext(info.next);
-}
+	GLShared::Scene(sc, info),
+	sc(*sc)
+{}
 
 void Scene2D::Insert(SMesh obj)
 {
@@ -51,36 +47,12 @@ void Scene2D::Draw()
 	ApplyViewport();
 	for(auto& mesh : meshes)
 	{
-		if(!mesh->render || !mesh->vertBuf || !mesh->indBuf) // ShouldDrawMesh
+		if(!mesh->render || !mesh->vertBuf || !mesh->indBuf)
 			continue;
-		if(!mesh->diffuse) // ChangeProgramBasedOnMesh
-		{
-			glUseProgram(sc->sp1.spo);
-		}
-		else
-		{
-			glUseProgram(sc->sp2.spo);
-			glBindTexture(GL_TEXTURE_2D, mesh->diffuse->to);
-		}
-		if(mesh->hasScissor) // ApplyScissor
-		{
-			if(!scissorTest)
-			{
-				scissorTest = true;
-				glEnable(GL_SCISSOR_TEST);
-			}
-			glScissor(mesh->sci.x, mesh->sci.y, mesh->sci.w, mesh->sci.h);
-		}
-		else
-		{
-			if(scissorTest)
-			{
-				scissorTest = false;
-				glDisable(GL_SCISSOR_TEST);
-			}
-		}
-		
-		glUniformMatrix4fv(sc->sp1.GetUniformLocation(GLShared::UNIFORM_MVP_MAT),
+		UseMeshProgram(*mesh);
+		UseMeshScissor(*mesh);
+	
+		glUniformMatrix4fv(sc.sp1.GetUniformLocation(GLShared::UNIFORM_MVP_MAT),
 		                   1, GL_FALSE, glm::value_ptr(mesh->mvp));
 		glBindVertexArray(mesh->vao);
 		glDrawElements(mesh->topology, mesh->indBuf->count, GL_UNSIGNED_SHORT, nullptr);

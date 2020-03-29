@@ -6,7 +6,6 @@
 
 #include "mesh.hpp"
 #include "../gl_shared/gl_include.hpp"
-#include "../gl_shared/program.hpp"
 
 namespace Drawing
 {
@@ -31,13 +30,9 @@ void EraseIf(Container& c, Pred pred)
 }
 
 Scene3D::Scene3D(std::shared_ptr<GLShared::ShadersContainer> sc, const SceneCreateInfo& info) :
-	sc(sc),
-	scissorTest(false)
-{
-	SetViewProjectionMat4(info.viewProj);
-	SetViewport(info.viewport);
-	SetNext(info.next);
-}
+	GLShared::Scene(sc, info),
+	sc(*sc)
+{}
 
 void Scene3D::Insert(SMesh obj)
 {

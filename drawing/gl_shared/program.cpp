@@ -18,8 +18,6 @@ namespace GLShared
 Program::Program()
 {
 	spo = glCreateProgram();
-	if(spo == 0)
-		return;
 }
 
 Program::~Program()
