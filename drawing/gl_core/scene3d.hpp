@@ -36,7 +36,7 @@ private:
 	GLShared::IProgramProvider& pp;
 	std::set<std::shared_ptr<Mesh>> meshes;
 	std::set<Mesh*> solidMeshes;
-	std::multimap<float, Mesh*> alphaMeshes;
+	std::multimap<float, Mesh*, std::greater<>> alphaMeshes;
 	
 	float DistanceToVP(const Mesh& mesh) const;
 };
