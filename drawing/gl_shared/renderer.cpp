@@ -20,7 +20,6 @@ namespace Detail
 namespace GLShared
 {
 
-
 static const GLchar* VERTEX_SHADER_SRC[PROGRAM_TYPES_COUNT] =
 {
 // PROGRAM_ONLY_COLOR
@@ -45,7 +44,8 @@ uniform mat4 in_mvp;
 void main()
 {
 	gl_Position = in_mvp * vec4(in_pos, 1.0);
-	out_color = in_color;
+	// color buffer shouldn't contribute to alpha
+	out_color = vec4(in_color.xyz, 0.0);
 	out_uv = in_uv;
 })",
 };
