@@ -56,8 +56,6 @@ static const GLchar* FRAGMENT_SHADER_SRC[PROGRAM_TYPES_COUNT] =
 R"(#version 100
 precision mediump float;
 varying vec4 out_color; // input from vertex shader
-uniform bool in_hasClipRect;
-uniform vec4 in_clipRect;
 void main()
 {
 	gl_FragColor = out_color;

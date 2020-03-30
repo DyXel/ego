@@ -3,6 +3,7 @@
 #include <glm/vec4.hpp>
 #include "gl_include.hpp"
 #include "../enums.hpp"
+#include "../scene_createinfo.hpp"
 
 namespace Drawing
 {
@@ -24,8 +25,6 @@ enum Attribute
 enum Uniform
 {
 	UNIFORM_MVP_MAT = 0, // mat4: Model-View-Projection matrix
-	UNIFORM_HAS_CLIP_RECT, // bool: Has clip rectangle
-	UNIFORM_CLIP_RECT, // vec4: clip rectangle
 	UNIFORM_COUNT // Total number of uniforms
 };
 
@@ -47,8 +46,6 @@ constexpr const char* ATTRIBUTE_NAMES[ATTRIBUTE_COUNT] =
 constexpr const char* UNIFORM_NAMES[UNIFORM_COUNT] =
 {
 	"in_mvp",
-	"in_hasClipRect",
-	"in_clipRect",
 };
 
 constexpr Rect RectFromVec4(const glm::vec4& v)
@@ -112,6 +109,16 @@ constexpr GLenum GLTopologyFromEnum(MeshTopology topology)
 		return GL_TRIANGLE_FAN;
 	else
 		return static_cast<GLenum>(0); // Should be unreachable
+}
+
+constexpr GLbitfield GLClearBitsFromScenePropertyBits(uint8_t value)
+{
+	GLbitfield clearBits = 0;
+	if(value & SCENE_PROPERTY_CLEAR_COLOR_BUFFER_BIT)
+		clearBits |= GL_COLOR_BUFFER_BIT;
+	if(value & SCENE_PROPERTY_CLEAR_DEPTH_BUFFER_BIT)
+		clearBits |= GL_DEPTH_BUFFER_BIT;
+	return clearBits;
 }
 
 } // GLShared
