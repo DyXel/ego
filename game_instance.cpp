@@ -2,6 +2,9 @@
 
 #include <utility>
 #include <SDL_image.h>
+#include <glm/ext/matrix_clip_space.hpp> // glm::perspective
+#include <glm/ext/matrix_transform.hpp> // glm::lookAt
+#include <glm/gtx/transform.hpp> // glm::scale
 
 #include "sdl_utility.hpp"
 #include "drawing/enums.hpp"
@@ -14,26 +17,41 @@
 #include "drawing/mesh.hpp"
 #include "drawing/texture.hpp"
 
-static bool GetDisplayIndexFromWindow(SDL_Window* window, int* displayIndex)
+static const glm::vec3 QUAD_VERTICES[4] =
 {
-	// NOTE: not checking number of displays because its assumed a display
-	// exist if window creation succeeded.
-	*displayIndex = SDL_GetWindowDisplayIndex(window);
-	if(*displayIndex < 0)
-	{
-		SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION,
-		            "Unable to get display for current window: %s",
-		            SDL_GetError());
-		return false;
-	}
-	return true;
-}
+	{ -1.0f, -1.0f, 0.0f}, // top-left corner
+	{ -1.0f,  1.0f, 0.0f}, // bottom-left corner
+	{  1.0f, -1.0f, 0.0f}, // top-right corner
+	{  1.0f,  1.0f, 0.0f}, // bottom-right corner
+};
+
+static const short QUAD_INDICES[4] =
+{
+	0, 1, 2, 3
+};
+
+static const glm::vec2 QUAD_UVS[4] =
+{
+	{0.0f, 0.0f},
+	{0.0f, 1.0f},
+	{1.0f, 0.0f},
+	{1.0f, 1.0f},
+};
+
+// static const glm::vec4 QUAD_COLORS[4] =
+// {
+// 	{0.0f, 0.0f, 0.0f, 0.0f},
+// 	{0.0f, 0.0f, 0.0f, 0.0f},
+// 	{0.0f, 0.0f, 0.0f, 0.0f},
+// 	{0.0f, 0.0f, 0.0f, 0.0f},
+// };
 
 static Drawing::STexture TextureFromPath(Drawing::Detail::IRenderer& renderer,
                                         std::string_view path)
 {
 	using namespace Drawing;
-	auto tex = renderer.NewTexture({TEXTURE_FILTERING_LINEAR, TEXTURE_WRAP_REPEAT, TEXTURE_WRAP_REPEAT, 0, 0});
+	auto tex = renderer.NewTexture({TEXTURE_FILTERING_LINEAR, TEXTURE_WRAP_REPEAT,
+	                               TEXTURE_WRAP_REPEAT, 0, 0, nullptr});
 	SDL_Surface* image = IMG_Load(path.data());
 	if((image != nullptr) &&
 	   ((image = SDLU_SurfaceToRGBA32(image)) != nullptr))
@@ -47,100 +65,62 @@ static Drawing::STexture TextureFromPath(Drawing::Detail::IRenderer& renderer,
 GameInstance::GameInstance(const Drawing::Backend backend) :
 	SDLWindow(backend)
 {
-#ifndef __ANDROID__
-	// Sets window to 80% size of the display it is currently in.
-	auto SetWindowSize = [this]() -> bool
-	{
-		int displayIndex;
-		SDL_Rect r;
-		if(!GetDisplayIndexFromWindow(window, &displayIndex))
-			return false;
-		if(SDL_GetDisplayUsableBounds(displayIndex, &r) < 0)
-		{
-			SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION,
-			            "Unable to get display usable bounds: %s",
-			            SDL_GetError());
-			return false;
-		}
-		int fWidth  = (r.w - r.x) * 4 / 5;
-		int fHeight = (r.h - r.y) * 4 / 5;
-		SDL_Log("Setting window size to (%i, %i)", fWidth, fHeight);
-		SDL_SetWindowSize(window, fWidth, fHeight);
-		return true;
-	};
-	if(!SetWindowSize())
-	{
-		SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION,
-		            "Unable to set window size. Using default.");
-		SDL_SetWindowSize(window, 1280, 720);
-	}
-#endif // #ifndef __ANDROID__
-	// Clear renderer before showing window (avoids transparent window)
-	renderer->DrawAllScenes();
+	constexpr int WINDOW_WIDTH  = 800;
+	constexpr int WINDOW_HEIGHT = 800;
+	SDL_SetWindowSize(window, WINDOW_WIDTH, WINDOW_HEIGHT);
+	renderer->DrawAllScenes(); // Clear up
 	
-	auto colBuf = renderer->NewColBuf(Drawing::BUFFER_HINT_STATIC);
-	glm::vec4 test[3] =
-	{
-		{1.0f, 0.0f, 0.0f, 1.0f},
-		{0.0f, 1.0f, 0.0f, 1.0f},
-		{0.0f, 0.0f, 1.0f, 1.0f},
-	};
-	colBuf->Submit(test, 3);
-	
-	auto indBuf = renderer->NewIndBuf(Drawing::BUFFER_HINT_STATIC);
-	short test2[3] =
-	{
-		0, 1, 2
-	};
-	indBuf->Submit(test2);
-	
-	auto vertBuf = renderer->NewVertBuf(Drawing::BUFFER_HINT_STATIC);
-	glm::vec3 test3[3] =
-	{
-		{-1.0f, -1.0f, 0.0f},
-		{0.0f, 1.0f, 0.0f},
-		{1.0f, -1.0f, 0.0f},
-	};
-	vertBuf->Submit(test3);
-	
-	auto uvBuf = renderer->NewUVBuf(Drawing::BUFFER_HINT_STATIC);
-	glm::vec2 test4[3] =
-	{
-		{0.0f, 1.0f},
-		{0.5f, 0.0f},
-		{1.0f, 1.0f},
-	};
-	uvBuf->Submit(test4);
-	
-	const Drawing::MeshCreateInfo mInfo =
-	{
-		Drawing::MESH_TOPOLOGY_TRIANGLE_LIST,
-		true,
-		false,
-		vertBuf,
-		indBuf,
-		colBuf,
-		uvBuf,
-		TextureFromPath(*renderer, "image.png"),
-		false,
-		{50.0f, 50.0f, 200.0f, 200.0f},
-		glm::mat4(1.0f)
-	};
-	mesh = renderer->NewMesh(mInfo);
-	
+	// Set up scene
 	const Drawing::SceneCreateInfo sInfo =
 	{
 		Drawing::SCENE_PROPERTY_NOTHING_BIT,
 		{0.0f, 0.0f, 0.0f, 1.0f},
 		0,
 		glm::mat4(1.0f),
-		glm::vec4(),
+		glm::vec4({0, 0, WINDOW_WIDTH, WINDOW_HEIGHT}),
 		nullptr
 	};
 	scene = renderer->NewScene3D(sInfo);
-	scene->Insert(mesh);
-	
+	{ // create perspective projection matrix
+		const auto ar = static_cast<float>(WINDOW_WIDTH) / WINDOW_HEIGHT;
+		const glm::mat4 proj = glm::perspective(glm::pi<float>() / 2.0f, ar, 0.1f, 20.0f);
+		const glm::vec3 pos = {0.0f, 0.1f, 8.0f};
+		const glm::vec3 to = {0.0f, 0.0f, 0.0f};
+		const glm::vec3 up = {0.0f, 0.0f, 1.0f};
+		const glm::mat4 view = glm::lookAt(pos, to, up);
+		scene->SetViewProjectionMat4(proj * view);
+	}
 	renderer->SetInitialScene(scene);
+	
+	auto vertBuf = renderer->NewVertBuf(Drawing::BUFFER_HINT_STATIC);
+	vertBuf->Submit(QUAD_VERTICES);
+	
+	auto indBuf = renderer->NewIndBuf(Drawing::BUFFER_HINT_STATIC);
+	indBuf->Submit(QUAD_INDICES);
+	
+	auto uvBuf = renderer->NewUVBuf(Drawing::BUFFER_HINT_STATIC);
+	uvBuf->Submit(QUAD_UVS);
+	
+	const Drawing::MeshCreateInfo mInfo =
+	{
+		Drawing::MESH_TOPOLOGY_TRIANGLE_STRIP,
+		true,
+		true,
+		vertBuf,
+		indBuf,
+		nullptr,
+		uvBuf,
+		TextureFromPath(*renderer, "lens.png"),
+		false,
+		glm::vec4(),
+		glm::mat4(1.0f),
+	};
+	for(std::size_t i = 0; i < meshes.size(); i++)
+	{
+		auto mesh = renderer->NewMesh(mInfo);
+		scene->Insert(mesh);
+		meshes[i] = mesh.get();
+	}
 	
 	// Set window title before showing window
 	SDL_SetWindowTitle(window, "drawing2-test");
@@ -168,7 +148,6 @@ void GameInstance::OnEvent(const SDL_Event& e)
 	const auto eType = e.type;
 	if(eType == SDL_QUIT)
 		exiting = true;
-	
 	// If the event is a window size change event update the viewport/extent
 	// to match the new size, also, save the new size.
 	if(eType == SDL_WINDOWEVENT &&
@@ -178,15 +157,6 @@ void GameInstance::OnEvent(const SDL_Event& e)
 		SDL_Log("Resized to (%i, %i)", width, height);
 		scene->SetViewport({0, 0, width, height});
 	}
-	if(eType == SDL_KEYDOWN && e.key.keysym.scancode == SDL_SCANCODE_R)
-	{
-		scene->SetViewProjectionMat4(glm::mat4(1.0f));
-	}
-	if(eType == SDL_KEYDOWN && e.key.keysym.scancode == SDL_SCANCODE_I)
-	{
-		mesh->SetModelMat4(glm::mat4(1.0f));
-	}
-	
 	// event stuff here
 }
 
@@ -197,6 +167,19 @@ void GameInstance::Tick()
 	else
 		now = static_cast<unsigned>(SDL_GetTicks());
 	elapsed = static_cast<float>(now - then) * 0.001f;
-	// tick stuff here
+	rotation += elapsed;
+	RefreshMeshes();
 	then = now;
+}
+
+void GameInstance::RefreshMeshes()
+{
+	static const glm::vec3 rotVec = {-0.5f, 1.0f, 0.0f};
+	static const glm::mat4 trans = glm::translate(glm::vec3{0.0f, 0.0f, 2.0f});
+	for(std::size_t i = 0; i < meshes.size(); i++)
+	{
+		float angle = i * ((glm::pi<float>() * 2.0f) / meshes.size()) + rotation;
+		auto rot = glm::rotate(angle, rotVec);
+		meshes[i]->SetModelMat4(rot * trans);
+	}
 }

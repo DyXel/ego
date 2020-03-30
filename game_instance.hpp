@@ -26,10 +26,13 @@ private:
 	float elapsed{};
 	
 	Drawing::SScene scene;
-	Drawing::SMesh mesh;
+	std::array<Drawing::Detail::IMesh*, 8> meshes;
+	float rotation{0u};
 	
 	void OnEvent(const SDL_Event& e);
 	void Tick();
+	
+	void RefreshMeshes();
 };
 
 #endif // GAME_INSTANCE_HPP
