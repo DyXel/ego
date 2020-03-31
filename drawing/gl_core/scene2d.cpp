@@ -24,7 +24,7 @@ void Scene2D::Insert(SMesh obj)
 	auto mesh = std::dynamic_pointer_cast<Mesh>(obj);
 	meshes.remove(mesh);
 	meshes.push_back(mesh);
-	mesh->scene = this;
+	mesh->listener = this;
 	if(!WasViewProjectionSet())
 		CalculateMVP(*mesh);
 }
@@ -33,17 +33,17 @@ void Scene2D::Erase(SMesh obj)
 {
 	auto mesh = std::dynamic_pointer_cast<Mesh>(obj);
 	meshes.remove(mesh);
-	mesh->scene = nullptr;
+	mesh->listener = nullptr;
 }
 
 void Scene2D::Draw()
 {
+	GLShared::Scene::Draw();
 	if(WasViewProjectionSet(true))
 	{
 		for(auto& mesh : meshes)
 			CalculateMVP(*mesh);
 	}
-	ApplyViewport();
 	for(auto& meshPtr : meshes)
 	{
 		auto& mesh = *meshPtr;

@@ -22,20 +22,19 @@ class Scene : public IScene
 {
 public:
 	Scene(IProgramProvider& pp, const SceneCreateInfo& info);
-	virtual ~Scene() = default;
+	virtual ~Scene();
 	
-	virtual void Draw() = 0;
-	virtual void OnMeshTransparencyChange(Mesh& mesh) = 0;
-	virtual void OnMeshModelMatChange(Mesh& mesh) = 0;
+	Scene* Next() const;
+	GLuint TextureObject() const;
+	const GLShared::Rect& Viewport() const;
+	
+	virtual void Draw();
 	
 	// Drawing::Detail::IScene overrides
 	void SetViewport(const glm::vec4& rect) override;
 	void SetNext(SScene scene) override;
 	void SetViewProjectionMat4(const glm::mat4& mat) override;
-	
-	Scene* GetNext() const;
 protected:
-	void ApplyViewport() const;
 	const glm::mat4& ViewProjection() const;
 	void CalculateMVP(Mesh& mesh) const;
 	bool WasViewProjectionSet() const;
@@ -44,16 +43,17 @@ protected:
 	void UseMeshScissor(const Mesh& mesh);
 private:
 	IProgramProvider& pp;
-	GLShared::Rect viewport;
+	GLbitfield clearBits;
+	bool backfaceCull;
+	bool depthTest;
+	glm::vec4 clearColor;
+	GLuint fbo; // Framebuffer object
+	GLuint to; // Texture object
+	GLuint rbo; // Renderbuffer object
+	GLShared::Rect vp;
 	std::shared_ptr<Scene> next;
 	glm::mat4 viewProj;
 	bool viewProjChanged;
-	
-	struct
-	{
-		GLuint lastProgram{0};
-		bool usingScissor{false};
-	}cache;
 };
 
 } // namespace GLShared

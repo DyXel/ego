@@ -72,12 +72,34 @@ void main()
 })",
 };
 
+// Quad data
+constexpr std::size_t QUAD_VERTEX_COUNT = 4;
+static const glm::vec3 QUAD_VERTICES[QUAD_VERTEX_COUNT] =
+{
+	{ -1.0f, -1.0f, 0.0f}, // top-left corner
+	{ -1.0f,  1.0f, 0.0f}, // bottom-left corner
+	{  1.0f, -1.0f, 0.0f}, // top-right corner
+	{  1.0f,  1.0f, 0.0f}, // bottom-right corner
+};
+static const short QUAD_INDICES[QUAD_VERTEX_COUNT] =
+{
+	0, 1, 2, 3
+};
+static const glm::vec2 QUAD_UVS[QUAD_VERTEX_COUNT] =
+{
+	{0.0f, 0.0f},
+	{0.0f, 1.0f},
+	{1.0f, 0.0f},
+	{1.0f, 1.0f},
+};
+
 Renderer::Renderer(SDL_Window* sdlWindow) : sdlWindow(sdlWindow), initialScene(nullptr)
 {
 	// Enable additive blending
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+	// Initialize internal shaders
 	for(std::size_t i = 0; i < PROGRAM_TYPES_COUNT; i++)
 	{
 		GLShared::Shader vs(GL_VERTEX_SHADER, VERTEX_SHADER_SRC[i]);
@@ -86,6 +108,14 @@ Renderer::Renderer(SDL_Window* sdlWindow) : sdlWindow(sdlWindow), initialScene(n
 		programs[i].Attach(fs);
 		programs[i].Link();
 	}
+	
+	// Initialize quad vertex, indice and uv buffer
+	quad.vb = std::make_shared<VertBuf>(BUFFER_HINT_STATIC);
+	quad.vb->Submit(QUAD_VERTICES, QUAD_VERTEX_COUNT);
+	quad.ib = std::make_shared<IndBuf>(BUFFER_HINT_STATIC);
+	quad.ib->Submit(QUAD_INDICES, QUAD_VERTEX_COUNT);
+	quad.ub = std::make_shared<UVBuf>(BUFFER_HINT_STATIC);
+	quad.ub->Submit(QUAD_UVS, QUAD_VERTEX_COUNT);
 }
 
 const Program& Renderer::GetProgram(ProgramTypes value) const
@@ -150,22 +180,11 @@ SScene Renderer::GetInitialScene()
 
 void Renderer::DrawAllScenes()
 {
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
-	if(initialScene == nullptr)
+	for(Scene* s = initialScene.get(); s != nullptr; s = s->Next())
 	{
-		SDL_GL_SwapWindow(sdlWindow);
-		return;
+		s->Draw();
+		BlitToWindowFramebuffer(s->Viewport(), s->TextureObject());
 	}
-	
-	Scene* currScene = initialScene.get();
-	do
-	{
-		currScene->Draw();
-		currScene = currScene->GetNext();
-	}while(currScene != nullptr);
-	
 	SDL_GL_SwapWindow(sdlWindow);
 }
 

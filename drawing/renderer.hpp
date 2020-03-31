@@ -23,15 +23,16 @@ public:
 	virtual SScene NewScene3D(const SceneCreateInfo& info) = 0;
 	virtual SMesh NewMesh(const MeshCreateInfo& info) = 0;
 	virtual STexture NewTexture(const TextureCreateInfo& info) = 0;
-	
 	virtual SVertBuf NewVertBuf(BufferHint hint) = 0;
 	virtual SIndBuf NewIndBuf(BufferHint hint) = 0;
 	virtual SColBuf NewColBuf(BufferHint hint) = 0;
 	virtual SUVBuf NewUVBuf(BufferHint hint) = 0;
 	
+// 	virtual SVertBuf const& QuadVertBuf() = 0;
+// 	virtual SIndBuf const& QuadIndBuf() = 0;
+	
 	virtual void SetInitialScene(SScene scene) = 0;
 	virtual SScene GetInitialScene() = 0;
-	
 	virtual void DrawAllScenes() = 0;
 };
 

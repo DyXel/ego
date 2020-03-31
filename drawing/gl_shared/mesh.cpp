@@ -1,6 +1,7 @@
 #include "mesh.hpp"
 
 #include "common.hpp"
+#include "mesh_listener.hpp"
 #include "scene.hpp"
 
 namespace Drawing
@@ -13,7 +14,7 @@ namespace GLShared
 {
 
 Mesh::Mesh(const MeshCreateInfo& info) :
-	scene(nullptr)
+	listener(nullptr)
 {
 	SetTopology(info.topology);
 	SetRender(info.render);
@@ -36,8 +37,8 @@ void Mesh::SetRender(bool value)
 void Mesh::SetTransparent(bool value)
 {
 	transparent = value;
-	if(scene)
-		scene->OnMeshTransparencyChange(*this);
+	if(listener)
+		listener->OnMeshTransparencyChange(*this);
 }
 
 void Mesh::SetDiffuse(STexture object)
@@ -56,8 +57,8 @@ void Mesh::SetClipRect(bool has, const glm::vec4& rect)
 void Mesh::SetModelMat4(const glm::mat4& mat)
 {
 	model = mat;
-	if(scene)
-		scene->OnMeshModelMatChange(*this);
+	if(listener)
+		listener->OnMeshModelMatChange(*this);
 }
 
 glm::mat4 Mesh::GetModelMat4() const

@@ -15,11 +15,17 @@ namespace GLShared
 {
 
 class Scene;
+class VertBuf;
+class IndBuf;
+class UVBuf;
 
 class Renderer : public IProgramProvider, public IRenderer
 {
 public:
 	Renderer(SDL_Window* sdlWindow);
+	virtual ~Renderer() = default;
+	
+	virtual void BlitToWindowFramebuffer(const GLShared::Rect& viewport, GLuint to) = 0;
 	
 	// GLShared::IProgramProvider overrides
 	const Program& GetProgram(ProgramTypes value) const override;
@@ -39,8 +45,15 @@ public:
 	void DrawAllScenes() override;
 protected:
 	SDL_Window* sdlWindow;
-	std::shared_ptr<Scene> initialScene;
 	std::array<Program, PROGRAM_TYPES_COUNT> programs;
+	struct
+	{
+		std::shared_ptr<VertBuf> vb;
+		std::shared_ptr<IndBuf> ib;
+		std::shared_ptr<UVBuf> ub;
+	}quad;
+	
+	std::shared_ptr<Scene> initialScene;
 };
 
 } // GLShared

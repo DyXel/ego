@@ -38,7 +38,7 @@ void Scene3D::Insert(SMesh obj)
 {
 	auto mesh = std::dynamic_pointer_cast<Mesh>(obj);
 	meshes.insert(mesh);
-	mesh->scene = this;
+	mesh->listener = this;
 	if(mesh->transparent)
 	{
 		if(WasViewProjectionSet())
@@ -73,10 +73,12 @@ void Scene3D::Erase(SMesh obj)
 	{
 		solidMeshes.erase(mesh.get());
 	}
+	mesh->listener = nullptr;
 }
 
 void Scene3D::Draw()
 {
+	GLShared::Scene::Draw();
 	if(WasViewProjectionSet(true))
 	{
 		for(auto& mesh : solidMeshes)
@@ -93,7 +95,6 @@ void Scene3D::Draw()
 			alphaMeshes = std::move(tmpMap);
 		}
 	}
-	ApplyViewport();
 	// NOTE: since all shaders have the same uniforms, it doesnt matter
 	// which shader we retrieve the location from.
 	auto& p = pp.GetProgram(GLShared::PROGRAM_ONLY_COLOR);

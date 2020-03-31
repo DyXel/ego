@@ -14,12 +14,12 @@ namespace Detail
 namespace GLShared
 {
 
-class Scene;
+class IMeshListener;
 
 class Mesh : public IMesh
 {
 public:
-	Scene* scene;
+	IMeshListener* listener;
 	GLenum topology;
 	bool render;
 	bool transparent;
