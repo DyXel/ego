@@ -1,14 +1,11 @@
 # TODO
 * Rename to Ego (Egoistic Graphics Orchestrator)
-* Move `Drawing::Detail::I` interfaces to just `Drawing::I`
-* Use RGBA8 instead of RGBA32FLOAT for color buffer
-  * Allow quick conversion between the two types
+* Remove `Detail` namespace
 * Run clang static analyzer on the entire codebase
 * Add method to IRenderer to quickly retrieve a QUAD mesh data
-* Use rendertargets for each scene
-  * Use clear color
-  * Their size will be a multiple of their viewport
-  * Allow setting arbitrary supersampling on base 2
+* Remove SDL usage from the renderer itself
+  * Remove vsync option
+  * Dont present on DrawAllScenes
 * Create Material object that holds the following
   * Colors buffer
   * Texture object and UVs buffer
@@ -17,4 +14,12 @@
   * Should hold the View-Projection matrix
 
 # Wishlist
-* Sort meshes on the Scene3D by their material to have less program switches
+* OpenGL: Sort solid meshes on Scene3D by their material to have less program switches
+* Add scene supersampling (SSAA)
+* Use RGBA8 instead of RGBA32FLOAT for color buffer
+  * Allow quick conversion between the two types
+* Expose interface for shaders, allow materials to use them instead of built-in ones
+  * Allow them to be set as post-effect in the Renderer instead of built-in
+* Allow creating scene with a ITexture object
+  * This texture would be used for the framebuffer instead of scene's built in
+* Allow to extract pixels from a ITexture object
