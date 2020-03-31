@@ -73,9 +73,8 @@ GameInstance::GameInstance(const Drawing::Backend backend) :
 	// Set up scene
 	const Drawing::SceneCreateInfo sInfo =
 	{
-		Drawing::SCENE_PROPERTY_NOTHING_BIT,
-		{0.0f, 0.0f, 0.0f, 1.0f},
-		0,
+		Drawing::SCENE_PROPERTY_CLEAR_COLOR_BUFFER_BIT | Drawing::SCENE_PROPERTY_CLEAR_DEPTH_BUFFER_BIT,
+		{0.4f, 0.4f, 0.4f, 1.0f},
 		glm::mat4(1.0f),
 		glm::vec4({0, 0, WINDOW_WIDTH, WINDOW_HEIGHT}),
 		nullptr
