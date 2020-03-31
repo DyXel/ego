@@ -115,11 +115,6 @@ Renderer::Renderer(SDL_Window* sdlWindow) : sdlWindow(sdlWindow), initialScene(n
 	quad.ub->Submit(QUAD_UVS, QUAD_VERTEX_COUNT);
 }
 
-const Program& Renderer::GetProgram(ProgramTypes value) const
-{
-	return programs[value];
-}
-
 bool Renderer::SetVSync(VSyncState state)
 {
 	switch(state)
@@ -178,6 +173,11 @@ void Renderer::DrawAllScenes()
 		BlitToWindowFramebuffer(s->Viewport(), s->TextureObject());
 	}
 	SDL_GL_SwapWindow(sdlWindow);
+}
+
+const Program& Renderer::GetProgram(ProgramTypes value) const
+{
+	return programs[value];
 }
 
 } // GLCore
