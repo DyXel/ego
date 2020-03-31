@@ -16,7 +16,7 @@ namespace GLShared
 class Texture final : public ITexture
 {
 public:
-	GLuint to{0}; // Texture Object
+	GLuint to; // Texture Object
 	
 	Texture(const TextureCreateInfo& info);
 	virtual ~Texture();

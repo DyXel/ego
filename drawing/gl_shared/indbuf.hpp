@@ -16,7 +16,7 @@ namespace GLShared
 class IndBuf final : public IIndBuf
 {
 public:
-	GLuint bo{0}; // Buffer Object
+	GLuint bo; // Buffer Object
 	GLsizei count;
 	
 	IndBuf(BufferHint hint);

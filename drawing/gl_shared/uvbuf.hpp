@@ -16,7 +16,7 @@ namespace GLShared
 class UVBuf final : public IUVBuf
 {
 public:
-	GLuint bo{0}; // Buffer Object
+	GLuint bo; // Buffer Object
 	
 	UVBuf(BufferHint hint);
 	virtual ~UVBuf();

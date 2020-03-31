@@ -14,11 +14,11 @@ namespace GLShared
 
 Texture::Texture(const TextureCreateInfo& info)
 {
+	glGenTextures(1, &to);
 	const auto glFiltering = GLTextureFilteringFromEnum(info.filtering);
 	const auto glhWrap = GLTextureWrapFromEnum(info.hWrap);
 	const auto glvWrap = GLTextureWrapFromEnum(info.vWrap);
 	
-	glGenTextures(1, &to);
 	glBindTexture(GL_TEXTURE_2D, to);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, glFiltering);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, glFiltering);

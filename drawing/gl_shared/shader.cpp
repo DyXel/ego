@@ -10,9 +10,11 @@ namespace Detail
 namespace GLShared
 {
 
-Shader::Shader(const GLenum type, std::string_view source) : type(type)
+Shader::Shader(const GLenum type, std::string_view source) :
+	compiled(false),
+	type(type),
+	so(glCreateShader(type))
 {
-	so = glCreateShader(type);
 	if(so == 0)
 		return;
 	const char* src[] = {source.data()};

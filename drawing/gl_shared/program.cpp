@@ -15,14 +15,11 @@ namespace Detail
 namespace GLShared
 {
 
-Program::Program()
-{
-	spo = glCreateProgram();
-}
+Program::Program() : spo(glCreateProgram())
+{}
 
 Program::~Program()
 {
-	// NOTE: From reference: A value of 0 for spo will be silently ignored.
 	glDeleteProgram(spo);
 }
 

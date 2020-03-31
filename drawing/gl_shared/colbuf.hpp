@@ -16,7 +16,7 @@ namespace GLShared
 class ColBuf final : public IColBuf
 {
 public:
-	GLuint bo{0}; // Buffer Object
+	GLuint bo; // Buffer Object
 	
 	ColBuf(BufferHint hint);
 	virtual ~ColBuf();

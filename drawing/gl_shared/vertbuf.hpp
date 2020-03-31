@@ -16,7 +16,7 @@ namespace GLShared
 class VertBuf final : public IVertBuf
 {
 public:
-	GLuint bo{0}; // Buffer Object
+	GLuint bo; // Buffer Object
 	
 	VertBuf(BufferHint hint);
 	virtual ~VertBuf();

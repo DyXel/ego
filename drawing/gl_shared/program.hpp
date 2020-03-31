@@ -20,7 +20,7 @@ class Shader;
 class Program
 {
 public:
-	GLuint spo{0}; // Shader Program Object
+	GLuint spo; // Shader Program Object
 	
 	Program();
 	~Program();

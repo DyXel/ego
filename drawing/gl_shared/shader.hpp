@@ -15,7 +15,7 @@ namespace GLShared
 class Shader
 {
 public:
-	bool compiled{false};
+	bool compiled;
 	GLenum type;
 	GLuint so; // Shader Object
 	
