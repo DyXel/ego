@@ -9,9 +9,6 @@
 namespace Drawing
 {
 
-namespace Detail
-{
-
 class IRenderer
 {
 public:
@@ -32,11 +29,8 @@ public:
 // 	virtual SIndBuf const& QuadIndBuf() = 0;
 	
 	virtual void SetInitialScene(SScene scene) = 0;
-	virtual SScene GetInitialScene() = 0;
 	virtual void DrawAllScenes() = 0;
 };
-
-} // namespace Detail
 
 } // namespace Drawing
 

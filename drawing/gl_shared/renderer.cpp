@@ -14,9 +14,6 @@
 namespace Drawing
 {
 
-namespace Detail
-{
-
 namespace GLShared
 {
 
@@ -173,11 +170,6 @@ void Renderer::SetInitialScene(SScene scene)
 	initialScene = std::dynamic_pointer_cast<Scene>(scene);
 }
 
-SScene Renderer::GetInitialScene()
-{
-	throw std::exception();
-}
-
 void Renderer::DrawAllScenes()
 {
 	for(Scene* s = initialScene.get(); s != nullptr; s = s->Next())
@@ -189,7 +181,5 @@ void Renderer::DrawAllScenes()
 }
 
 } // GLCore
-
-} // Detail
 
 } // Drawing

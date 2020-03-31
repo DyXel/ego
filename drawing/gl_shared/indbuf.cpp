@@ -7,9 +7,6 @@
 namespace Drawing
 {
 
-namespace Detail
-{
-
 namespace GLShared
 {
 
@@ -32,7 +29,5 @@ void IndBuf::Submit(const short* data, std::size_t size)
 }
 
 } // namespace GLShared
-
-} // namespace Detail
 
 } // namespace Drawing

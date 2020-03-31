@@ -8,9 +8,6 @@
 namespace Drawing
 {
 
-namespace Detail
-{
-
 class IScene
 {
 public:
@@ -22,8 +19,6 @@ public:
 	virtual void SetViewport(const glm::vec4& rect) = 0;
 	virtual void SetNext(SScene next) = 0;
 };
-
-} // namespace Detail
 
 } // namespace Drawing
 

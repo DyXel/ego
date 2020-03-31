@@ -6,9 +6,6 @@
 namespace Drawing
 {
 
-namespace Detail
-{
-
 namespace GLShared
 {
 
@@ -43,7 +40,5 @@ void Texture::SetImage(int width, int height, const void* pixels)
 }
 
 } // namespace GLShared
-
-} // namespace Detail
 
 } // namespace Drawing

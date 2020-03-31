@@ -9,9 +9,6 @@
 namespace Drawing
 {
 
-namespace Detail
-{
-
 namespace GLCore
 {
 
@@ -27,7 +24,7 @@ public:
 	Mesh(const MeshCreateInfo& info);
 	virtual ~Mesh();
 	
-	// Drawing::Detail::IMesh overrides
+	// IMesh overrides
 	void SetVertBuf(SVertBuf object) override;
 	void SetIndBuf(SIndBuf object) override;
 	void SetColBuf(SColBuf object) override;
@@ -35,8 +32,6 @@ public:
 };
 
 } // namespace GLCore
-
-} // namespace Detail
 
 } // namespace Drawing
 

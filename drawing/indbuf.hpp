@@ -5,13 +5,8 @@
 namespace Drawing
 {
 
-namespace Detail
-{
-
 class IIndBuf : public Submittable<short>
 {};
-
-} // namespace Detail
 
 } // namespace Drawing
 

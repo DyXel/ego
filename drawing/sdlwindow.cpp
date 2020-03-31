@@ -83,8 +83,8 @@ SDLWindow::SDLWindow(const Backend backend)
 		throw std::runtime_error("Unable to create OpenGL Context");
 	}
 	
-	if(backend == OPENGL_CORE && LoadGLCore()) // TODO: implement other backends
-		renderer = std::make_shared<Detail::GLCore::Renderer>(window);
+	if(backend == OPENGL_CORE && LoadGLCore())
+		renderer = std::make_shared<GLCore::Renderer>(window);
 	else
 		throw std::runtime_error("Unable to load target API");
 }

@@ -7,9 +7,6 @@
 namespace Drawing
 {
 
-namespace Detail
-{
-
 namespace GLShared
 {
 
@@ -27,8 +24,6 @@ private:
 };
 
 } // namespace GLShared
-
-} // namespace Detail
 
 } // namespace Drawing
 

@@ -6,10 +6,9 @@ namespace Drawing
 {
 
 #define FORWARD_DECLARE(name) \
-	namespace Detail { class I##name; } \
-	using S##name = std::shared_ptr<class Detail::I##name>; \
-	using W##name = std::weak_ptr<class Detail::I##name>
-// 	using name = Detail::I##name
+	class I##name; \
+	using S##name = std::shared_ptr<class I##name>; \
+	using W##name = std::weak_ptr<class I##name>
 
 FORWARD_DECLARE(ColBuf);
 FORWARD_DECLARE(IndBuf);

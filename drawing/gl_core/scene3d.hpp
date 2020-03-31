@@ -11,9 +11,6 @@
 namespace Drawing
 {
 
-namespace Detail
-{
-
 namespace GLCore
 {
 
@@ -25,7 +22,7 @@ public:
 	Scene3D(GLShared::IProgramProvider& pp, const SceneCreateInfo& info);
 	virtual ~Scene3D() = default;
 	
-	// Drawing::Detail::IScene overrides
+	// IScene overrides
 	void Insert(SMesh obj) override;
 	void Erase(SMesh obj) override;
 	
@@ -45,8 +42,6 @@ private:
 };
 
 } // namespace GLCore
-
-} // namespace Detail
 
 } // namespace Drawing
 

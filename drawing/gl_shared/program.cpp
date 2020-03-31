@@ -9,9 +9,6 @@
 namespace Drawing
 {
 
-namespace Detail
-{
-
 namespace GLShared
 {
 
@@ -60,7 +57,5 @@ GLint Program::GetUniformLocation(Uniform name) const
 }
 
 }  // namespace GLShared
-
-}  // namespace Detail
 
 }  // namespace Drawing

@@ -7,13 +7,8 @@
 namespace Drawing
 {
 
-namespace Detail
-{
-
 class IUVBuf : public Submittable<glm::vec2>
 {};
-
-} // namespace Detail
 
 } // namespace Drawing
 

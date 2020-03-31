@@ -8,9 +8,6 @@
 namespace Drawing
 {
 
-namespace Detail
-{
-
 namespace GLShared
 {
 
@@ -32,7 +29,7 @@ public:
 	Mesh(const MeshCreateInfo& info);
 	virtual ~Mesh() = default;
 	
-	// Drawing::Detail::IMesh overrides
+	// IMesh overrides
 	void SetTopology(MeshTopology value) override;
 	void SetRender(bool value) override;
 	void SetTransparent(bool value) override;
@@ -43,8 +40,6 @@ public:
 };
 
 } // namespace GLShared
-
-} // namespace Detail
 
 } // namespace Drawing
 

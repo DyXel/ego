@@ -10,9 +10,6 @@
 namespace Drawing
 {
 
-namespace Detail
-{
-
 namespace GLCore
 {
 
@@ -181,7 +178,5 @@ float Scene3D::DistanceToVP(const Mesh& mesh) const
 }
 
 } // namespace GLCore
-
-} // namespace Detail
 
 } // namespace Drawing

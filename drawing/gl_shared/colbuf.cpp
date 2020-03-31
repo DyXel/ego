@@ -7,9 +7,6 @@
 namespace Drawing
 {
 
-namespace Detail
-{
-
 namespace GLShared
 {
 
@@ -31,7 +28,5 @@ void ColBuf::Submit(const glm::vec4* data, std::size_t size)
 }
 
 } // namespace GLShared
-
-} // namespace Detail
 
 } // namespace Drawing

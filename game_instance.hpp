@@ -26,7 +26,7 @@ private:
 	float elapsed{};
 	
 	Drawing::SScene scene;
-	std::array<Drawing::Detail::IMesh*, 8> meshes;
+	std::array<Drawing::IMesh*, 8> meshes;
 	float rotation{0u};
 	
 	void OnEvent(const SDL_Event& e);

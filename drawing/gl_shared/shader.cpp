@@ -4,9 +4,6 @@
 namespace Drawing
 {
 
-namespace Detail
-{
-
 namespace GLShared
 {
 
@@ -43,7 +40,5 @@ Shader::~Shader()
 }
 
 }  // namespace GLShared
-
-}  // namespace Detail
 
 }  // namespace Drawing

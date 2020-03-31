@@ -8,9 +8,6 @@
 namespace Drawing
 {
 
-namespace Detail
-{
-
 namespace GLCore
 {
 
@@ -70,7 +67,5 @@ void Scene2D::OnMeshModelMatChange(GLShared::Mesh& mesh)
 }
 
 } // namespace GLCore
-
-} // namespace Detail
 
 } // namespace Drawing

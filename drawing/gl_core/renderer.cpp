@@ -13,9 +13,6 @@
 namespace Drawing
 {
 
-namespace Detail
-{
-
 namespace GLCore
 {
 
@@ -76,7 +73,5 @@ void Renderer::BlitToWindowFramebuffer(const GLShared::Rect& viewport, GLuint to
 }
 
 } // GLCore
-
-} // Detail
 
 } // Drawing

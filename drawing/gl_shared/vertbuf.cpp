@@ -7,9 +7,6 @@
 namespace Drawing
 {
 
-namespace Detail
-{
-
 namespace GLShared
 {
 
@@ -31,7 +28,5 @@ void VertBuf::Submit(const glm::vec3* data, std::size_t size)
 }
 
 } // namespace GLShared
-
-} // namespace Detail
 
 } // namespace Drawing

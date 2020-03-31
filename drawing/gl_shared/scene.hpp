@@ -10,9 +10,6 @@
 namespace Drawing
 {
 
-namespace Detail
-{
-
 namespace GLShared
 {
 
@@ -30,7 +27,7 @@ public:
 	
 	virtual void Draw();
 	
-	// Drawing::Detail::IScene overrides
+	// IScene overrides
 	void SetViewport(const glm::vec4& rect) override;
 	void SetNext(SScene scene) override;
 	void SetViewProjectionMat4(const glm::mat4& mat) override;
@@ -57,8 +54,6 @@ private:
 };
 
 } // namespace GLShared
-
-} // namespace Detail
 
 } // namespace Drawing
 

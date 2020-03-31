@@ -8,9 +8,6 @@
 namespace Drawing
 {
 
-namespace Detail
-{
-
 namespace GLShared
 {
 
@@ -122,8 +119,6 @@ constexpr GLbitfield GLClearBitsFromScenePropertyBits(uint8_t value)
 }
 
 } // GLShared
-
-} // Detail
 
 } // Drawing
 

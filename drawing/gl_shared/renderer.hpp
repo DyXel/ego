@@ -8,9 +8,6 @@ struct SDL_Window;
 namespace Drawing
 {
 
-namespace Detail
-{
-
 namespace GLShared
 {
 
@@ -19,7 +16,7 @@ class VertBuf;
 class IndBuf;
 class UVBuf;
 
-class Renderer : public IProgramProvider, public IRenderer
+class Renderer : public IRenderer, public IProgramProvider
 {
 public:
 	Renderer(SDL_Window* sdlWindow);
@@ -27,10 +24,7 @@ public:
 	
 	virtual void BlitToWindowFramebuffer(const GLShared::Rect& viewport, GLuint to) = 0;
 	
-	// GLShared::IProgramProvider overrides
-	const Program& GetProgram(ProgramTypes value) const override;
-	
-	// Drawing::IRenderer overrides
+	// IRenderer overrides
 	bool SetVSync(VSyncState vsync) override;
 	
 	SVertBuf NewVertBuf(BufferHint hint) override;
@@ -40,9 +34,10 @@ public:
 	STexture NewTexture(const TextureCreateInfo& info) override;
 	
 	void SetInitialScene(SScene scene) override;
-	SScene GetInitialScene() override;
-	
 	void DrawAllScenes() override;
+	
+	// GLShared::IProgramProvider overrides
+	const Program& GetProgram(ProgramTypes value) const override;
 protected:
 	SDL_Window* sdlWindow;
 	std::array<Program, PROGRAM_TYPES_COUNT> programs;
@@ -57,8 +52,6 @@ protected:
 };
 
 } // GLShared
-
-} // Detail
 
 } // Drawing
 

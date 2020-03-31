@@ -46,7 +46,7 @@ static const glm::vec2 QUAD_UVS[4] =
 // 	{0.0f, 0.0f, 0.0f, 0.0f},
 // };
 
-static Drawing::STexture TextureFromPath(Drawing::Detail::IRenderer& renderer,
+static Drawing::STexture TextureFromPath(Drawing::IRenderer& renderer,
                                         std::string_view path)
 {
 	using namespace Drawing;

@@ -7,9 +7,6 @@
 namespace Drawing
 {
 
-namespace Detail
-{
-
 template<typename T>
 class Submittable
 {
@@ -35,8 +32,6 @@ public:
 		Submit(vec.data(), vec.size());
 	}
 };
-
-} // namespace Detail
 
 } // namespace Drawing
 

@@ -7,9 +7,6 @@
 namespace Drawing
 {
 
-namespace Detail
-{
-
 namespace GLShared
 {
 
@@ -67,7 +64,5 @@ glm::mat4 Mesh::GetModelMat4() const
 }
 
 } // namespace GLShared
-
-} // namespace Detail
 
 } // namespace Drawing

@@ -5,9 +5,6 @@
 namespace Drawing
 {
 
-namespace Detail
-{
-
 namespace GLCore
 {
 
@@ -17,7 +14,7 @@ public:
 	Renderer(SDL_Window* sdlWindow);
 	virtual ~Renderer();
 	
-	// Drawing::IRenderer overrides
+	// IRenderer overrides
 	SScene NewScene2D(const SceneCreateInfo& info) override;
 	SScene NewScene3D(const SceneCreateInfo& info) override;
 	SMesh NewMesh(const MeshCreateInfo& info) override;
@@ -31,8 +28,6 @@ private:
 };
 
 } // namespace GLCore
-
-} // namespace Detail
 
 } // namespace Drawing
 

@@ -9,9 +9,6 @@
 namespace Drawing
 {
 
-namespace Detail
-{
-
 class IMesh
 {
 public:
@@ -29,8 +26,6 @@ public:
 	virtual void SetModelMat4(const glm::mat4& mat) = 0;
 	virtual glm::mat4 GetModelMat4() const = 0;
 };
-
-} // namespace Detail
 
 } // namespace Drawing
 

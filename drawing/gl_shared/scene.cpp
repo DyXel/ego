@@ -5,9 +5,6 @@
 namespace Drawing
 {
 
-namespace Detail
-{
-
 namespace GLShared
 {
 
@@ -153,7 +150,5 @@ void Scene::UseMeshScissor(const Mesh& mesh)
 }
 
 } // namespace GLShared
-
-} // namespace Detail
 
 } // namespace Drawing

@@ -5,9 +5,6 @@
 namespace Drawing
 {
 
-namespace Detail
-{
-
 namespace GLCore
 {
 
@@ -98,7 +95,5 @@ void Mesh::SetUVBuf(SUVBuf object)
 }
 
 } // namespace GLCore
-
-} // namespace Detail
 
 } // namespace Drawing
