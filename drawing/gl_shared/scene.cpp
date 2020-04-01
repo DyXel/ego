@@ -71,6 +71,11 @@ Scene* Scene::Next() const
 	return next.get();
 }
 
+GLuint Scene::FramebufferObject() const
+{
+	return fbo;
+}
+
 GLuint Scene::TextureObject() const
 {
 	return to;

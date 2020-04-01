@@ -22,6 +22,7 @@ public:
 	virtual ~Scene();
 	
 	Scene* Next() const;
+	GLuint FramebufferObject() const;
 	GLuint TextureObject() const;
 	const GLShared::Rect& Viewport() const;
 	
