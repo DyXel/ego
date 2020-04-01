@@ -17,7 +17,7 @@ Mesh::Mesh(const MeshCreateInfo& info) :
 	SetRender(info.render);
 	SetTransparent(info.transparent);
 	SetDiffuse(info.diffuse);
-	SetClipRect(info.hasClipRect, info.clipRect);
+	SetClipRect(info.clipRect);
 	SetModelMat4(info.model);
 }
 
@@ -44,11 +44,10 @@ void Mesh::SetDiffuse(const SCTexture& object)
 	diffuse = std::dynamic_pointer_cast<const Texture>(object);
 }
 
-void Mesh::SetClipRect(bool has, const glm::vec4& rect)
+void Mesh::SetClipRect(const glm::ivec4* rect)
 {
-	hasScissor = has;
-	if(hasScissor)
-		sci = GLShared::RectFromVec4(rect);
+	if((hasScissor = rect != nullptr))
+		sci = *rect;
 }
 
 void Mesh::SetModelMat4(const glm::mat4& mat)

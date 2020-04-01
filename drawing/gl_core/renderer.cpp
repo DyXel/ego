@@ -40,8 +40,8 @@ void Renderer::BlitToWindowFramebuffer(const GLShared::Scene& scene)
 	const auto& vp = scene.Viewport();
 	glBindFramebuffer(GL_READ_FRAMEBUFFER, scene.FramebufferObject());
 	glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
-	glBlitFramebuffer(0, 0, vp.w, vp.h,
-	                  vp.x, vp.y, vp.w, vp.h,
+	glBlitFramebuffer(0, 0, vp.z, vp.w,
+	                  vp.x, vp.y, vp.z, vp.w,
 	                  GL_COLOR_BUFFER_BIT, GL_NEAREST);
 }
 

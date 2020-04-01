@@ -1,7 +1,7 @@
 #ifndef DRAWING_SCENE_CREATEINFO_HPP
 #define DRAWING_SCENE_CREATEINFO_HPP
 #include <glm/mat4x4.hpp>
-#include <glm/vec4.hpp>
+#include <glm/ext/vector_int4.hpp>
 
 #include "drawing.hpp"
 
@@ -25,7 +25,7 @@ struct SceneCreateInfo
 	glm::vec4 clearColor;
 	// Mutable initial options
 	glm::mat4 viewProj;
-	glm::vec4 viewport; // x = x, y = y, z = width, w = height
+	glm::ivec4 viewport; // x = x, y = y, z = width, w = height
 	SScene next;
 };
 

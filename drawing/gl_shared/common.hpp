@@ -25,14 +25,6 @@ enum Uniform
 	UNIFORM_COUNT // Total number of uniforms
 };
 
-struct Rect
-{
-	GLint x;
-	GLint y;
-	GLsizei w;
-	GLsizei h;
-};
-
 constexpr const char* ATTRIBUTE_NAMES[ATTRIBUTE_COUNT] =
 {
 	"in_pos",
@@ -44,17 +36,6 @@ constexpr const char* UNIFORM_NAMES[UNIFORM_COUNT] =
 {
 	"in_mvp",
 };
-
-constexpr Rect RectFromVec4(const glm::vec4& v)
-{
-	return
-	{
-		static_cast<GLint>(v.x),
-		static_cast<GLint>(v.y),
-		static_cast<GLsizei>(v.z),
-		static_cast<GLsizei>(v.w)
-	};
-}
 
 constexpr GLenum GLBufferHintFromEnum(BufferHint hint)
 {

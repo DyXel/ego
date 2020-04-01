@@ -31,8 +31,8 @@ static Drawing::STexture TextureFromPath(Drawing::IRenderer& renderer,
 
 glm::mat4 CreateViewProjMat4(int width, int height, float fov)
 {
-	const auto ar = static_cast<float>(WINDOW_WIDTH) / WINDOW_HEIGHT;
-	const glm::mat4 proj = glm::perspective(glm::pi<float>() / 2.0f, ar, 0.1f, 20.0f);
+	const auto ar = static_cast<float>(width) / height;
+	const glm::mat4 proj = glm::perspective(fov, ar, 0.1f, 20.0f);
 	const glm::vec3 pos = {0.0f, 0.1f, 8.0f};
 	const glm::vec3 to = {0.0f, 0.0f, 0.0f};
 	const glm::vec3 up = {0.0f, 0.0f, 1.0f};
@@ -71,8 +71,7 @@ GameInstance::GameInstance(const Drawing::Backend backend) :
 		nullptr,
 		renderer->QuadUVBuf(),
 		TextureFromPath(*renderer, "eye.png"),
-		false,
-		glm::vec4(),
+		nullptr,
 		glm::mat4(1.0f),
 	};
 	for(std::size_t i = 0; i < alphaMeshes.size(); i++)

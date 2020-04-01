@@ -22,7 +22,7 @@ public:
 	bool transparent;
 	std::shared_ptr<const Texture> diffuse;
 	bool hasScissor;
-	Rect sci;
+	glm::ivec4 sci;
 	glm::mat4 model;
 	glm::mat4 mvp; // Model-View-Projection matrix
 	
@@ -34,7 +34,7 @@ public:
 	void SetRender(bool value) override;
 	void SetTransparent(bool value) override;
 	void SetDiffuse(const SCTexture& object) override;
-	void SetClipRect(bool has, const glm::vec4& rect) override;
+	void SetClipRect(const glm::ivec4* rect) override;
 	void SetModelMat4(const glm::mat4& mat) override;
 	glm::mat4 GetModelMat4() const override;
 };

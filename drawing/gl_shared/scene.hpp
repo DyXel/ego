@@ -25,12 +25,12 @@ public:
 	Scene* Next() const;
 	GLuint FramebufferObject() const;
 	GLuint TextureObject() const;
-	const GLShared::Rect& Viewport() const;
+	const glm::ivec4& Viewport() const;
 	
 	virtual void Draw();
 	
 	// IScene overrides
-	void SetViewport(const glm::vec4& rect) override;
+	void SetViewport(const glm::ivec4& rect) override;
 	void SetNext(SScene scene) override;
 	void SetViewProjectionMat4(const glm::mat4& mat) override;
 protected:
@@ -50,7 +50,7 @@ private:
 	GLuint fbo; // Framebuffer object
 	GLuint to; // Texture object
 	GLuint rbo; // Renderbuffer object
-	GLShared::Rect vp;
+	glm::ivec4 vp;
 	std::shared_ptr<Scene> next;
 	glm::mat4 viewProj;
 	bool viewProjChanged;

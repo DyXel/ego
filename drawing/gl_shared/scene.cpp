@@ -52,7 +52,7 @@ Scene::~Scene()
 void Scene::Draw()
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, fbo);
-	glViewport(0, 0, vp.w, vp.h);
+	glViewport(0, 0, vp.z, vp.w);
 	if(clearBits)
 	{
 		glClearColor(clearColor.x, clearColor.y, clearColor.z, clearColor.w);
@@ -77,18 +77,18 @@ GLuint Scene::TextureObject() const
 	return to;
 }
 
-const GLShared::Rect& Scene::Viewport() const
+const glm::ivec4& Scene::Viewport() const
 {
 	return vp;
 }
 
-void Scene::SetViewport(const glm::vec4& rect)
+void Scene::SetViewport(const glm::ivec4& rect)
 {
-	vp = GLShared::RectFromVec4(rect);
+	vp = rect;
 	glBindTexture(GL_TEXTURE_2D, to);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, vp.w, vp.h, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, vp.z, vp.w, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
 	glBindRenderbuffer(GL_RENDERBUFFER, rbo);
-	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, vp.w, vp.h);
+	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, vp.z, vp.w);
 }
 
 void Scene::SetNext(SScene scene)
@@ -141,7 +141,7 @@ void Scene::UseMeshScissor(const Mesh& mesh)
 {
 	cache.SetScissorTest(mesh.hasScissor);
 	if(mesh.hasScissor)
-		glScissor(mesh.sci.x, mesh.sci.y, mesh.sci.w, mesh.sci.h);
+		glScissor(mesh.sci.x, mesh.sci.y, mesh.sci.z, mesh.sci.w);
 }
 
 } // namespace GLShared
