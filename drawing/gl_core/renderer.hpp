@@ -12,7 +12,7 @@ class Renderer final : public GLShared::Renderer
 {
 public:
 	Renderer(SDL_Window* sdlWindow);
-	virtual ~Renderer();
+	virtual ~Renderer() = default;
 	
 	// IRenderer overrides
 	SScene NewScene2D(const SceneCreateInfo& info) override;
@@ -20,11 +20,7 @@ public:
 	SMesh NewMesh(const MeshCreateInfo& info) override;
 	
 	// GLShared::Renderer overrides
-	void BlitToWindowFramebuffer(const GLShared::Rect& viewport, GLuint to) override;
-private:
-	GLuint spo; // Shader Program Object used to blit framebuffer
-	GLuint mvpUniLoc;
-	GLuint vao;
+	void BlitToWindowFramebuffer(const GLShared::Scene& scene) override;
 };
 
 } // namespace GLCore

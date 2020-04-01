@@ -170,7 +170,7 @@ void Renderer::DrawAllScenes()
 	for(Scene* s = initialScene.get(); s != nullptr; s = s->Next())
 	{
 		s->Draw();
-		BlitToWindowFramebuffer(s->Viewport(), s->TextureObject());
+		BlitToWindowFramebuffer(*s);
 	}
 	SDL_GL_SwapWindow(sdlWindow);
 }

@@ -22,7 +22,7 @@ public:
 	Renderer(SDL_Window* sdlWindow);
 	virtual ~Renderer() = default;
 	
-	virtual void BlitToWindowFramebuffer(const GLShared::Rect& viewport, GLuint to) = 0;
+	virtual void BlitToWindowFramebuffer(const Scene& scene) = 0;
 	
 	// IRenderer overrides
 	bool SetVSync(VSyncState vsync) override;
