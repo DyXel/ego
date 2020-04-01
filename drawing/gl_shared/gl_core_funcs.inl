@@ -1,4 +1,4 @@
-// How to add more functions: TODO
-SDL_PROC(void, glBindVertexArray, (GLuint array))
-SDL_PROC(void, glDeleteVertexArrays, (GLsizei n, const GLuint *arrays))
-SDL_PROC(void, glGenVertexArrays, (GLsizei n, GLuint *arrays))
+SDL_PROC(void, glBindVertexArray, (GLuint))
+SDL_PROC(void, glDeleteVertexArrays, (GLsizei, const GLuint *))
+SDL_PROC(void, glGenVertexArrays, (GLsizei, GLuint *))
+SDL_PROC(void, glBlitFramebuffer, (GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLbitfield, GLenum))
