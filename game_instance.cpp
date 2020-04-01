@@ -10,41 +10,8 @@
 #include "drawing/enums.hpp"
 #include "drawing/renderer.hpp"
 #include "drawing/scene.hpp"
-#include "drawing/colbuf.hpp"
-#include "drawing/indbuf.hpp"
-#include "drawing/vertbuf.hpp"
-#include "drawing/uvbuf.hpp"
 #include "drawing/mesh.hpp"
 #include "drawing/texture.hpp"
-
-static const glm::vec3 QUAD_VERTICES[4] =
-{
-	{ -1.0f, -1.0f, 0.0f}, // top-left corner
-	{ -1.0f,  1.0f, 0.0f}, // bottom-left corner
-	{  1.0f, -1.0f, 0.0f}, // top-right corner
-	{  1.0f,  1.0f, 0.0f}, // bottom-right corner
-};
-
-static const short QUAD_INDICES[4] =
-{
-	0, 1, 2, 3
-};
-
-static const glm::vec2 QUAD_UVS[4] =
-{
-	{0.0f, 0.0f},
-	{0.0f, 1.0f},
-	{1.0f, 0.0f},
-	{1.0f, 1.0f},
-};
-
-// static const glm::vec4 QUAD_COLORS[4] =
-// {
-// 	{0.0f, 0.0f, 0.0f, 0.0f},
-// 	{0.0f, 0.0f, 0.0f, 0.0f},
-// 	{0.0f, 0.0f, 0.0f, 0.0f},
-// 	{0.0f, 0.0f, 0.0f, 0.0f},
-// };
 
 static Drawing::STexture TextureFromPath(Drawing::IRenderer& renderer,
                                         std::string_view path)
@@ -62,55 +29,47 @@ static Drawing::STexture TextureFromPath(Drawing::IRenderer& renderer,
 	return tex;
 }
 
+glm::mat4 CreateViewProjMat4(int width, int height, float fov)
+{
+	const auto ar = static_cast<float>(WINDOW_WIDTH) / WINDOW_HEIGHT;
+	const glm::mat4 proj = glm::perspective(glm::pi<float>() / 2.0f, ar, 0.1f, 20.0f);
+	const glm::vec3 pos = {0.0f, 0.1f, 8.0f};
+	const glm::vec3 to = {0.0f, 0.0f, 0.0f};
+	const glm::vec3 up = {0.0f, 0.0f, 1.0f};
+	const glm::mat4 view = glm::lookAt(pos, to, up);
+	return proj * view;
+}
+
 GameInstance::GameInstance(const Drawing::Backend backend) :
 	SDLWindow(backend)
 {
 	constexpr int WINDOW_WIDTH  = 800;
 	constexpr int WINDOW_HEIGHT = 800;
 	SDL_SetWindowSize(window, WINDOW_WIDTH, WINDOW_HEIGHT);
-	renderer->DrawAllScenes(); // Clear up
 	
-	// Set up scene
+	// Set up 3d scene
 	const Drawing::SceneCreateInfo sInfo =
 	{
 		Drawing::SCENE_PROPERTY_CLEAR_COLOR_BUFFER_BIT |
 		Drawing::SCENE_PROPERTY_CLEAR_DEPTH_BUFFER_BIT |
 		Drawing::SCENE_PROPERTY_ENABLE_DEPTH_TEST_BIT,
 		{0.4f, 0.4f, 0.4f, 1.0f},
-		glm::mat4(1.0f),
+		CreateViewProjMat4(WINDOW_WIDTH, WINDOW_HEIGHT, glm::pi<float>() / 2.0f),
 		glm::vec4({0, 0, WINDOW_WIDTH, WINDOW_HEIGHT}),
 		nullptr
 	};
 	scene = renderer->NewScene3D(sInfo);
-	{ // create perspective projection matrix
-		const auto ar = static_cast<float>(WINDOW_WIDTH) / WINDOW_HEIGHT;
-		const glm::mat4 proj = glm::perspective(glm::pi<float>() / 2.0f, ar, 0.1f, 20.0f);
-		const glm::vec3 pos = {0.0f, 0.1f, 8.0f};
-		const glm::vec3 to = {0.0f, 0.0f, 0.0f};
-		const glm::vec3 up = {0.0f, 0.0f, 1.0f};
-		const glm::mat4 view = glm::lookAt(pos, to, up);
-		scene->SetViewProjectionMat4(proj * view);
-	}
 	renderer->SetInitialScene(scene);
-	
-	auto vertBuf = renderer->NewVertBuf(Drawing::BUFFER_HINT_STATIC);
-	vertBuf->Submit(QUAD_VERTICES);
-	
-	auto indBuf = renderer->NewIndBuf(Drawing::BUFFER_HINT_STATIC);
-	indBuf->Submit(QUAD_INDICES);
-	
-	auto uvBuf = renderer->NewUVBuf(Drawing::BUFFER_HINT_STATIC);
-	uvBuf->Submit(QUAD_UVS);
 	
 	Drawing::MeshCreateInfo mInfo =
 	{
 		Drawing::MESH_TOPOLOGY_TRIANGLE_STRIP,
 		true,
 		true,
-		vertBuf,
-		indBuf,
+		renderer->QuadVertBuf(),
+		renderer->QuadIndBuf(),
 		nullptr,
-		uvBuf,
+		renderer->QuadUVBuf(),
 		TextureFromPath(*renderer, "eye.png"),
 		false,
 		glm::vec4(),

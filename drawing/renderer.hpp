@@ -16,6 +16,10 @@ public:
 	
 	virtual bool SetVSync(VSyncState vsync) = 0;
 	
+	virtual SCVertBuf QuadVertBuf() const = 0;
+	virtual SCIndBuf QuadIndBuf() const = 0;
+	virtual SCUVBuf QuadUVBuf() const = 0;
+	
 	virtual SScene NewScene2D(const SceneCreateInfo& info) = 0;
 	virtual SScene NewScene3D(const SceneCreateInfo& info) = 0;
 	virtual SMesh NewMesh(const MeshCreateInfo& info) = 0;
@@ -24,9 +28,6 @@ public:
 	virtual SIndBuf NewIndBuf(BufferHint hint) = 0;
 	virtual SColBuf NewColBuf(BufferHint hint) = 0;
 	virtual SUVBuf NewUVBuf(BufferHint hint) = 0;
-	
-// 	virtual SVertBuf const& QuadVertBuf() = 0;
-// 	virtual SIndBuf const& QuadIndBuf() = 0;
 	
 	virtual void SetInitialScene(SScene scene) = 0;
 	virtual void DrawAllScenes() = 0;

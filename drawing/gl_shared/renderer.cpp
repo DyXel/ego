@@ -118,6 +118,21 @@ Renderer::Renderer(SDL_Window* sdlWindow) :
 	quad.ub->Submit(QUAD_UVS, QUAD_VERTEX_COUNT);
 }
 
+SCVertBuf Renderer::QuadVertBuf() const
+{
+	return quad.vb;
+}
+
+SCIndBuf Renderer::QuadIndBuf() const
+{
+	return quad.ib;
+}
+
+SCUVBuf Renderer::QuadUVBuf() const
+{
+	return quad.ub;
+}
+
 bool Renderer::SetVSync(VSyncState state)
 {
 	switch(state)

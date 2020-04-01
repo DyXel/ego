@@ -26,6 +26,10 @@ public:
 	virtual void BlitToWindowFramebuffer(const Scene& scene) = 0;
 	
 	// IRenderer overrides
+	SCVertBuf QuadVertBuf() const override;
+	SCIndBuf QuadIndBuf() const override;
+	SCUVBuf QuadUVBuf() const override;
+	
 	bool SetVSync(VSyncState vsync) override;
 	
 	SVertBuf NewVertBuf(BufferHint hint) override;
