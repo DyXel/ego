@@ -25,9 +25,10 @@ private:
 	unsigned recording{0u}; // if non 0. Framerate being recorded at.
 	float elapsed{};
 	
-	Drawing::SScene scene;
-	std::array<Drawing::IMesh*, 8> meshes;
 	float rotation{0u};
+	Drawing::SScene scene;
+	std::array<Drawing::IMesh*, 8> alphaMeshes;
+	std::array<Drawing::IMesh*, 8> solidMeshes;
 	
 	void OnEvent(const SDL_Event& e);
 	void Tick();

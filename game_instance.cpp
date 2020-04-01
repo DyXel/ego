@@ -73,7 +73,9 @@ GameInstance::GameInstance(const Drawing::Backend backend) :
 	// Set up scene
 	const Drawing::SceneCreateInfo sInfo =
 	{
-		Drawing::SCENE_PROPERTY_CLEAR_COLOR_BUFFER_BIT | Drawing::SCENE_PROPERTY_CLEAR_DEPTH_BUFFER_BIT,
+		Drawing::SCENE_PROPERTY_CLEAR_COLOR_BUFFER_BIT |
+		Drawing::SCENE_PROPERTY_CLEAR_DEPTH_BUFFER_BIT |
+		Drawing::SCENE_PROPERTY_ENABLE_DEPTH_TEST_BIT,
 		{0.4f, 0.4f, 0.4f, 1.0f},
 		glm::mat4(1.0f),
 		glm::vec4({0, 0, WINDOW_WIDTH, WINDOW_HEIGHT}),
@@ -100,7 +102,7 @@ GameInstance::GameInstance(const Drawing::Backend backend) :
 	auto uvBuf = renderer->NewUVBuf(Drawing::BUFFER_HINT_STATIC);
 	uvBuf->Submit(QUAD_UVS);
 	
-	const Drawing::MeshCreateInfo mInfo =
+	Drawing::MeshCreateInfo mInfo =
 	{
 		Drawing::MESH_TOPOLOGY_TRIANGLE_STRIP,
 		true,
@@ -109,16 +111,24 @@ GameInstance::GameInstance(const Drawing::Backend backend) :
 		indBuf,
 		nullptr,
 		uvBuf,
-		TextureFromPath(*renderer, "lens.png"),
+		TextureFromPath(*renderer, "eye.png"),
 		false,
 		glm::vec4(),
 		glm::mat4(1.0f),
 	};
-	for(std::size_t i = 0; i < meshes.size(); i++)
+	for(std::size_t i = 0; i < alphaMeshes.size(); i++)
 	{
 		auto mesh = renderer->NewMesh(mInfo);
 		scene->Insert(mesh);
-		meshes[i] = mesh.get();
+		alphaMeshes[i] = mesh.get();
+	}
+	mInfo.transparent = false;
+	mInfo.diffuse = TextureFromPath(*renderer, "zone.png");
+	for(std::size_t i = 0; i < solidMeshes.size(); i++)
+	{
+		auto mesh = renderer->NewMesh(mInfo);
+		scene->Insert(mesh);
+		solidMeshes[i] = mesh.get();
 	}
 	
 	// Set window title before showing window
@@ -173,12 +183,20 @@ void GameInstance::Tick()
 
 void GameInstance::RefreshMeshes()
 {
-	static const glm::vec3 rotVec = {-0.5f, 1.0f, 0.0f};
-	static const glm::mat4 trans = glm::translate(glm::vec3{0.0f, 0.0f, 2.0f});
-	for(std::size_t i = 0; i < meshes.size(); i++)
+	static const glm::vec3 rot1 = {-0.5f, 1.0f, 0.0f};
+	static const glm::mat4 trans1 = glm::translate(glm::vec3{0.0f, 0.0f, 4.0f});
+	static const glm::vec3 rot2 = {0.5f, 0.4f, 0.0f};
+	static const glm::mat4 trans2 = glm::translate(glm::vec3{0.0f, 0.0f, -2.0f});
+	for(std::size_t i = 0; i < alphaMeshes.size(); i++)
 	{
-		float angle = i * ((glm::pi<float>() * 2.0f) / meshes.size()) + rotation;
-		auto rot = glm::rotate(angle, rotVec);
-		meshes[i]->SetModelMat4(rot * trans);
+		float angle = i * ((glm::pi<float>() * 2.0f) / alphaMeshes.size()) + rotation;
+		auto rotMat = glm::rotate(angle, rot1);
+		alphaMeshes[i]->SetModelMat4(rotMat * trans1);
+	}
+	for(std::size_t i = 0; i < solidMeshes.size(); i++)
+	{
+		float angle = i * ((glm::pi<float>() * 2.0f) / solidMeshes.size()) + rotation;
+		auto rotMat = glm::rotate(angle, rot2);
+		solidMeshes[i]->SetModelMat4(rotMat * trans2);
 	}
 }
