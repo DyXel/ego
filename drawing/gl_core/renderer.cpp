@@ -21,12 +21,12 @@ Renderer::Renderer(SDL_Window* sdlWindow) : GLShared::Renderer(sdlWindow)
 
 SScene Renderer::NewScene2D(const SceneCreateInfo& info)
 {
-	return std::make_shared<Scene2D>(*this, info);
+	return std::make_shared<Scene2D>(cache, *this, info);
 }
 
 SScene Renderer::NewScene3D(const SceneCreateInfo& info)
 {
-	return std::make_shared<Scene3D>(*this, info);
+	return std::make_shared<Scene3D>(cache, *this, info);
 }
 
 SMesh Renderer::NewMesh(const MeshCreateInfo& info)

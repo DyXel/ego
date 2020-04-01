@@ -1,5 +1,6 @@
 #ifndef DRAWING_GL_SHARED_RENDERER_HPP
 #define DRAWING_GL_SHARED_RENDERER_HPP
+#include "cache.hpp"
 #include "program_provider.hpp"
 #include "../renderer.hpp"
 
@@ -40,6 +41,7 @@ public:
 	const Program& GetProgram(ProgramTypes value) const override;
 protected:
 	SDL_Window* sdlWindow;
+	Cache cache;
 	std::array<Program, PROGRAM_TYPES_COUNT> programs;
 	struct
 	{

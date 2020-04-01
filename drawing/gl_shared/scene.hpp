@@ -13,12 +13,13 @@ namespace Drawing
 namespace GLShared
 {
 
+class Cache;
 class Mesh;
 
 class Scene : public IScene
 {
 public:
-	Scene(IProgramProvider& pp, const SceneCreateInfo& info);
+	Scene(Cache& cache, IProgramProvider& pp, const SceneCreateInfo& info);
 	virtual ~Scene();
 	
 	Scene* Next() const;
@@ -33,6 +34,8 @@ public:
 	void SetNext(SScene scene) override;
 	void SetViewProjectionMat4(const glm::mat4& mat) override;
 protected:
+	Cache& cache;
+	IProgramProvider& pp;
 	const glm::mat4& ViewProjection() const;
 	void CalculateMVP(Mesh& mesh) const;
 	bool WasViewProjectionSet() const;
@@ -40,7 +43,6 @@ protected:
 	void UseMeshProgram(const Mesh& mesh);
 	void UseMeshScissor(const Mesh& mesh);
 private:
-	IProgramProvider& pp;
 	GLbitfield clearBits;
 	bool backfaceCull;
 	bool depthTest;

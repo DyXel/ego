@@ -18,7 +18,7 @@ class Mesh;
 class Scene2D final : public GLShared::Scene, public GLShared::IMeshListener
 {
 public:
-	Scene2D(GLShared::IProgramProvider& pp, const SceneCreateInfo& info);
+	Scene2D(GLShared::Cache& cache, GLShared::IProgramProvider& pp, const SceneCreateInfo& info);
 	virtual ~Scene2D() = default;
 	
 	// IScene overrides
@@ -32,7 +32,6 @@ public:
 	void OnMeshTransparencyChange(GLShared::Mesh& mesh) override;
 	void OnMeshModelMatChange(GLShared::Mesh& mesh) override;
 private:
-	GLShared::IProgramProvider& pp;
 	std::list<std::shared_ptr<Mesh>> meshes;
 };
 

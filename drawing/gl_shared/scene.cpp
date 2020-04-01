@@ -1,5 +1,6 @@
 #include "scene.hpp"
 
+#include "cache.hpp"
 #include "mesh.hpp"
 
 namespace Drawing
@@ -8,7 +9,8 @@ namespace Drawing
 namespace GLShared
 {
 
-Scene::Scene(IProgramProvider& pp, const SceneCreateInfo& info) :
+Scene::Scene(Cache& cache, IProgramProvider& pp, const SceneCreateInfo& info) :
+	cache(cache),
 	pp(pp),
 	clearBits(GLClearBitsFromScenePropertyBits(info.properties)),
 	backfaceCull(info.properties & SCENE_PROPERTY_BACKFACE_CULLING_BIT),
@@ -56,14 +58,8 @@ void Scene::Draw()
 		glClearColor(clearColor.x, clearColor.y, clearColor.z, clearColor.w);
 		glClear(clearBits);
 	}
-	if(backfaceCull)
-		glEnable(GL_CULL_FACE);
-	else
-		glDisable(GL_CULL_FACE);
-	if(depthTest)
-		glEnable(GL_DEPTH_TEST);
-	else
-		glDisable(GL_DEPTH_TEST);
+	cache.SetCullFace(backfaceCull);
+	cache.SetDepthTest(depthTest);
 }
 
 Scene* Scene::Next() const
@@ -134,24 +130,18 @@ void Scene::UseMeshProgram(const Mesh& mesh)
 {
 	bool textured;
 	if((textured = !!mesh.diffuse))
-		glUseProgram(pp.GetProgram(PROGRAM_TEXTURE_PLUS_COLOR).spo);
+		cache.UseProgram(pp.GetProgram(PROGRAM_TEXTURE_PLUS_COLOR).spo);
 	else
-		glUseProgram(pp.GetProgram(PROGRAM_ONLY_COLOR).spo);
+		cache.UseProgram(pp.GetProgram(PROGRAM_ONLY_COLOR).spo);
 	if(textured)
 		glBindTexture(GL_TEXTURE_2D, mesh.diffuse->to);
 }
 
 void Scene::UseMeshScissor(const Mesh& mesh)
 {
+	cache.SetScissorTest(mesh.hasScissor);
 	if(mesh.hasScissor)
-	{
-		glEnable(GL_SCISSOR_TEST);
 		glScissor(mesh.sci.x, mesh.sci.y, mesh.sci.w, mesh.sci.h);
-	}
-	else
-	{
-		glDisable(GL_SCISSOR_TEST);
-	}
 }
 
 } // namespace GLShared

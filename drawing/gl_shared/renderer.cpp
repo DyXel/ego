@@ -90,11 +90,14 @@ static const glm::vec2 QUAD_UVS[QUAD_VERTEX_COUNT] =
 	{1.0f, 1.0f},
 };
 
-Renderer::Renderer(SDL_Window* sdlWindow) : sdlWindow(sdlWindow), initialScene(nullptr)
+Renderer::Renderer(SDL_Window* sdlWindow) :
+	sdlWindow(sdlWindow),
+	cache(),
+	initialScene(nullptr)
 {
 	// Enable additive blending
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	cache.SetBlending(true);
+	cache.SetBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	// Initialize internal shaders
 	for(std::size_t i = 0; i < PROGRAM_TYPES_COUNT; i++)

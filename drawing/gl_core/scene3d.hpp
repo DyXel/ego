@@ -19,7 +19,7 @@ class Mesh;
 class Scene3D final : public GLShared::Scene, public GLShared::IMeshListener
 {
 public:
-	Scene3D(GLShared::IProgramProvider& pp, const SceneCreateInfo& info);
+	Scene3D(GLShared::Cache& cache, GLShared::IProgramProvider& pp, const SceneCreateInfo& info);
 	virtual ~Scene3D() = default;
 	
 	// IScene overrides
@@ -33,7 +33,6 @@ public:
 	void OnMeshTransparencyChange(GLShared::Mesh& mesh) override;
 	void OnMeshModelMatChange(GLShared::Mesh& mesh) override;
 private:
-	GLShared::IProgramProvider& pp;
 	std::set<std::shared_ptr<Mesh>> meshes;
 	std::set<Mesh*> solidMeshes;
 	std::multimap<float, Mesh*, std::greater<>> alphaMeshes;

@@ -11,9 +11,8 @@ namespace Drawing
 namespace GLCore
 {
 
-Scene2D::Scene2D(GLShared::IProgramProvider& pp, const SceneCreateInfo& info) :
-	GLShared::Scene(pp, info),
-	pp(pp)
+Scene2D::Scene2D(GLShared::Cache& cache, GLShared::IProgramProvider& pp, const SceneCreateInfo& info) :
+	GLShared::Scene(cache, pp, info)
 {}
 
 void Scene2D::Insert(SMesh obj)
