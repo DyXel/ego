@@ -16,19 +16,19 @@ class Mesh final : public GLShared::Mesh
 {
 public:
 	GLuint vao{0}; // Vertex Array Object
-	std::shared_ptr<GLShared::ColBuf> colBuf;
-	std::shared_ptr<GLShared::IndBuf> indBuf;
-	std::shared_ptr<GLShared::VertBuf> vertBuf;
-	std::shared_ptr<GLShared::UVBuf> uvBuf;
+	std::shared_ptr<const GLShared::ColBuf> colBuf;
+	std::shared_ptr<const GLShared::IndBuf> indBuf;
+	std::shared_ptr<const GLShared::VertBuf> vertBuf;
+	std::shared_ptr<const GLShared::UVBuf> uvBuf;
 	
 	Mesh(const MeshCreateInfo& info);
 	virtual ~Mesh();
 	
 	// IMesh overrides
-	void SetVertBuf(SVertBuf object) override;
-	void SetIndBuf(SIndBuf object) override;
-	void SetColBuf(SColBuf object) override;
-	void SetUVBuf(SUVBuf object) override;
+	void SetVertBuf(const SCVertBuf& object) override;
+	void SetIndBuf(const SCIndBuf& object) override;
+	void SetColBuf(const SCColBuf& object) override;
+	void SetUVBuf(const SCUVBuf& object) override;
 };
 
 } // namespace GLCore

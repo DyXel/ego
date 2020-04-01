@@ -8,7 +8,7 @@ namespace Drawing
 #define FORWARD_DECLARE(name) \
 	class I##name; \
 	using S##name = std::shared_ptr<class I##name>; \
-	using W##name = std::weak_ptr<class I##name>
+	using SC##name = std::shared_ptr<const class I##name>
 
 FORWARD_DECLARE(ColBuf);
 FORWARD_DECLARE(IndBuf);

@@ -20,7 +20,7 @@ public:
 	GLenum topology;
 	bool render;
 	bool transparent;
-	std::shared_ptr<Texture> diffuse;
+	std::shared_ptr<const Texture> diffuse;
 	bool hasScissor;
 	Rect sci;
 	glm::mat4 model;
@@ -33,7 +33,7 @@ public:
 	void SetTopology(MeshTopology value) override;
 	void SetRender(bool value) override;
 	void SetTransparent(bool value) override;
-	void SetDiffuse(STexture object) override;
+	void SetDiffuse(const SCTexture& object) override;
 	void SetClipRect(bool has, const glm::vec4& rect) override;
 	void SetModelMat4(const glm::mat4& mat) override;
 	glm::mat4 GetModelMat4() const override;

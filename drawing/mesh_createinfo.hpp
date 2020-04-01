@@ -14,11 +14,11 @@ struct MeshCreateInfo
 	MeshTopology topology;
 	bool render;
 	bool transparent;
-	SVertBuf vertBuf;
-	SIndBuf indBuf;
-	SColBuf colBuf;
-	SUVBuf uvBuf;
-	STexture diffuse;
+	SCVertBuf vertBuf;
+	SCIndBuf indBuf;
+	SCColBuf colBuf;
+	SCUVBuf uvBuf;
+	SCTexture diffuse;
 	bool hasClipRect;
 	glm::vec4 clipRect; // x = left, y = top, z = right, w = bottom
 	glm::mat4 model;

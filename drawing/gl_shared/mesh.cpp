@@ -38,10 +38,10 @@ void Mesh::SetTransparent(bool value)
 		listener->OnMeshTransparencyChange(*this);
 }
 
-void Mesh::SetDiffuse(STexture object)
+void Mesh::SetDiffuse(const SCTexture& object)
 {
 	using namespace GLShared;
-	diffuse = std::dynamic_pointer_cast<Texture>(object);
+	diffuse = std::dynamic_pointer_cast<const Texture>(object);
 }
 
 void Mesh::SetClipRect(bool has, const glm::vec4& rect)

@@ -22,10 +22,10 @@ Mesh::~Mesh()
 	glDeleteVertexArrays(1, &vao);
 }
 
-void Mesh::SetVertBuf(SVertBuf object)
+void Mesh::SetVertBuf(const SCVertBuf& object)
 {
 	using namespace GLShared;
-	vertBuf = std::dynamic_pointer_cast<VertBuf>(object);
+	vertBuf = std::dynamic_pointer_cast<const VertBuf>(object);
 	if(vertBuf)
 	{
 		glBindVertexArray(vao);
@@ -41,10 +41,10 @@ void Mesh::SetVertBuf(SVertBuf object)
 	}
 }
 
-void Mesh::SetIndBuf(SIndBuf object)
+void Mesh::SetIndBuf(const SCIndBuf& object)
 {
 	using namespace GLShared;
-	indBuf = std::dynamic_pointer_cast<IndBuf>(object);
+	indBuf = std::dynamic_pointer_cast<const IndBuf>(object);
 	if(indBuf)
 	{
 		glBindVertexArray(vao);
@@ -57,10 +57,10 @@ void Mesh::SetIndBuf(SIndBuf object)
 	}
 }
 
-void Mesh::SetColBuf(SColBuf object)
+void Mesh::SetColBuf(const SCColBuf& object)
 {
 	using namespace GLShared;
-	colBuf = std::dynamic_pointer_cast<ColBuf>(object);
+	colBuf = std::dynamic_pointer_cast<const ColBuf>(object);
 	if(colBuf)
 	{
 		glBindVertexArray(vao);
@@ -76,10 +76,10 @@ void Mesh::SetColBuf(SColBuf object)
 	}
 }
 
-void Mesh::SetUVBuf(SUVBuf object)
+void Mesh::SetUVBuf(const SCUVBuf& object)
 {
 	using namespace GLShared;
-	uvBuf = std::dynamic_pointer_cast<UVBuf>(object);
+	uvBuf = std::dynamic_pointer_cast<const UVBuf>(object);
 	if(uvBuf)
 	{
 		glBindVertexArray(vao);
