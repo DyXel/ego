@@ -61,6 +61,7 @@ GameInstance::GameInstance(const Drawing::Backend backend) :
 	scene = renderer->NewScene3D(sInfo);
 	renderer->SetInitialScene(scene);
 	
+	// Set up meshes
 	Drawing::MeshCreateInfo mInfo =
 	{
 		Drawing::MESH_TOPOLOGY_TRIANGLE_STRIP,
