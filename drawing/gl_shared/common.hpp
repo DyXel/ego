@@ -5,10 +5,7 @@
 #include "../enums.hpp"
 #include "../scene_createinfo.hpp"
 
-namespace Ego
-{
-
-namespace GLShared
+namespace Ego::GLShared
 {
 
 enum Attribute
@@ -99,8 +96,6 @@ constexpr GLbitfield GLClearBitsFromScenePropertyBits(uint8_t value)
 	return clearBits;
 }
 
-} // GLShared
-
-} // Drawing
+} // namespace Ego::GLShared
 
 #endif // EGO_GL_SHARED_COMMON_HPP

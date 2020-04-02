@@ -2,10 +2,7 @@
 #define EGO_GL_SHARED_PROGRAM_PROVIDER_HPP
 #include "program.hpp"
 
-namespace Ego
-{
-
-namespace GLShared
+namespace Ego::GLShared
 {
 
 enum ProgramTypes
@@ -21,8 +18,6 @@ public:
 	virtual const Program& GetProgram(ProgramTypes value) const = 0;
 };
 
-} // namespace GLShared
-
-} // namespace Ego
+} // namespace Ego::GLShared
 
 #endif // EGO_GL_SHARED_PROGRAM_PROVIDER_HPP

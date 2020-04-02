@@ -4,16 +4,13 @@
 #include "../enums.hpp"
 #include "../colbuf.hpp"
 
-namespace Ego
-{
-
-namespace GLShared
+namespace Ego::GLShared
 {
 
 class ColBuf final : public IColBuf
 {
 public:
-	GLuint bo; // Buffer Object
+	GLuint bo{}; // Buffer Object
 	
 	ColBuf(BufferHint hint);
 	virtual ~ColBuf();
@@ -23,8 +20,6 @@ private:
 	const GLenum hint;
 };
 
-} // namespace GLShared
-
-} // namespace Ego
+} // namespace Ego::GLShared
 
 #endif // EGO_GL_SHARED_COLBUF_HPP

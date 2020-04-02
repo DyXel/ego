@@ -2,10 +2,7 @@
 #define EGO_GL_CORE_RENDERER_HPP
 #include "../gl_shared/renderer.hpp"
 
-namespace Ego
-{
-
-namespace GLCore
+namespace Ego::GLCore
 {
 
 class Renderer final : public GLShared::Renderer
@@ -23,8 +20,6 @@ public:
 	void BlitToWindowFramebuffer(const GLShared::Scene& scene) override;
 };
 
-} // namespace GLCore
-
-} // namespace Ego
+} // namespace Ego::GLCore
 
 #endif // EGO_GL_CORE_RENDERER_HPP

@@ -11,10 +11,7 @@
 #include "uvbuf.hpp"
 #include "vertbuf.hpp"
 
-namespace Ego
-{
-
-namespace GLShared
+namespace Ego::GLShared
 {
 
 static const GLchar* VERTEX_SHADER_SRC[PROGRAM_TYPES_COUNT] =
@@ -73,10 +70,10 @@ void main()
 constexpr std::size_t QUAD_VERTEX_COUNT = 4;
 static const glm::vec3 QUAD_VERTICES[QUAD_VERTEX_COUNT] =
 {
-	{ -1.0f, -1.0f, 0.0f}, // top-left corner
-	{ -1.0f,  1.0f, 0.0f}, // bottom-left corner
-	{  1.0f, -1.0f, 0.0f}, // top-right corner
-	{  1.0f,  1.0f, 0.0f}, // bottom-right corner
+	{ -1.0F, -1.0F, 0.0F}, // top-left corner
+	{ -1.0F,  1.0F, 0.0F}, // bottom-left corner
+	{  1.0F, -1.0F, 0.0F}, // top-right corner
+	{  1.0F,  1.0F, 0.0F}, // bottom-right corner
 };
 static const short QUAD_INDICES[QUAD_VERTEX_COUNT] =
 {
@@ -84,15 +81,15 @@ static const short QUAD_INDICES[QUAD_VERTEX_COUNT] =
 };
 static const glm::vec2 QUAD_UVS[QUAD_VERTEX_COUNT] =
 {
-	{0.0f, 0.0f},
-	{0.0f, 1.0f},
-	{1.0f, 0.0f},
-	{1.0f, 1.0f},
+	{0.0F, 0.0F},
+	{0.0F, 1.0F},
+	{1.0F, 0.0F},
+	{1.0F, 1.0F},
 };
 
 Renderer::Renderer(SDL_Window* sdlWindow) :
 	sdlWindow(sdlWindow),
-	cache(),
+	
 	initialScene(nullptr)
 {
 	// Enable additive blending
@@ -203,6 +200,4 @@ const Program& Renderer::GetProgram(ProgramTypes value) const
 	return programs[value];
 }
 
-} // GLCore
-
-} // Drawing
+} // namespace Ego::GLShared

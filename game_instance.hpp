@@ -19,7 +19,7 @@ public:
 private:
 	bool exiting{false};
 	
-	int width, height;
+	int width{}, height{};
 	
 	unsigned now, then;
 	unsigned recording{0u}; // if non 0. Framerate being recorded at.
@@ -27,8 +27,8 @@ private:
 	
 	float rotation{0u};
 	Ego::SScene scene;
-	std::array<Ego::IMesh*, 8> alphaMeshes;
-	std::array<Ego::IMesh*, 8> solidMeshes;
+	std::array<Ego::IMesh*, 8> alphaMeshes{};
+	std::array<Ego::IMesh*, 8> solidMeshes{};
 	
 	void OnEvent(const SDL_Event& e);
 	void Tick();

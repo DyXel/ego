@@ -6,10 +6,7 @@
 
 struct SDL_Window;
 
-namespace Ego
-{
-
-namespace GLShared
+namespace Ego::GLShared
 {
 
 class Scene;
@@ -31,7 +28,7 @@ public:
 	SCIndBuf QuadIndBuf() const override;
 	SCUVBuf QuadUVBuf() const override;
 	
-	bool SetVSync(VSyncState vsync) override;
+	bool SetVSync(VSyncState state) override;
 	
 	SVertBuf NewVertBuf(BufferHint hint) override;
 	SIndBuf NewIndBuf(BufferHint hint) override;
@@ -58,8 +55,6 @@ protected:
 	std::shared_ptr<Scene> initialScene;
 };
 
-} // GLShared
-
-} // Drawing
+} // namespace Ego::GLShared
 
 #endif // EGO_GL_SHARED_RENDERER_HPP

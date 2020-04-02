@@ -6,10 +6,7 @@
 #include "gl_include.hpp"
 #include "common.hpp"
 
-namespace Ego
-{
-
-namespace GLShared
+namespace Ego::GLShared
 {
 
 class Shader;
@@ -30,8 +27,6 @@ private:
 	std::array<GLint, UNIFORM_COUNT> uni{};
 };
 
-} // GLShared
-
-} // Drawing
+} // namespace Ego::GLShared
 
 #endif // EGO_GL_SHARED_PROGRAM_HPP

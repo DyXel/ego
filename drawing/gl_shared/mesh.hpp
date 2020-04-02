@@ -5,10 +5,7 @@
 #include "common.hpp"
 #include "texture.hpp"
 
-namespace Ego
-{
-
-namespace GLShared
+namespace Ego::GLShared
 {
 
 class IMeshListener;
@@ -17,14 +14,14 @@ class Mesh : public IMesh
 {
 public:
 	IMeshListener* listener;
-	GLenum topology;
-	bool render;
-	bool transparent;
+	GLenum topology{};
+	bool render{};
+	bool transparent{};
 	std::shared_ptr<const Texture> diffuse;
-	bool hasScissor;
-	glm::ivec4 sci;
-	glm::mat4 model;
-	glm::mat4 mvp; // Model-View-Projection matrix
+	bool hasScissor{};
+	glm::ivec4 sci{};
+	glm::mat4 model{};
+	glm::mat4 mvp{}; // Model-View-Projection matrix
 	
 	Mesh(const MeshCreateInfo& info);
 	virtual ~Mesh() = default;
@@ -39,8 +36,6 @@ public:
 	glm::mat4 GetModelMat4() const override;
 };
 
-} // namespace GLShared
-
-} // namespace Ego
+} // namespace Ego::GLShared
 
 #endif // EGO_GL_SHARED_MESH_HPP

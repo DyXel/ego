@@ -4,17 +4,14 @@
 #include "../indbuf.hpp"
 #include "../enums.hpp"
 
-namespace Ego
-{
-
-namespace GLShared
+namespace Ego::GLShared
 {
 
 class IndBuf final : public IIndBuf
 {
 public:
-	GLuint bo; // Buffer Object
-	GLsizei count;
+	GLuint bo{}; // Buffer Object
+	GLsizei count{};
 	
 	IndBuf(BufferHint hint);
 	virtual ~IndBuf();
@@ -24,8 +21,6 @@ private:
 	const GLenum hint;
 };
 
-} // namespace GLShared
-
-} // namespace Ego
+} // namespace Ego::GLShared
 
 #endif // EGO_GL_SHARED_INDBUF_HPP

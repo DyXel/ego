@@ -4,10 +4,7 @@
 #include "mesh_listener.hpp"
 #include "scene.hpp"
 
-namespace Ego
-{
-
-namespace GLShared
+namespace Ego::GLShared
 {
 
 Mesh::Mesh(const MeshCreateInfo& info) :
@@ -34,7 +31,7 @@ void Mesh::SetRender(bool value)
 void Mesh::SetTransparent(bool value)
 {
 	transparent = value;
-	if(listener)
+	if(listener != nullptr)
 		listener->OnMeshTransparencyChange(*this);
 }
 
@@ -53,7 +50,7 @@ void Mesh::SetClipRect(const glm::ivec4* rect)
 void Mesh::SetModelMat4(const glm::mat4& mat)
 {
 	model = mat;
-	if(listener)
+	if(listener != nullptr)
 		listener->OnMeshModelMatChange(*this);
 }
 
@@ -62,6 +59,4 @@ glm::mat4 Mesh::GetModelMat4() const
 	return model;
 }
 
-} // namespace GLShared
-
-} // namespace Ego
+} // namespace Ego::GLShared

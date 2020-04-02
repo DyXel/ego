@@ -2,10 +2,7 @@
 
 #include "../gl_shared/common.hpp"
 
-namespace Ego
-{
-
-namespace GLCore
+namespace Ego::GLCore
 {
 
 Mesh::Mesh(const MeshCreateInfo& info) : GLShared::Mesh(info)
@@ -53,7 +50,7 @@ void Mesh::SetIndBuf(const SCIndBuf& object)
 	else
 	{
 		glBindVertexArray(vao);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0u);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0U);
 	}
 }
 
@@ -94,6 +91,4 @@ void Mesh::SetUVBuf(const SCUVBuf& object)
 	}
 }
 
-} // namespace GLCore
-
-} // namespace Ego
+} // namespace Ego::GLCore

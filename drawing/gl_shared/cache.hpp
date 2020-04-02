@@ -2,10 +2,7 @@
 #define EGO_GL_SHARED_CACHE_HPP
 #include "gl_include.hpp"
 
-namespace Ego
-{
-
-namespace GLShared
+namespace Ego::GLShared
 {
 
 class Cache
@@ -22,16 +19,14 @@ public:
 	void SetBlendFunc(GLenum sFactor, GLenum dFactor);
 	void UseProgram(GLuint spo);
 private:
-	bool blend;
-	bool depthTest;
-	bool scissorTest;
-	bool cullFace;
-	GLenum blendSFactor, blendDFactor;
-	GLuint program;
+	bool blend{};
+	bool depthTest{};
+	bool scissorTest{};
+	bool cullFace{};
+	GLenum blendSFactor{}, blendDFactor{};
+	GLuint program{};
 };
 
-} // namespace GLShared
-
-} // namespace Ego
+} // namespace Ego::GLShared
 
 #endif // EGO_GL_SHARED_CACHE_HPP

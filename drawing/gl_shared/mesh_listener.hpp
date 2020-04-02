@@ -1,10 +1,7 @@
 #ifndef EGO_GLSHARED_MESH_LISTENER_HPP
 #define EGO_GLSHARED_MESH_LISTENER_HPP
 
-namespace Ego
-{
-
-namespace GLShared
+namespace Ego::GLShared
 {
 
 class Mesh;
@@ -16,8 +13,6 @@ public:
 	virtual void OnMeshModelMatChange(Mesh& mesh) = 0;
 };
 
-} // GLShared
-
-} // Drawing
+} // namespace Ego::GLShared
 
 #endif // EGO_GLSHARED_MESH_LISTENER_HPP

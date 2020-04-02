@@ -4,16 +4,13 @@
 #include "../texture_createinfo.hpp"
 #include "../texture.hpp"
 
-namespace Ego
-{
-
-namespace GLShared
+namespace Ego::GLShared
 {
 
 class Texture final : public ITexture
 {
 public:
-	GLuint to; // Texture Object
+	GLuint to{}; // Texture Object
 	
 	Texture(const TextureCreateInfo& info);
 	virtual ~Texture();
@@ -21,8 +18,6 @@ public:
 	void SetImage(int width, int height, const void* pixels) override;
 };
 
-} // namespace GLShared
-
-} // namespace Ego
+} // namespace Ego::GLShared
 
 #endif // EGO_GL_SHARED_TEXTURE_HPP

@@ -4,16 +4,13 @@
 #include "../enums.hpp"
 #include "../vertbuf.hpp"
 
-namespace Ego
-{
-
-namespace GLShared
+namespace Ego::GLShared
 {
 
 class VertBuf final : public IVertBuf
 {
 public:
-	GLuint bo; // Buffer Object
+	GLuint bo{}; // Buffer Object
 	
 	VertBuf(BufferHint hint);
 	virtual ~VertBuf();
@@ -23,8 +20,6 @@ private:
 	const GLenum hint;
 };
 
-} // namespace GLShared
-
-} // namespace Ego
+} // namespace Ego::GLShared
 
 #endif // EGO_GL_SHARED_VERTBUF_HPP

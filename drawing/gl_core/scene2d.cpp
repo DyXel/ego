@@ -5,10 +5,7 @@
 #include "mesh.hpp"
 #include "../gl_shared/gl_include.hpp"
 
-namespace Ego
-{
-
-namespace GLCore
+namespace Ego::GLCore
 {
 
 Scene2D::Scene2D(GLShared::Cache& cache, GLShared::IProgramProvider& pp, const SceneCreateInfo& info) :
@@ -65,6 +62,4 @@ void Scene2D::OnMeshModelMatChange(GLShared::Mesh& mesh)
 	CalculateMVP(dynamic_cast<Mesh&>(mesh));
 }
 
-} // namespace GLCore
-
-} // namespace Ego
+} // namespace Ego::GLCore

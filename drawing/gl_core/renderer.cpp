@@ -10,10 +10,7 @@
 #include "../gl_shared/shader.hpp"
 #include "../gl_shared/program.hpp"
 
-namespace Ego
-{
-
-namespace GLCore
+namespace Ego::GLCore
 {
 
 Renderer::Renderer(SDL_Window* sdlWindow) : GLShared::Renderer(sdlWindow)
@@ -45,6 +42,4 @@ void Renderer::BlitToWindowFramebuffer(const GLShared::Scene& scene)
 	                  GL_COLOR_BUFFER_BIT, GL_NEAREST);
 }
 
-} // GLCore
-
-} // Drawing
+} // namespace Ego::GLCore

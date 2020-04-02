@@ -6,10 +6,7 @@
 #include "common.hpp"
 #include "shader.hpp"
 
-namespace Ego
-{
-
-namespace GLShared
+namespace Ego::GLShared
 {
 
 Program::Program() : spo(glCreateProgram())
@@ -56,6 +53,4 @@ GLint Program::GetUniformLocation(Uniform name) const
 	return uni[name];
 }
 
-}  // namespace GLShared
-
-}  // namespace Ego
+}  // namespace Ego::GLShared

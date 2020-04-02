@@ -3,18 +3,15 @@
 #include "cache.hpp"
 #include "mesh.hpp"
 
-namespace Ego
-{
-
-namespace GLShared
+namespace Ego::GLShared
 {
 
 Scene::Scene(Cache& cache, IProgramProvider& pp, const SceneCreateInfo& info) :
 	cache(cache),
 	pp(pp),
 	clearBits(GLClearBitsFromScenePropertyBits(info.properties)),
-	backfaceCull(info.properties & SCENE_PROPERTY_BACKFACE_CULLING_BIT),
-	depthTest(info.properties & SCENE_PROPERTY_ENABLE_DEPTH_TEST_BIT),
+	backfaceCull((info.properties & SCENE_PROPERTY_BACKFACE_CULLING_BIT) != 0),
+	depthTest((info.properties & SCENE_PROPERTY_ENABLE_DEPTH_TEST_BIT) != 0),
 	clearColor(info.clearColor)
 {
 	// NOTE: We set initial sizes to 1, because OpenGL errors out if they are 0.
@@ -53,7 +50,7 @@ void Scene::Draw()
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, fbo);
 	glViewport(0, 0, vp.z, vp.w);
-	if(clearBits)
+	if(clearBits != 0u)
 	{
 		glClearColor(clearColor.x, clearColor.y, clearColor.z, clearColor.w);
 		glClear(clearBits);
@@ -144,6 +141,4 @@ void Scene::UseMeshScissor(const Mesh& mesh)
 		glScissor(mesh.sci.x, mesh.sci.y, mesh.sci.z, mesh.sci.w);
 }
 
-} // namespace GLShared
-
-} // namespace Ego
+} // namespace Ego::GLShared

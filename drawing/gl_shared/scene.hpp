@@ -7,10 +7,7 @@
 #include "../scene_createinfo.hpp"
 #include "../scene.hpp"
 
-namespace Ego
-{
-
-namespace GLShared
+namespace Ego::GLShared
 {
 
 class Cache;
@@ -47,17 +44,15 @@ private:
 	bool backfaceCull;
 	bool depthTest;
 	glm::vec4 clearColor;
-	GLuint fbo; // Framebuffer object
-	GLuint to; // Texture object
-	GLuint rbo; // Renderbuffer object
-	glm::ivec4 vp;
+	GLuint fbo{}; // Framebuffer object
+	GLuint to{}; // Texture object
+	GLuint rbo{}; // Renderbuffer object
+	glm::ivec4 vp{};
 	std::shared_ptr<Scene> next;
-	glm::mat4 viewProj;
-	bool viewProjChanged;
+	glm::mat4 viewProj{};
+	bool viewProjChanged{};
 };
 
-} // namespace GLShared
-
-} // namespace Ego
+} // namespace Ego::GLShared
 
 #endif // EGO_GL_SHARED_SCENE_HPP

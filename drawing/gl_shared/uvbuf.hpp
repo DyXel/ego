@@ -4,16 +4,13 @@
 #include "../enums.hpp"
 #include "../uvbuf.hpp"
 
-namespace Ego
-{
-
-namespace GLShared
+namespace Ego::GLShared
 {
 
 class UVBuf final : public IUVBuf
 {
 public:
-	GLuint bo; // Buffer Object
+	GLuint bo{}; // Buffer Object
 	
 	UVBuf(BufferHint hint);
 	virtual ~UVBuf();
@@ -23,8 +20,6 @@ private:
 	const GLenum hint;
 };
 
-} // namespace GLShared
-
-} // namespace Ego
+} // namespace Ego::GLShared
 
 #endif // EGO_GL_SHARED_UVBUF_HPP

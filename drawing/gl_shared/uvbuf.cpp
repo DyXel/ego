@@ -4,10 +4,7 @@
 
 #include "common.hpp"
 
-namespace Ego
-{
-
-namespace GLShared
+namespace Ego::GLShared
 {
 
 UVBuf::UVBuf(BufferHint hint) : hint(GLBufferHintFromEnum(hint))
@@ -27,6 +24,4 @@ void UVBuf::Submit(const glm::vec2* data, std::size_t size)
 	glBufferData(GL_ARRAY_BUFFER, static_cast<GLsizeiptr>(bt), data, hint);
 }
 
-} // namespace GLShared
-
-} // namespace Ego
+} // namespace Ego::GLShared

@@ -7,10 +7,7 @@
 #include "mesh.hpp"
 #include "../gl_shared/gl_include.hpp"
 
-namespace Ego
-{
-
-namespace GLCore
+namespace Ego::GLCore
 {
 
 // basically C++20's std::multimap::erase_if
@@ -39,7 +36,7 @@ void Scene3D::Insert(SMesh obj)
 	{
 		if(WasViewProjectionSet())
 		{
-			alphaMeshes.emplace(0.0f, mesh.get());
+			alphaMeshes.emplace(0.0F, mesh.get());
 		}
 		else
 		{
@@ -134,7 +131,7 @@ void Scene3D::OnMeshTransparencyChange(GLShared::Mesh& glSharedMesh)
 	{
 		if(WasViewProjectionSet())
 		{
-			alphaMeshes.emplace(0.0f, &mesh);
+			alphaMeshes.emplace(0.0F, &mesh);
 		}
 		else
 		{
@@ -176,6 +173,4 @@ float Scene3D::DistanceToVP(const Mesh& mesh) const
 	return glm::distance2(DT(ViewProjection()), DT(mesh.model));
 }
 
-} // namespace GLCore
-
-} // namespace Ego
+} // namespace Ego::GLCore

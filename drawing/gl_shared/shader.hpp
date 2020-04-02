@@ -3,10 +3,7 @@
 #include <string_view>
 #include "gl_include.hpp"
 
-namespace Ego
-{
-
-namespace GLShared
+namespace Ego::GLShared
 {
 
 class Shader
@@ -20,8 +17,6 @@ public:
 	~Shader();
 };
 
-} // GLShared
-
-} // Drawing
+} // namespace Ego::GLShared
 
 #endif // EGO_GL_SHARED_SHADER_HPP

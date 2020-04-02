@@ -1,10 +1,7 @@
 #include "shader.hpp"
 #include <SDL_log.h>
 
-namespace Ego
-{
-
-namespace GLShared
+namespace Ego::GLShared
 {
 
 Shader::Shader(const GLenum type, std::string_view source) :
@@ -39,6 +36,4 @@ Shader::~Shader()
 	glDeleteShader(so);
 }
 
-}  // namespace GLShared
-
-}  // namespace Ego
+}  // namespace Ego::GLShared

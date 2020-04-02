@@ -3,10 +3,7 @@
 #include "common.hpp"
 #include "gl_include.hpp"
 
-namespace Ego
-{
-
-namespace GLShared
+namespace Ego::GLShared
 {
 
 Texture::Texture(const TextureCreateInfo& info)
@@ -39,6 +36,4 @@ void Texture::SetImage(int width, int height, const void* pixels)
 	             GL_UNSIGNED_BYTE, pixels);
 }
 
-} // namespace GLShared
-
-} // namespace Ego
+} // namespace Ego::GLShared

@@ -6,10 +6,7 @@
 #include "../gl_shared/vertbuf.hpp"
 #include "../gl_shared/uvbuf.hpp"
 
-namespace Ego
-{
-
-namespace GLCore
+namespace Ego::GLCore
 {
 
 class Mesh final : public GLShared::Mesh
@@ -31,8 +28,6 @@ public:
 	void SetUVBuf(const SCUVBuf& object) override;
 };
 
-} // namespace GLCore
-
-} // namespace Ego
+} // namespace Ego::GLCore
 
 #endif // EGO_GL_CORE_MESH_HPP

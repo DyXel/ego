@@ -32,10 +32,10 @@ static Ego::STexture TextureFromPath(Ego::IRenderer& renderer,
 glm::mat4 CreateViewProjMat4(int width, int height, float fov)
 {
 	const auto ar = static_cast<float>(width) / height;
-	const glm::mat4 proj = glm::perspective(fov, ar, 0.1f, 20.0f);
-	const glm::vec3 pos = {0.0f, 0.1f, 8.0f};
-	const glm::vec3 to = {0.0f, 0.0f, 0.0f};
-	const glm::vec3 up = {0.0f, 0.0f, 1.0f};
+	const glm::mat4 proj = glm::perspective(fov, ar, 0.1F, 20.0F);
+	const glm::vec3 pos = {0.0F, 0.1F, 8.0F};
+	const glm::vec3 to = {0.0F, 0.0F, 0.0F};
+	const glm::vec3 up = {0.0F, 0.0F, 1.0F};
 	const glm::mat4 view = glm::lookAt(pos, to, up);
 	return proj * view;
 }
@@ -53,8 +53,8 @@ GameInstance::GameInstance(const Ego::Backend backend) :
 		Ego::SCENE_PROPERTY_CLEAR_COLOR_BUFFER_BIT |
 		Ego::SCENE_PROPERTY_CLEAR_DEPTH_BUFFER_BIT |
 		Ego::SCENE_PROPERTY_ENABLE_DEPTH_TEST_BIT,
-		{0.4f, 0.4f, 0.4f, 1.0f},
-		CreateViewProjMat4(WINDOW_WIDTH, WINDOW_HEIGHT, glm::pi<float>() / 2.0f),
+		{0.4F, 0.4F, 0.4F, 1.0F},
+		CreateViewProjMat4(WINDOW_WIDTH, WINDOW_HEIGHT, glm::pi<float>() / 2.0F),
 		glm::vec4({0, 0, WINDOW_WIDTH, WINDOW_HEIGHT}),
 		nullptr
 	};
@@ -73,21 +73,21 @@ GameInstance::GameInstance(const Ego::Backend backend) :
 		renderer->QuadUVBuf(),
 		TextureFromPath(*renderer, "eye.png"),
 		nullptr,
-		glm::mat4(1.0f),
+		glm::mat4(1.0F),
 	};
-	for(std::size_t i = 0; i < alphaMeshes.size(); i++)
+	for(auto & alphaMeshe : alphaMeshes)
 	{
 		auto mesh = renderer->NewMesh(mInfo);
 		scene->Insert(mesh);
-		alphaMeshes[i] = mesh.get();
+		alphaMeshe = mesh.get();
 	}
 	mInfo.transparent = false;
 	mInfo.diffuse = TextureFromPath(*renderer, "zone.png");
-	for(std::size_t i = 0; i < solidMeshes.size(); i++)
+	for(auto & solidMeshe : solidMeshes)
 	{
 		auto mesh = renderer->NewMesh(mInfo);
 		scene->Insert(mesh);
-		solidMeshes[i] = mesh.get();
+		solidMeshe = mesh.get();
 	}
 	
 	// Set window title before showing window
@@ -97,7 +97,7 @@ GameInstance::GameInstance(const Ego::Backend backend) :
 }
 
 GameInstance::~GameInstance()
-{}
+= default;
 
 void GameInstance::Run()
 {
@@ -130,11 +130,11 @@ void GameInstance::OnEvent(const SDL_Event& e)
 
 void GameInstance::Tick()
 {
-	if(recording != 0u)
-		now += 1000u / recording;
+	if(recording != 0U)
+		now += 1000U / recording;
 	else
 		now = static_cast<unsigned>(SDL_GetTicks());
-	elapsed = static_cast<float>(now - then) * 0.001f;
+	elapsed = static_cast<float>(now - then) * 0.001F;
 	rotation += elapsed;
 	RefreshMeshes();
 	then = now;
@@ -142,19 +142,19 @@ void GameInstance::Tick()
 
 void GameInstance::RefreshMeshes()
 {
-	static const glm::vec3 rot1 = {-0.5f, 1.0f, 0.0f};
-	static const glm::mat4 trans1 = glm::translate(glm::vec3{0.0f, 0.0f, 4.0f});
-	static const glm::vec3 rot2 = {0.5f, 0.4f, 0.0f};
-	static const glm::mat4 trans2 = glm::translate(glm::vec3{0.0f, 0.0f, -2.0f});
+	static const glm::vec3 rot1 = {-0.5F, 1.0F, 0.0F};
+	static const glm::mat4 trans1 = glm::translate(glm::vec3{0.0F, 0.0F, 4.0F});
+	static const glm::vec3 rot2 = {0.5F, 0.4F, 0.0F};
+	static const glm::mat4 trans2 = glm::translate(glm::vec3{0.0F, 0.0F, -2.0F});
 	for(std::size_t i = 0; i < alphaMeshes.size(); i++)
 	{
-		float angle = i * ((glm::pi<float>() * 2.0f) / alphaMeshes.size()) + rotation;
+		float angle = i * ((glm::pi<float>() * 2.0F) / alphaMeshes.size()) + rotation;
 		auto rotMat = glm::rotate(angle, rot1);
 		alphaMeshes[i]->SetModelMat4(rotMat * trans1);
 	}
 	for(std::size_t i = 0; i < solidMeshes.size(); i++)
 	{
-		float angle = i * ((glm::pi<float>() * 2.0f) / solidMeshes.size()) + rotation;
+		float angle = i * ((glm::pi<float>() * 2.0F) / solidMeshes.size()) + rotation;
 		auto rotMat = glm::rotate(angle, rot2);
 		solidMeshes[i]->SetModelMat4(rotMat * trans2);
 	}
