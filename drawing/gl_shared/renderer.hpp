@@ -26,6 +26,7 @@ public:
 	virtual void BlitToWindowFramebuffer(const Scene& scene) = 0;
 	
 	// IRenderer overrides
+	MeshTopology QuadTopology() const override;
 	SCVertBuf QuadVertBuf() const override;
 	SCIndBuf QuadIndBuf() const override;
 	SCUVBuf QuadUVBuf() const override;

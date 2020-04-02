@@ -118,6 +118,11 @@ Renderer::Renderer(SDL_Window* sdlWindow) :
 	quad.ub->Submit(QUAD_UVS, QUAD_VERTEX_COUNT);
 }
 
+MeshTopology Renderer::QuadTopology() const
+{
+	return MESH_TOPOLOGY_TRIANGLE_STRIP;
+}
+
 SCVertBuf Renderer::QuadVertBuf() const
 {
 	return quad.vb;

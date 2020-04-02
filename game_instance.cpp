@@ -64,7 +64,7 @@ GameInstance::GameInstance(const Drawing::Backend backend) :
 	// Set up meshes
 	Drawing::MeshCreateInfo mInfo =
 	{
-		Drawing::MESH_TOPOLOGY_TRIANGLE_STRIP,
+		renderer->QuadTopology(),
 		true,
 		true,
 		renderer->QuadVertBuf(),

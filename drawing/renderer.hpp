@@ -16,6 +16,7 @@ public:
 	
 	virtual bool SetVSync(VSyncState vsync) = 0;
 	
+	virtual MeshTopology QuadTopology() const = 0;
 	virtual SCVertBuf QuadVertBuf() const = 0;
 	virtual SCIndBuf QuadIndBuf() const = 0;
 	virtual SCUVBuf QuadUVBuf() const = 0;
