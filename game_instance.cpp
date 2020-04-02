@@ -13,10 +13,10 @@
 #include "drawing/mesh.hpp"
 #include "drawing/texture.hpp"
 
-static Drawing::STexture TextureFromPath(Drawing::IRenderer& renderer,
+static Ego::STexture TextureFromPath(Ego::IRenderer& renderer,
                                         std::string_view path)
 {
-	using namespace Drawing;
+	using namespace Ego;
 	auto tex = renderer.NewTexture({TEXTURE_FILTERING_LINEAR, TEXTURE_WRAP_REPEAT,
 	                               TEXTURE_WRAP_REPEAT, 0, 0, nullptr});
 	SDL_Surface* image = IMG_Load(path.data());
@@ -40,7 +40,7 @@ glm::mat4 CreateViewProjMat4(int width, int height, float fov)
 	return proj * view;
 }
 
-GameInstance::GameInstance(const Drawing::Backend backend) :
+GameInstance::GameInstance(const Ego::Backend backend) :
 	SDLWindow(backend)
 {
 	constexpr int WINDOW_WIDTH  = 800;
@@ -48,11 +48,11 @@ GameInstance::GameInstance(const Drawing::Backend backend) :
 	SDL_SetWindowSize(window, WINDOW_WIDTH, WINDOW_HEIGHT);
 	
 	// Set up 3d scene
-	const Drawing::SceneCreateInfo sInfo =
+	const Ego::SceneCreateInfo sInfo =
 	{
-		Drawing::SCENE_PROPERTY_CLEAR_COLOR_BUFFER_BIT |
-		Drawing::SCENE_PROPERTY_CLEAR_DEPTH_BUFFER_BIT |
-		Drawing::SCENE_PROPERTY_ENABLE_DEPTH_TEST_BIT,
+		Ego::SCENE_PROPERTY_CLEAR_COLOR_BUFFER_BIT |
+		Ego::SCENE_PROPERTY_CLEAR_DEPTH_BUFFER_BIT |
+		Ego::SCENE_PROPERTY_ENABLE_DEPTH_TEST_BIT,
 		{0.4f, 0.4f, 0.4f, 1.0f},
 		CreateViewProjMat4(WINDOW_WIDTH, WINDOW_HEIGHT, glm::pi<float>() / 2.0f),
 		glm::vec4({0, 0, WINDOW_WIDTH, WINDOW_HEIGHT}),
@@ -62,7 +62,7 @@ GameInstance::GameInstance(const Drawing::Backend backend) :
 	renderer->SetInitialScene(scene);
 	
 	// Set up meshes
-	Drawing::MeshCreateInfo mInfo =
+	Ego::MeshCreateInfo mInfo =
 	{
 		renderer->QuadTopology(),
 		true,

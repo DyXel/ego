@@ -7,7 +7,7 @@
 #include "../gl_shared/mesh_listener.hpp"
 #include "../gl_shared/program_provider.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 namespace GLCore
@@ -37,6 +37,6 @@ private:
 
 } // namespace GLCore
 
-} // namespace Drawing
+} // namespace Ego
 
 #endif // DRAWING_GL_CORE_SCENE_2D_HPP

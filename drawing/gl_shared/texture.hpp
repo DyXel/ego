@@ -4,7 +4,7 @@
 #include "../texture_createinfo.hpp"
 #include "../texture.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 namespace GLShared
@@ -23,6 +23,6 @@ public:
 
 } // namespace GLShared
 
-} // namespace Drawing
+} // namespace Ego
 
 #endif // DRAWING_GL_SHARED_TEXTURE_HPP

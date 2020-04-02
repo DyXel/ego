@@ -7,7 +7,7 @@
 #include "../scene_createinfo.hpp"
 #include "../scene.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 namespace GLShared
@@ -58,6 +58,6 @@ private:
 
 } // namespace GLShared
 
-} // namespace Drawing
+} // namespace Ego
 
 #endif // DRAWING_GL_SHARED_SCENE_HPP

@@ -7,7 +7,7 @@
 // #include "gl_es/renderer.hpp"
 #include "gl_shared/gl_include.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 inline void LogGLString(const char* nameStr, const GLenum name)
@@ -130,4 +130,4 @@ bool SDLWindow::LoadGLES()
 
 #undef SDL_PROC
 
-} // namespace Drawing
+} // namespace Ego

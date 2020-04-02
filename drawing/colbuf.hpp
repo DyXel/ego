@@ -4,12 +4,12 @@
 
 #include "submittable.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 class IColBuf : public Submittable<glm::vec4>
 {};
 
-} // namespace Drawing
+} // namespace Ego
 
 #endif // DRAWING_COLBUF_HPP

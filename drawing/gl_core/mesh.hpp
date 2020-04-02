@@ -6,7 +6,7 @@
 #include "../gl_shared/vertbuf.hpp"
 #include "../gl_shared/uvbuf.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 namespace GLCore
@@ -33,6 +33,6 @@ public:
 
 } // namespace GLCore
 
-} // namespace Drawing
+} // namespace Ego
 
 #endif // DRAWING_GL_CORE_MESH_HPP

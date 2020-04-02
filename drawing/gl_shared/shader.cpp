@@ -1,7 +1,7 @@
 #include "shader.hpp"
 #include <SDL_log.h>
 
-namespace Drawing
+namespace Ego
 {
 
 namespace GLShared
@@ -41,4 +41,4 @@ Shader::~Shader()
 
 }  // namespace GLShared
 
-}  // namespace Drawing
+}  // namespace Ego

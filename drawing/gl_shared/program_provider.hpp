@@ -2,7 +2,7 @@
 #define DRAWING_GL_SHARED_PROGRAM_PROVIDER_HPP
 #include "program.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 namespace GLShared
@@ -23,6 +23,6 @@ public:
 
 } // namespace GLShared
 
-} // namespace Drawing
+} // namespace Ego
 
 #endif // DRAWING_GL_SHARED_PROGRAM_PROVIDER_HPP

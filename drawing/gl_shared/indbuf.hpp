@@ -4,7 +4,7 @@
 #include "../indbuf.hpp"
 #include "../enums.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 namespace GLShared
@@ -26,6 +26,6 @@ private:
 
 } // namespace GLShared
 
-} // namespace Drawing
+} // namespace Ego
 
 #endif // DRAWING_GL_SHARED_INDBUF_HPP

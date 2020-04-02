@@ -1,8 +1,6 @@
 // This code is a huge compilation of stuff from SDL2 source code
 // and my additions to be able to load OpenGL at runtime entirely or
 // static link functions directly by defining USE_PROTOTYPES_GL.
-// A normal user should be able to replace this header with stuff like
-// GLEW and load GL functions on Drawing::API::LoadBackend() at api.cpp.
 #ifndef GL_INCLUDE_HPP
 #define GL_INCLUDE_HPP
 #include <SDL_config.h>

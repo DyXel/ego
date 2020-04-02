@@ -4,7 +4,7 @@
 
 #include "common.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 namespace GLShared
@@ -29,4 +29,4 @@ void ColBuf::Submit(const glm::vec4* data, std::size_t size)
 
 } // namespace GLShared
 
-} // namespace Drawing
+} // namespace Ego

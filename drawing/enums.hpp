@@ -1,7 +1,7 @@
 #ifndef DRAWING_ENUMS_HPP
 #define DRAWING_ENUMS_HPP
 
-namespace Drawing
+namespace Ego
 {
 
 enum BufferHint
@@ -44,6 +44,6 @@ enum VSyncState
 	VSYNC_STATE_ADAPTIVE,
 };
 
-} // namespace Drawing
+} // namespace Ego
 
 #endif // DRAWING_ENUMS_HPP

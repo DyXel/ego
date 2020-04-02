@@ -5,7 +5,7 @@
 #include "mesh.hpp"
 #include "../gl_shared/gl_include.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 namespace GLCore
@@ -67,4 +67,4 @@ void Scene2D::OnMeshModelMatChange(GLShared::Mesh& mesh)
 
 } // namespace GLCore
 
-} // namespace Drawing
+} // namespace Ego

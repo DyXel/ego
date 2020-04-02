@@ -4,10 +4,10 @@
 #include <SDL.h>
 #include "drawing/sdlwindow.hpp"
 
-class GameInstance : public Drawing::SDLWindow
+class GameInstance : public Ego::SDLWindow
 {
 public:
-	GameInstance(const Drawing::Backend backend);
+	GameInstance(const Ego::Backend backend);
 	~GameInstance();
 	
 	GameInstance(const GameInstance&) = delete;
@@ -26,9 +26,9 @@ private:
 	float elapsed{};
 	
 	float rotation{0u};
-	Drawing::SScene scene;
-	std::array<Drawing::IMesh*, 8> alphaMeshes;
-	std::array<Drawing::IMesh*, 8> solidMeshes;
+	Ego::SScene scene;
+	std::array<Ego::IMesh*, 8> alphaMeshes;
+	std::array<Ego::IMesh*, 8> solidMeshes;
 	
 	void OnEvent(const SDL_Event& e);
 	void Tick();

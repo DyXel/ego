@@ -2,7 +2,7 @@
 #define DRAWING_DRAWING_HPP
 #include <memory>
 
-namespace Drawing
+namespace Ego
 {
 
 #define FORWARD_DECLARE(name) \
@@ -21,6 +21,6 @@ FORWARD_DECLARE(VertBuf);
 
 #undef FORWARD_DECLARE
 
-} // namespace Drawing
+} // namespace Ego
 
 #endif // DRAWING_DRAWING_HPP

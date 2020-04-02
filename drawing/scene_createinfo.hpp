@@ -5,7 +5,7 @@
 
 #include "drawing.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 enum ScenePropertyBits : uint8_t
@@ -29,6 +29,6 @@ struct SceneCreateInfo
 	SScene next;
 };
 
-} // namespace Drawing
+} // namespace Ego
 
 #endif // DRAWING_SCENE_CREATEINFO_HPP

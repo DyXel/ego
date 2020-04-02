@@ -5,7 +5,7 @@
 #include "common.hpp"
 #include "texture.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 namespace GLShared
@@ -41,6 +41,6 @@ public:
 
 } // namespace GLShared
 
-} // namespace Drawing
+} // namespace Ego
 
 #endif // DRAWING_GL_SHARED_MESH_HPP

@@ -3,7 +3,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
-static constexpr Drawing::Backend DEFAULT_BACKEND = Drawing::OPENGL_CORE;
+static constexpr Ego::Backend DEFAULT_BACKEND = Ego::OPENGL_CORE;
 
 extern "C" int main([[maybe_unused]] int argc, [[maybe_unused]] char *argv[])
 {

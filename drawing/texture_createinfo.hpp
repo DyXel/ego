@@ -2,7 +2,7 @@
 #define DRAWING_TEXTURE_CREATEINFO_HPP
 #include "enums.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 struct TextureCreateInfo
@@ -16,6 +16,6 @@ struct TextureCreateInfo
 // 	uint8_t mipCount;
 };
 
-} // namespace Drawing
+} // namespace Ego
 
 #endif // DRAWING_TEXTURE_CREATEINFO_HPP

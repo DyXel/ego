@@ -2,7 +2,7 @@
 
 #include "../gl_shared/common.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 namespace GLCore
@@ -96,4 +96,4 @@ void Mesh::SetUVBuf(const SCUVBuf& object)
 
 } // namespace GLCore
 
-} // namespace Drawing
+} // namespace Ego

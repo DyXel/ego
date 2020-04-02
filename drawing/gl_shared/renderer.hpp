@@ -6,7 +6,7 @@
 
 struct SDL_Window;
 
-namespace Drawing
+namespace Ego
 {
 
 namespace GLShared

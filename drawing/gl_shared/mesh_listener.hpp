@@ -1,7 +1,7 @@
 #ifndef DRAWING_GLSHARED_MESH_LISTENER_HPP
 #define DRAWING_GLSHARED_MESH_LISTENER_HPP
 
-namespace Drawing
+namespace Ego
 {
 
 namespace GLShared

@@ -6,7 +6,7 @@
 #include "drawing.hpp"
 #include "enums.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 struct MeshCreateInfo
@@ -23,6 +23,6 @@ struct MeshCreateInfo
 	glm::mat4 model;
 };
 
-} // namespace Drawing
+} // namespace Ego
 
 #endif // DRAWING_MESH_CREATEINFO_HPP

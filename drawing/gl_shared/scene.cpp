@@ -3,7 +3,7 @@
 #include "cache.hpp"
 #include "mesh.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 namespace GLShared
@@ -146,4 +146,4 @@ void Scene::UseMeshScissor(const Mesh& mesh)
 
 } // namespace GLShared
 
-} // namespace Drawing
+} // namespace Ego

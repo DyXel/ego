@@ -1,7 +1,6 @@
 # TODO
 * Rename to Ego (Egoistic Graphics Orchestrator)
 * Run clang static analyzer on the entire codebase
-* Add method to IRenderer to quickly retrieve a QUAD mesh data
 * Remove SDL usage from the renderer itself
   * Remove vsync option
   * Dont present on DrawAllScenes

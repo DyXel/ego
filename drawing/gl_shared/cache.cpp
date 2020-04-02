@@ -1,6 +1,6 @@
 #include "cache.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 namespace GLShared
@@ -80,6 +80,6 @@ void Cache::UseProgram(GLuint spo)
 	glUseProgram(program = spo);
 }
 
-} // namespace Drawing
+} // namespace Ego
 
 } // namespace GLShared

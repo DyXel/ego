@@ -3,7 +3,7 @@
 #include <string_view>
 #include "gl_include.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 namespace GLShared

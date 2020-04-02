@@ -2,7 +2,7 @@
 #define DRAWING_GL_CORE_RENDERER_HPP
 #include "../gl_shared/renderer.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 namespace GLCore
@@ -25,6 +25,6 @@ public:
 
 } // namespace GLCore
 
-} // namespace Drawing
+} // namespace Ego
 
 #endif // DRAWING_GL_CORE_RENDERER_HPP

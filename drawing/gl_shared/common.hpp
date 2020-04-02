@@ -5,7 +5,7 @@
 #include "../enums.hpp"
 #include "../scene_createinfo.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 namespace GLShared

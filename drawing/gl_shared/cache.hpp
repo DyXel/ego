@@ -2,7 +2,7 @@
 #define DRAWING_GL_SHARED_CACHE_HPP
 #include "gl_include.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 namespace GLShared
@@ -32,6 +32,6 @@ private:
 
 } // namespace GLShared
 
-} // namespace Drawing
+} // namespace Ego
 
 #endif // DRAWING_GL_SHARED_CACHE_HPP

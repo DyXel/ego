@@ -6,7 +6,7 @@
 
 #include "drawing.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 // Available Backends

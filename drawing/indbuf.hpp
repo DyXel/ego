@@ -2,12 +2,12 @@
 #define DRAWING_INDBUF_HPP
 #include "submittable.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 class IIndBuf : public Submittable<short>
 {};
 
-} // namespace Drawing
+} // namespace Ego
 
 #endif // DRAWING_INDBUF_HPP

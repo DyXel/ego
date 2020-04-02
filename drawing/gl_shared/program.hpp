@@ -6,7 +6,7 @@
 #include "gl_include.hpp"
 #include "common.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 namespace GLShared

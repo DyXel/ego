@@ -6,7 +6,7 @@
 #include "common.hpp"
 #include "shader.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 namespace GLShared
@@ -58,4 +58,4 @@ GLint Program::GetUniformLocation(Uniform name) const
 
 }  // namespace GLShared
 
-}  // namespace Drawing
+}  // namespace Ego

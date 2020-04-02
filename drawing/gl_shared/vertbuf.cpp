@@ -4,7 +4,7 @@
 
 #include "common.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 namespace GLShared
@@ -29,4 +29,4 @@ void VertBuf::Submit(const glm::vec3* data, std::size_t size)
 
 } // namespace GLShared
 
-} // namespace Drawing
+} // namespace Ego

@@ -2,7 +2,7 @@
 #define DRAWING_TEXTURE_HPP
 #include "texture_createinfo.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 class ITexture

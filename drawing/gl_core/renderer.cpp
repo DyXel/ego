@@ -10,7 +10,7 @@
 #include "../gl_shared/shader.hpp"
 #include "../gl_shared/program.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 namespace GLCore

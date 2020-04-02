@@ -6,7 +6,7 @@
 #include "mesh_createinfo.hpp"
 #include "texture_createinfo.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 class IRenderer
@@ -34,6 +34,6 @@ public:
 	virtual void DrawAllScenes() = 0;
 };
 
-} // namespace Drawing
+} // namespace Ego
 
 #endif // DRAWING_RENDERER_HPP

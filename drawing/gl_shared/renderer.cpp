@@ -11,7 +11,7 @@
 #include "uvbuf.hpp"
 #include "vertbuf.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 namespace GLShared

@@ -6,7 +6,7 @@
 #include "drawing.hpp"
 #include "enums.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 class IMesh
@@ -27,6 +27,6 @@ public:
 	virtual glm::mat4 GetModelMat4() const = 0;
 };
 
-} // namespace Drawing
+} // namespace Ego
 
 #endif // DRAWING_MESH_HPP

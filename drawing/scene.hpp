@@ -5,7 +5,7 @@
 
 #include "drawing.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 class IScene
@@ -20,6 +20,6 @@ public:
 	virtual void SetNext(SScene next) = 0;
 };
 
-} // namespace Drawing
+} // namespace Ego
 
 #endif // DRAWING_SCENE_HPP

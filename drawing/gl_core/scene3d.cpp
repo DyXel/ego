@@ -7,7 +7,7 @@
 #include "mesh.hpp"
 #include "../gl_shared/gl_include.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 namespace GLCore
@@ -178,4 +178,4 @@ float Scene3D::DistanceToVP(const Mesh& mesh) const
 
 } // namespace GLCore
 
-} // namespace Drawing
+} // namespace Ego

@@ -4,12 +4,12 @@
 
 #include "submittable.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 class IUVBuf : public Submittable<glm::vec2>
 {};
 
-} // namespace Drawing
+} // namespace Ego
 
 #endif // DRAWING_UVBUF_HPP

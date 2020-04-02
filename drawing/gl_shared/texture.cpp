@@ -3,7 +3,7 @@
 #include "common.hpp"
 #include "gl_include.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 namespace GLShared
@@ -41,4 +41,4 @@ void Texture::SetImage(int width, int height, const void* pixels)
 
 } // namespace GLShared
 
-} // namespace Drawing
+} // namespace Ego

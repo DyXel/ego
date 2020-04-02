@@ -4,7 +4,7 @@
 #include "mesh_listener.hpp"
 #include "scene.hpp"
 
-namespace Drawing
+namespace Ego
 {
 
 namespace GLShared
@@ -64,4 +64,4 @@ glm::mat4 Mesh::GetModelMat4() const
 
 } // namespace GLShared
 
-} // namespace Drawing
+} // namespace Ego

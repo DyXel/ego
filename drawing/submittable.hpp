@@ -4,7 +4,7 @@
 #include <cstddef> // std::size_t
 #include <vector>
 
-namespace Drawing
+namespace Ego
 {
 
 template<typename T>
@@ -33,6 +33,6 @@ public:
 	}
 };
 
-} // namespace Drawing
+} // namespace Ego
 
 #endif // DRAWING_SUBMITTABLE
