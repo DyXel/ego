@@ -1,5 +1,5 @@
-#ifndef DRAWING_GL_SHARED_INDBUF_HPP
-#define DRAWING_GL_SHARED_INDBUF_HPP
+#ifndef EGO_GL_SHARED_INDBUF_HPP
+#define EGO_GL_SHARED_INDBUF_HPP
 #include "gl_include.hpp"
 #include "../indbuf.hpp"
 #include "../enums.hpp"
@@ -28,4 +28,4 @@ private:
 
 } // namespace Ego
 
-#endif // DRAWING_GL_SHARED_INDBUF_HPP
+#endif // EGO_GL_SHARED_INDBUF_HPP

@@ -1,9 +1,9 @@
-#ifndef DRAWING_SCENE_CREATEINFO_HPP
-#define DRAWING_SCENE_CREATEINFO_HPP
+#ifndef EGO_SCENE_CREATEINFO_HPP
+#define EGO_SCENE_CREATEINFO_HPP
 #include <glm/mat4x4.hpp>
 #include <glm/ext/vector_int4.hpp>
 
-#include "drawing.hpp"
+#include "ego_fwd.hpp"
 
 namespace Ego
 {
@@ -31,4 +31,4 @@ struct SceneCreateInfo
 
 } // namespace Ego
 
-#endif // DRAWING_SCENE_CREATEINFO_HPP
+#endif // EGO_SCENE_CREATEINFO_HPP

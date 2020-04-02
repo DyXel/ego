@@ -1,6 +1,6 @@
-#ifndef DRAWING_RENDERER_HPP
-#define DRAWING_RENDERER_HPP
-#include "drawing.hpp"
+#ifndef EGO_RENDERER_HPP
+#define EGO_RENDERER_HPP
+#include "ego_fwd.hpp"
 #include "enums.hpp"
 #include "scene_createinfo.hpp"
 #include "mesh_createinfo.hpp"
@@ -36,4 +36,4 @@ public:
 
 } // namespace Ego
 
-#endif // DRAWING_RENDERER_HPP
+#endif // EGO_RENDERER_HPP

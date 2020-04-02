@@ -1,5 +1,5 @@
-#ifndef DRAWING_GL_SHARED_UVBUF_HPP
-#define DRAWING_GL_SHARED_UVBUF_HPP
+#ifndef EGO_GL_SHARED_UVBUF_HPP
+#define EGO_GL_SHARED_UVBUF_HPP
 #include "gl_include.hpp"
 #include "../enums.hpp"
 #include "../uvbuf.hpp"
@@ -27,4 +27,4 @@ private:
 
 } // namespace Ego
 
-#endif // DRAWING_GL_SHARED_UVBUF_HPP
+#endif // EGO_GL_SHARED_UVBUF_HPP

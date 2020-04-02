@@ -1,5 +1,5 @@
-#ifndef DRAWING_DRAWING_HPP
-#define DRAWING_DRAWING_HPP
+#ifndef EGO_EGO_HPP
+#define EGO_EGO_HPP
 #include <memory>
 
 namespace Ego
@@ -23,4 +23,4 @@ FORWARD_DECLARE(VertBuf);
 
 } // namespace Ego
 
-#endif // DRAWING_DRAWING_HPP
+#endif // EGO_EGO_HPP

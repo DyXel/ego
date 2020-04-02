@@ -1,5 +1,5 @@
-#ifndef DRAWING_GL_CORE_RENDERER_HPP
-#define DRAWING_GL_CORE_RENDERER_HPP
+#ifndef EGO_GL_CORE_RENDERER_HPP
+#define EGO_GL_CORE_RENDERER_HPP
 #include "../gl_shared/renderer.hpp"
 
 namespace Ego
@@ -27,4 +27,4 @@ public:
 
 } // namespace Ego
 
-#endif // DRAWING_GL_CORE_RENDERER_HPP
+#endif // EGO_GL_CORE_RENDERER_HPP

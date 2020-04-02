@@ -1,5 +1,5 @@
-#ifndef DRAWING_ENUMS_HPP
-#define DRAWING_ENUMS_HPP
+#ifndef EGO_ENUMS_HPP
+#define EGO_ENUMS_HPP
 
 namespace Ego
 {
@@ -46,4 +46,4 @@ enum VSyncState
 
 } // namespace Ego
 
-#endif // DRAWING_ENUMS_HPP
+#endif // EGO_ENUMS_HPP

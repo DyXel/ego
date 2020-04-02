@@ -1,5 +1,5 @@
-#ifndef DRAWING_GL_SHARED_COLBUF_HPP
-#define DRAWING_GL_SHARED_COLBUF_HPP
+#ifndef EGO_GL_SHARED_COLBUF_HPP
+#define EGO_GL_SHARED_COLBUF_HPP
 #include "gl_include.hpp"
 #include "../enums.hpp"
 #include "../colbuf.hpp"
@@ -27,4 +27,4 @@ private:
 
 } // namespace Ego
 
-#endif // DRAWING_GL_SHARED_COLBUF_HPP
+#endif // EGO_GL_SHARED_COLBUF_HPP

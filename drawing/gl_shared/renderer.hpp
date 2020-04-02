@@ -1,5 +1,5 @@
-#ifndef DRAWING_GL_SHARED_RENDERER_HPP
-#define DRAWING_GL_SHARED_RENDERER_HPP
+#ifndef EGO_GL_SHARED_RENDERER_HPP
+#define EGO_GL_SHARED_RENDERER_HPP
 #include "cache.hpp"
 #include "program_provider.hpp"
 #include "../renderer.hpp"
@@ -62,4 +62,4 @@ protected:
 
 } // Drawing
 
-#endif // DRAWING_GL_SHARED_RENDERER_HPP
+#endif // EGO_GL_SHARED_RENDERER_HPP

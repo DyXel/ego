@@ -1,5 +1,5 @@
-#ifndef DRAWING_GL_CORE_SCENE_2D_HPP
-#define DRAWING_GL_CORE_SCENE_2D_HPP
+#ifndef EGO_GL_CORE_SCENE_2D_HPP
+#define EGO_GL_CORE_SCENE_2D_HPP
 #include <list>
 
 #include "../scene_createinfo.hpp"
@@ -39,4 +39,4 @@ private:
 
 } // namespace Ego
 
-#endif // DRAWING_GL_CORE_SCENE_2D_HPP
+#endif // EGO_GL_CORE_SCENE_2D_HPP

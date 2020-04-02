@@ -1,5 +1,5 @@
-#ifndef DRAWING_GL_SHARED_COMMON_HPP
-#define DRAWING_GL_SHARED_COMMON_HPP
+#ifndef EGO_GL_SHARED_COMMON_HPP
+#define EGO_GL_SHARED_COMMON_HPP
 #include <glm/vec4.hpp>
 #include "gl_include.hpp"
 #include "../enums.hpp"
@@ -103,4 +103,4 @@ constexpr GLbitfield GLClearBitsFromScenePropertyBits(uint8_t value)
 
 } // Drawing
 
-#endif // DRAWING_GL_SHARED_COMMON_HPP
+#endif // EGO_GL_SHARED_COMMON_HPP

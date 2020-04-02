@@ -1,5 +1,5 @@
-#ifndef DRAWING_GL_SHARED_TEXTURE_HPP
-#define DRAWING_GL_SHARED_TEXTURE_HPP
+#ifndef EGO_GL_SHARED_TEXTURE_HPP
+#define EGO_GL_SHARED_TEXTURE_HPP
 #include "gl_include.hpp"
 #include "../texture_createinfo.hpp"
 #include "../texture.hpp"
@@ -25,4 +25,4 @@ public:
 
 } // namespace Ego
 
-#endif // DRAWING_GL_SHARED_TEXTURE_HPP
+#endif // EGO_GL_SHARED_TEXTURE_HPP

@@ -1,5 +1,5 @@
-#ifndef DRAWING_TEXTURE_CREATEINFO_HPP
-#define DRAWING_TEXTURE_CREATEINFO_HPP
+#ifndef EGO_TEXTURE_CREATEINFO_HPP
+#define EGO_TEXTURE_CREATEINFO_HPP
 #include "enums.hpp"
 
 namespace Ego
@@ -18,4 +18,4 @@ struct TextureCreateInfo
 
 } // namespace Ego
 
-#endif // DRAWING_TEXTURE_CREATEINFO_HPP
+#endif // EGO_TEXTURE_CREATEINFO_HPP

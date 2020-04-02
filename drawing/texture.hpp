@@ -1,5 +1,5 @@
-#ifndef DRAWING_TEXTURE_HPP
-#define DRAWING_TEXTURE_HPP
+#ifndef EGO_TEXTURE_HPP
+#define EGO_TEXTURE_HPP
 #include "texture_createinfo.hpp"
 
 namespace Ego
@@ -13,4 +13,4 @@ public:
 
 } // Drawing
 
-#endif // DRAWING_TEXTURE_HPP
+#endif // EGO_TEXTURE_HPP

@@ -1,5 +1,5 @@
-#ifndef DRAWING_GL_SHARED_PROGRAM_HPP
-#define DRAWING_GL_SHARED_PROGRAM_HPP
+#ifndef EGO_GL_SHARED_PROGRAM_HPP
+#define EGO_GL_SHARED_PROGRAM_HPP
 #include <array>
 #include <glm/mat4x4.hpp>
 
@@ -34,4 +34,4 @@ private:
 
 } // Drawing
 
-#endif // DRAWING_GL_SHARED_PROGRAM_HPP
+#endif // EGO_GL_SHARED_PROGRAM_HPP

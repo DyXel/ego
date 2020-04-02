@@ -1,5 +1,5 @@
-#ifndef DRAWING_GL_CORE_SCENE_3D_HPP
-#define DRAWING_GL_CORE_SCENE_3D_HPP
+#ifndef EGO_GL_CORE_SCENE_3D_HPP
+#define EGO_GL_CORE_SCENE_3D_HPP
 #include <set>
 #include <map>
 
@@ -44,4 +44,4 @@ private:
 
 } // namespace Ego
 
-#endif // DRAWING_GL_CORE_SCENE_3D_HPP
+#endif // EGO_GL_CORE_SCENE_3D_HPP

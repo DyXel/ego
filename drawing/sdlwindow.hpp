@@ -1,10 +1,10 @@
-#ifndef DRAWING_SDLWINDOW_HPP
-#define DRAWING_SDLWINDOW_HPP
+#ifndef EGO_SDLWINDOW_HPP
+#define EGO_SDLWINDOW_HPP
 #include <memory>
 #include <vector>
 #include <SDL.h>
 
-#include "drawing.hpp"
+#include "ego_fwd.hpp"
 
 namespace Ego
 {
@@ -35,4 +35,4 @@ private:
 
 } // Drawing
 
-#endif // DRAWING_SDLWINDOW_HPP
+#endif // EGO_SDLWINDOW_HPP

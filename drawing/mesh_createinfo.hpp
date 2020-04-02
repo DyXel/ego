@@ -1,9 +1,9 @@
-#ifndef DRAWING_MESH_CREATEINFO_HPP
-#define DRAWING_MESH_CREATEINFO_HPP
+#ifndef EGO_MESH_CREATEINFO_HPP
+#define EGO_MESH_CREATEINFO_HPP
 #include <glm/mat4x4.hpp>
 #include <glm/ext/vector_int4.hpp>
 
-#include "drawing.hpp"
+#include "ego_fwd.hpp"
 #include "enums.hpp"
 
 namespace Ego
@@ -25,4 +25,4 @@ struct MeshCreateInfo
 
 } // namespace Ego
 
-#endif // DRAWING_MESH_CREATEINFO_HPP
+#endif // EGO_MESH_CREATEINFO_HPP

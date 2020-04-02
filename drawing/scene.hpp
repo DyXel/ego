@@ -1,9 +1,9 @@
-#ifndef DRAWING_SCENE_HPP
-#define DRAWING_SCENE_HPP
+#ifndef EGO_SCENE_HPP
+#define EGO_SCENE_HPP
 #include <glm/mat4x4.hpp>
 #include <glm/vec4.hpp>
 
-#include "drawing.hpp"
+#include "ego_fwd.hpp"
 
 namespace Ego
 {
@@ -22,4 +22,4 @@ public:
 
 } // namespace Ego
 
-#endif // DRAWING_SCENE_HPP
+#endif // EGO_SCENE_HPP

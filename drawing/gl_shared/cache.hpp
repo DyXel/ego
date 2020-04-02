@@ -1,5 +1,5 @@
-#ifndef DRAWING_GL_SHARED_CACHE_HPP
-#define DRAWING_GL_SHARED_CACHE_HPP
+#ifndef EGO_GL_SHARED_CACHE_HPP
+#define EGO_GL_SHARED_CACHE_HPP
 #include "gl_include.hpp"
 
 namespace Ego
@@ -34,4 +34,4 @@ private:
 
 } // namespace Ego
 
-#endif // DRAWING_GL_SHARED_CACHE_HPP
+#endif // EGO_GL_SHARED_CACHE_HPP

@@ -1,5 +1,5 @@
-#ifndef DRAWING_GL_SHARED_SCENE_HPP
-#define DRAWING_GL_SHARED_SCENE_HPP
+#ifndef EGO_GL_SHARED_SCENE_HPP
+#define EGO_GL_SHARED_SCENE_HPP
 #include <memory>
 
 #include "common.hpp"
@@ -60,4 +60,4 @@ private:
 
 } // namespace Ego
 
-#endif // DRAWING_GL_SHARED_SCENE_HPP
+#endif // EGO_GL_SHARED_SCENE_HPP

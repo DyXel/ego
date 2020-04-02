@@ -1,5 +1,5 @@
-#ifndef DRAWING_GL_SHARED_SHADER_HPP
-#define DRAWING_GL_SHARED_SHADER_HPP
+#ifndef EGO_GL_SHARED_SHADER_HPP
+#define EGO_GL_SHARED_SHADER_HPP
 #include <string_view>
 #include "gl_include.hpp"
 
@@ -24,4 +24,4 @@ public:
 
 } // Drawing
 
-#endif // DRAWING_GL_SHARED_SHADER_HPP
+#endif // EGO_GL_SHARED_SHADER_HPP

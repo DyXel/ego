@@ -1,5 +1,5 @@
-#ifndef DRAWING_SUBMITTABLE
-#define DRAWING_SUBMITTABLE
+#ifndef EGO_SUBMITTABLE
+#define EGO_SUBMITTABLE
 #include <array>
 #include <cstddef> // std::size_t
 #include <vector>
@@ -35,4 +35,4 @@ public:
 
 } // namespace Ego
 
-#endif // DRAWING_SUBMITTABLE
+#endif // EGO_SUBMITTABLE

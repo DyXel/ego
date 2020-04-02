@@ -1,5 +1,5 @@
-#ifndef DRAWING_GL_CORE_MESH_HPP
-#define DRAWING_GL_CORE_MESH_HPP
+#ifndef EGO_GL_CORE_MESH_HPP
+#define EGO_GL_CORE_MESH_HPP
 #include "../gl_shared/mesh.hpp"
 #include "../gl_shared/colbuf.hpp"
 #include "../gl_shared/indbuf.hpp"
@@ -35,4 +35,4 @@ public:
 
 } // namespace Ego
 
-#endif // DRAWING_GL_CORE_MESH_HPP
+#endif // EGO_GL_CORE_MESH_HPP
