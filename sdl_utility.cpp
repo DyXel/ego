@@ -30,7 +30,8 @@ std::vector<char> SDLU_TextFromFile(std::string_view path)
 		return std::vector<char>();
 	const auto fileSize = static_cast<std::size_t>(SDL_RWsize(rw));
 	std::vector<char> fileData(fileSize);
-	std::size_t readTotal = 0, read = 1;
+	std::size_t readTotal = 0;
+	std::size_t read = 1;
 	char* buf = fileData.data();
 	while(readTotal < fileSize && read != 0)
 	{
