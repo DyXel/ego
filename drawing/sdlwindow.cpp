@@ -1,5 +1,6 @@
 #include "sdlwindow.hpp"
 
+#include <stdexcept> // std::runtime_error
 #include <string>
 
 #include "renderer.hpp"

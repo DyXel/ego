@@ -75,19 +75,19 @@ GameInstance::GameInstance(const Ego::Backend backend) :
 		nullptr,
 		glm::mat4(1.0F),
 	};
-	for(auto & alphaMeshe : alphaMeshes)
+	for(auto& alphaMesh : alphaMeshes)
 	{
 		auto mesh = renderer->NewMesh(mInfo);
 		scene->Insert(mesh);
-		alphaMeshe = mesh.get();
+		alphaMesh = mesh.get();
 	}
 	mInfo.transparent = false;
 	mInfo.diffuse = TextureFromPath(*renderer, "zone.png");
-	for(auto & solidMeshe : solidMeshes)
+	for(auto& solidMesh : solidMeshes)
 	{
 		auto mesh = renderer->NewMesh(mInfo);
 		scene->Insert(mesh);
-		solidMeshe = mesh.get();
+		solidMesh = mesh.get();
 	}
 	
 	// Set window title before showing window
