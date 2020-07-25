@@ -8,7 +8,7 @@ namespace Ego::GLCore
 class Renderer final : public GLShared::Renderer
 {
 public:
-	Renderer(SDL_Window* sdlWindow);
+	Renderer();
 	virtual ~Renderer() = default;
 	
 	// IRenderer overrides

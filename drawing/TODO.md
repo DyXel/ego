@@ -1,10 +1,7 @@
 # TODO
-* Remove SDL usage from the renderer itself
-  * Add function to globally load GL functions
-    * Make the renderer ctors take a function that loads the gl function pointers
-  * Remove vsync option
-  * Dont present on DrawAllScenes
 * Implement GLES2
+* Use std::array instead of normal arrays
+* Make interfaces dtor non-virtual and protected by default
 
 # Wishlist
 * Separate Camera object

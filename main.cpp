@@ -3,8 +3,6 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
-static constexpr Ego::Backend DEFAULT_BACKEND = Ego::OPENGL_CORE;
-
 extern "C" int main([[maybe_unused]] int argc, [[maybe_unused]] char *argv[])
 {
 	int exitCode = 0;
@@ -29,7 +27,7 @@ extern "C" int main([[maybe_unused]] int argc, [[maybe_unused]] char *argv[])
 	}
 // 	try
 // 	{
-		gi = std::make_unique<GameInstance>(DEFAULT_BACKEND);
+		gi = std::make_unique<GameInstance>();
 // 	}
 // 	catch(const std::exception& e)
 // 	{

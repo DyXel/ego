@@ -37,13 +37,6 @@ enum TextureWrap
 // 	TEXTURE_WRAP_MIRROR_CLAMP_TO_EDGE =4,
 };
 
-enum VSyncState
-{
-	VSYNC_STATE_DISABLED,
-	VSYNC_STATE_ENABLED,
-	VSYNC_STATE_ADAPTIVE,
-};
-
 } // namespace Ego
 
 #endif // EGO_ENUMS_HPP

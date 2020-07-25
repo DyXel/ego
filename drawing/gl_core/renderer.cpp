@@ -13,7 +13,7 @@
 namespace Ego::GLCore
 {
 
-Renderer::Renderer(SDL_Window* sdlWindow) : GLShared::Renderer(sdlWindow)
+Renderer::Renderer() : GLShared::Renderer()
 {}
 
 SScene Renderer::NewScene2D(const SceneCreateInfo& info)

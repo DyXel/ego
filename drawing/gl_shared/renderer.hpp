@@ -4,8 +4,6 @@
 #include "program_provider.hpp"
 #include "../renderer.hpp"
 
-struct SDL_Window;
-
 namespace Ego::GLShared
 {
 
@@ -17,7 +15,7 @@ class UVBuf;
 class Renderer : public IRenderer, public IProgramProvider
 {
 public:
-	Renderer(SDL_Window* sdlWindow);
+	Renderer();
 	virtual ~Renderer() = default;
 	
 	virtual void BlitToWindowFramebuffer(const Scene& scene) = 0;
@@ -27,8 +25,6 @@ public:
 	SCVertBuf QuadVertBuf() const override;
 	SCIndBuf QuadIndBuf() const override;
 	SCUVBuf QuadUVBuf() const override;
-	
-	bool SetVSync(VSyncState state) override;
 	
 	SVertBuf NewVertBuf(BufferHint hint) override;
 	SIndBuf NewIndBuf(BufferHint hint) override;
@@ -42,7 +38,6 @@ public:
 	// GLShared::IProgramProvider overrides
 	const Program& GetProgram(ProgramTypes value) const override;
 protected:
-	SDL_Window* sdlWindow;
 	Cache cache;
 	std::array<Program, PROGRAM_TYPES_COUNT> programs;
 	struct

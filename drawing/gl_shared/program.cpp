@@ -1,6 +1,5 @@
 #include "program.hpp"
 
-#include <SDL_log.h>
 #include <glm/gtc/type_ptr.hpp>
 
 #include "common.hpp"
@@ -32,16 +31,7 @@ bool Program::Link()
 	GLint success;
 	glGetProgramiv(spo, GL_LINK_STATUS, &success);
 	if(success == GL_FALSE)
-	{
-		GLint logLength;
-		glGetProgramiv(spo, GL_INFO_LOG_LENGTH, &logLength);
-		auto logText = new char[static_cast<std::size_t>(logLength)];
-		glGetProgramInfoLog(spo, logLength, nullptr, logText);
-		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,
-		             "Could not link program: %s", logText);
-		delete[] logText;
 		return false;
-	}
 	// Get uniform locations (if it has them)
 	for(std::size_t i = 0; i < UNIFORM_COUNT; i++)
 		uni[i] = glGetUniformLocation(spo, UNIFORM_NAMES[i]);

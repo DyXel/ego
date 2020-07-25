@@ -59,8 +59,7 @@ target_sources(drawing2-test PRIVATE
 	${CSR}/main.cpp
 	${CSR}/sdl_utility.cpp
 	${CSR}/sdl_utility.hpp
-	${CSR}/drawing/sdlwindow.cpp
-	${CSR}/drawing/sdlwindow.hpp
+	${CSR}/drawing/renderer.cpp
 	${CSR}/drawing/gl_core/mesh.cpp
 	${CSR}/drawing/gl_core/mesh.hpp
 	${CSR}/drawing/gl_core/renderer.cpp

@@ -1,5 +1,7 @@
 #ifndef EGO_RENDERER_HPP
 #define EGO_RENDERER_HPP
+#include <functional>
+
 #include "ego_fwd.hpp"
 #include "enums.hpp"
 #include "scene_createinfo.hpp"
@@ -9,12 +11,17 @@
 namespace Ego
 {
 
+namespace Detail
+{
+
+using GLProcAddrGetter = std::function<void*(const char*)>;
+
+} // namespace Detail
+
 class IRenderer
 {
 public:
 	virtual ~IRenderer() = default;
-	
-	virtual bool SetVSync(VSyncState vsync) = 0;
 	
 	virtual MeshTopology QuadTopology() const = 0;
 	virtual SCVertBuf QuadVertBuf() const = 0;
@@ -33,6 +40,9 @@ public:
 	virtual void SetInitialScene(SScene scene) = 0;
 	virtual void DrawAllScenes() = 0;
 };
+
+SRenderer MakeGLCoreRenderer(Detail::GLProcAddrGetter glProcAddrGetter);
+SRenderer MakeGLESRenderer(Detail::GLProcAddrGetter glProcAddrGetter);
 
 } // namespace Ego
 

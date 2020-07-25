@@ -1,6 +1,5 @@
 #ifndef EGO_TEXTURE_HPP
 #define EGO_TEXTURE_HPP
-#include "texture_createinfo.hpp"
 
 namespace Ego
 {

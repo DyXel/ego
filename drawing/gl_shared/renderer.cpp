@@ -87,10 +87,7 @@ static const glm::vec2 QUAD_UVS[QUAD_VERTEX_COUNT] =
 	{1.0F, 1.0F},
 };
 
-Renderer::Renderer(SDL_Window* sdlWindow) :
-	sdlWindow(sdlWindow),
-	
-	initialScene(nullptr)
+Renderer::Renderer() : initialScene(nullptr)
 {
 	// Enable additive blending
 	cache.SetBlending(true);
@@ -135,26 +132,6 @@ SCUVBuf Renderer::QuadUVBuf() const
 	return quad.ub;
 }
 
-bool Renderer::SetVSync(VSyncState state)
-{
-	switch(state)
-	{
-		case VSyncState::VSYNC_STATE_DISABLED:
-		{
-			return SDL_GL_SetSwapInterval(0) == 0;
-		}
-		case VSyncState::VSYNC_STATE_ENABLED:
-		{
-			return SDL_GL_SetSwapInterval(1) == 0;
-		}
-		case VSyncState::VSYNC_STATE_ADAPTIVE:
-		{
-			return SDL_GL_SetSwapInterval(-1) == 0;
-		}
-	}
-	return false;
-}
-
 SVertBuf Renderer::NewVertBuf(BufferHint hint)
 {
 	return std::make_shared<VertBuf>(hint);
@@ -192,7 +169,6 @@ void Renderer::DrawAllScenes()
 		s->Draw();
 		BlitToWindowFramebuffer(*s);
 	}
-	SDL_GL_SwapWindow(sdlWindow);
 }
 
 const Program& Renderer::GetProgram(ProgramTypes value) const
