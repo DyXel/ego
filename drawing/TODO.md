@@ -1,5 +1,6 @@
 # TODO
 * Implement GLES2
+  * GLShared::Renderer can take the texture framebuffer color as ctor
 * Use std::array instead of normal arrays
 
 # Wishlist
