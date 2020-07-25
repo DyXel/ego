@@ -17,7 +17,7 @@ class Scene : public IScene
 {
 public:
 	Scene(Cache& cache, IProgramProvider& pp, const SceneCreateInfo& info);
-	virtual ~Scene();
+	~Scene();
 	
 	Scene* Next() const;
 	GLuint FramebufferObject() const;

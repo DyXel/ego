@@ -16,7 +16,6 @@ class Renderer : public IRenderer, public IProgramProvider
 {
 public:
 	Renderer();
-	virtual ~Renderer() = default;
 	
 	virtual void BlitToWindowFramebuffer(const Scene& scene) = 0;
 	

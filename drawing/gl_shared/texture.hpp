@@ -13,7 +13,7 @@ public:
 	GLuint to{}; // Texture Object
 	
 	Texture(const TextureCreateInfo& info);
-	virtual ~Texture();
+	~Texture();
 	
 	void SetImage(int width, int height, const void* pixels) override;
 };

@@ -1,7 +1,6 @@
 # TODO
 * Implement GLES2
 * Use std::array instead of normal arrays
-* Make interfaces dtor non-virtual and protected by default
 
 # Wishlist
 * Separate Camera object

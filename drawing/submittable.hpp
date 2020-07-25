@@ -31,6 +31,8 @@ public:
 	{
 		Submit(vec.data(), vec.size());
 	}
+protected:
+	inline ~Submittable() = default;
 };
 
 } // namespace Ego

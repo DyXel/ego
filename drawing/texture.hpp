@@ -8,6 +8,8 @@ class ITexture
 {
 public:
 	virtual void SetImage(int width, int height, const void* data) = 0;
+protected:
+	inline ~ITexture() = default;
 };
 
 } // Drawing

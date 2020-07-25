@@ -17,7 +17,6 @@ class Scene3D final : public GLShared::Scene, public GLShared::IMeshListener
 {
 public:
 	Scene3D(GLShared::Cache& cache, GLShared::IProgramProvider& pp, const SceneCreateInfo& info);
-	virtual ~Scene3D() = default;
 	
 	// IScene overrides
 	void Insert(SMesh obj) override;

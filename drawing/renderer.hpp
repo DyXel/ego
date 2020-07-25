@@ -21,8 +21,6 @@ using GLProcAddrGetter = std::function<void*(const char*)>;
 class IRenderer
 {
 public:
-	virtual ~IRenderer() = default;
-	
 	virtual MeshTopology QuadTopology() const = 0;
 	virtual SCVertBuf QuadVertBuf() const = 0;
 	virtual SCIndBuf QuadIndBuf() const = 0;
@@ -39,6 +37,8 @@ public:
 	
 	virtual void SetInitialScene(SScene scene) = 0;
 	virtual void DrawAllScenes() = 0;
+protected:
+	inline ~IRenderer() = default;
 };
 
 SRenderer MakeGLCoreRenderer(Detail::GLProcAddrGetter glProcAddrGetter);

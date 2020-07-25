@@ -9,7 +9,6 @@ class Renderer final : public GLShared::Renderer
 {
 public:
 	Renderer();
-	virtual ~Renderer() = default;
 	
 	// IRenderer overrides
 	SScene NewScene2D(const SceneCreateInfo& info) override;

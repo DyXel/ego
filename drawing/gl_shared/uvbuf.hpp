@@ -13,7 +13,7 @@ public:
 	GLuint bo{}; // Buffer Object
 	
 	UVBuf(BufferHint hint);
-	virtual ~UVBuf();
+	~UVBuf();
 	
 	void Submit(const glm::vec2* data, std::size_t size) override;
 private:

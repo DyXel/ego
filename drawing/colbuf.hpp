@@ -8,7 +8,10 @@ namespace Ego
 {
 
 class IColBuf : public Submittable<glm::vec4>
-{};
+{
+protected:
+	inline ~IColBuf() = default;
+};
 
 } // namespace Ego
 

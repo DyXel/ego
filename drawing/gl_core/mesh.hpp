@@ -19,7 +19,7 @@ public:
 	std::shared_ptr<const GLShared::UVBuf> uvBuf;
 	
 	Mesh(const MeshCreateInfo& info);
-	virtual ~Mesh();
+	~Mesh();
 	
 	// IMesh overrides
 	void SetVertBuf(const SCVertBuf& object) override;

@@ -14,7 +14,7 @@ public:
 	GLsizei count{};
 	
 	IndBuf(BufferHint hint);
-	virtual ~IndBuf();
+	~IndBuf();
 	
 	void Submit(const short* data, std::size_t size) override;
 private:

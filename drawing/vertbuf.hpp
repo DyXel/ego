@@ -8,7 +8,10 @@ namespace Ego
 {
 
 class IVertBuf : public Submittable<glm::vec3>
-{};
+{
+protected:
+	inline ~IVertBuf() = default;
+};
 
 } // namespace Ego
 

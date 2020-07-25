@@ -6,7 +6,10 @@ namespace Ego
 {
 
 class IIndBuf : public Submittable<short>
-{};
+{
+protected:
+	inline ~IIndBuf() = default;
+};
 
 } // namespace Ego
 

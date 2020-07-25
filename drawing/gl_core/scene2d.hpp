@@ -16,7 +16,6 @@ class Scene2D final : public GLShared::Scene, public GLShared::IMeshListener
 {
 public:
 	Scene2D(GLShared::Cache& cache, GLShared::IProgramProvider& pp, const SceneCreateInfo& info);
-	virtual ~Scene2D() = default;
 	
 	// IScene overrides
 	void Insert(SMesh obj) override;

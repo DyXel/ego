@@ -24,7 +24,6 @@ public:
 	glm::mat4 mvp{}; // Model-View-Projection matrix
 	
 	Mesh(const MeshCreateInfo& info);
-	virtual ~Mesh() = default;
 	
 	// IMesh overrides
 	void SetTopology(MeshTopology value) override;
