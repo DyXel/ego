@@ -1,7 +1,5 @@
 #include "renderer.hpp"
 
-#include <SDL.h>
-
 #include "colbuf.hpp"
 #include "gl_include.hpp"
 #include "indbuf.hpp"

@@ -1,8 +1,9 @@
 #ifndef EGO_GL_SHARED_VERTBUF_HPP
 #define EGO_GL_SHARED_VERTBUF_HPP
+#include <ego/enums.hpp>
+#include <ego/vertbuf.hpp>
+
 #include "gl_include.hpp"
-#include "../enums.hpp"
-#include "../vertbuf.hpp"
 
 namespace Ego::GLShared
 {

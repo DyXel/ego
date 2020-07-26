@@ -1,9 +1,10 @@
 #ifndef EGO_GL_SHARED_COMMON_HPP
 #define EGO_GL_SHARED_COMMON_HPP
+#include <ego/enums.hpp>
+#include <ego/scene_createinfo.hpp>
 #include <glm/vec4.hpp>
+
 #include "gl_include.hpp"
-#include "../enums.hpp"
-#include "../scene_createinfo.hpp"
 
 namespace Ego::GLShared
 {

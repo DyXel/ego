@@ -1,7 +1,10 @@
 # TODO
+* Rewrite gl_include.hpp
+  * Remove static usage, let the end user pass in the correct function ptrs
+* Use std::array instead of normal arrays
 * Implement GLES2
   * GLShared::Renderer can take the texture framebuffer color as ctor
-* Use std::array instead of normal arrays
+  * Remove all unused functions
 
 # Wishlist
 * Separate Camera object

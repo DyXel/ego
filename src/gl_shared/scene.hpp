@@ -1,11 +1,11 @@
 #ifndef EGO_GL_SHARED_SCENE_HPP
 #define EGO_GL_SHARED_SCENE_HPP
 #include <memory>
+#include <ego/scene_createinfo.hpp>
+#include <ego/scene.hpp>
 
 #include "common.hpp"
 #include "program_provider.hpp"
-#include "../scene_createinfo.hpp"
-#include "../scene.hpp"
 
 namespace Ego::GLShared
 {

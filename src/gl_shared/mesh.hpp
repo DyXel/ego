@@ -1,7 +1,8 @@
 #ifndef EGO_GL_SHARED_MESH_HPP
 #define EGO_GL_SHARED_MESH_HPP
-#include "../mesh_createinfo.hpp"
-#include "../mesh.hpp"
+#include <ego/mesh_createinfo.hpp>
+#include <ego/mesh.hpp>
+
 #include "common.hpp"
 #include "texture.hpp"
 

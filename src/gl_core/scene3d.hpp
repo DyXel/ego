@@ -3,7 +3,6 @@
 #include <set>
 #include <map>
 
-#include "../scene_createinfo.hpp"
 #include "../gl_shared/scene.hpp"
 #include "../gl_shared/mesh_listener.hpp"
 #include "../gl_shared/program_provider.hpp"

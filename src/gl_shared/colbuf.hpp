@@ -1,8 +1,9 @@
 #ifndef EGO_GL_SHARED_COLBUF_HPP
 #define EGO_GL_SHARED_COLBUF_HPP
+#include <ego/enums.hpp>
+#include <ego/colbuf.hpp>
+
 #include "gl_include.hpp"
-#include "../enums.hpp"
-#include "../colbuf.hpp"
 
 namespace Ego::GLShared
 {

@@ -1,8 +1,9 @@
 #ifndef EGO_GL_SHARED_TEXTURE_HPP
 #define EGO_GL_SHARED_TEXTURE_HPP
+#include <ego/texture_createinfo.hpp>
+#include <ego/texture.hpp>
+
 #include "gl_include.hpp"
-#include "../texture_createinfo.hpp"
-#include "../texture.hpp"
 
 namespace Ego::GLShared
 {

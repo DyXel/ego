@@ -1,4 +1,4 @@
-#include "renderer.hpp"
+#include <ego/renderer.hpp>
 
 #include "gl_core/renderer.hpp"
 

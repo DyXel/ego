@@ -1,8 +1,9 @@
 #ifndef EGO_GL_SHARED_INDBUF_HPP
 #define EGO_GL_SHARED_INDBUF_HPP
+#include <ego/indbuf.hpp>
+#include <ego/enums.hpp>
+
 #include "gl_include.hpp"
-#include "../indbuf.hpp"
-#include "../enums.hpp"
 
 namespace Ego::GLShared
 {

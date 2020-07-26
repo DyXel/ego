@@ -1,8 +1,9 @@
 #ifndef EGO_GL_SHARED_RENDERER_HPP
 #define EGO_GL_SHARED_RENDERER_HPP
+#include <ego/renderer.hpp>
+
 #include "cache.hpp"
 #include "program_provider.hpp"
-#include "../renderer.hpp"
 
 namespace Ego::GLShared
 {

@@ -1,8 +1,9 @@
 #ifndef EGO_GL_SHARED_UVBUF_HPP
 #define EGO_GL_SHARED_UVBUF_HPP
+#include <ego/enums.hpp>
+#include <ego/uvbuf.hpp>
+
 #include "gl_include.hpp"
-#include "../enums.hpp"
-#include "../uvbuf.hpp"
 
 namespace Ego::GLShared
 {
