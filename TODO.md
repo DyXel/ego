@@ -2,8 +2,11 @@
 * Rewrite gl_include.hpp
   * Remove static usage, let the end user pass in the correct function ptrs
 * Use std::array instead of normal arrays
+* Fix all warnings
+* Build on windows for testing purposes
 * Implement GLES2
   * GLShared::Renderer can take the texture framebuffer color as ctor
+    * Could also take vertex and fragment shader sources
   * Remove all unused functions
 
 # Wishlist

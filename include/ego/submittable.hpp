@@ -11,8 +11,6 @@ template<typename T>
 class Submittable
 {
 public:
-	using ValueType = T;
-	
 	virtual void Submit(const T* data, std::size_t length) = 0;
 	
 	template<std::size_t Length>

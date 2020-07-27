@@ -5,7 +5,7 @@
 namespace Ego
 {
 
-#define SDL_PROC(ret,f,params) \
+#define OGL_PROC(ret,f,params) \
 	do \
 	{ \
 		(f) = reinterpret_cast<decltype(f)>(glProcAddrGetter(#f)); \
@@ -30,6 +30,6 @@ SRenderer MakeGLESRenderer(Detail::GLProcAddrGetter glProcAddrGetter)
 	return nullptr; // TODO
 }
 
-#undef SDL_PROC
+#undef OGL_PROC
 
 } // namespace Ego

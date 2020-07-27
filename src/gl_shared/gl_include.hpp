@@ -239,17 +239,17 @@
  **********************************************************************/
 
 #ifdef USE_PROTOTYPES_GL
-#define SDL_PROC(ret, func, params) GLAPI ret APIENTRY func params;
+#define OGL_PROC(ret, func, params) GLAPI ret APIENTRY func params;
 #include "gl_es2_funcs.inl"
 #include "gl_core_funcs.inl"
-#undef SDL_PROC
+#undef OGL_PROC
 #else
 #ifndef DONT_DEFINE_POINTERS_GL
 // NOTE: actual functions located at gl_include.cpp
-#define SDL_PROC(ret,func,params) extern ret (APIENTRY *func) params;
+#define OGL_PROC(ret,func,params) extern ret (APIENTRY *func) params;
 #include "gl_es2_funcs.inl"
 #include "gl_core_funcs.inl"
-#undef SDL_PROC
+#undef OGL_PROC
 #endif // DONT_DEFINE_POINTERS_GL
 #endif // USE_PROTOTYPES_GL
 
