@@ -12,7 +12,7 @@
 namespace Ego::GLShared
 {
 
-static const GLchar* VERTEX_SHADER_SRC[PROGRAM_TYPES_COUNT] =
+constexpr std::array<const GLchar*, PROGRAM_TYPES_COUNT> VERTEX_SHADER_SRC =
 {
 // PROGRAM_ONLY_COLOR
 R"(#version 100
@@ -42,7 +42,7 @@ void main()
 })",
 };
 
-static const GLchar* FRAGMENT_SHADER_SRC[PROGRAM_TYPES_COUNT] =
+constexpr std::array<const GLchar*, PROGRAM_TYPES_COUNT> FRAGMENT_SHADER_SRC =
 {
 // PROGRAM_ONLY_COLOR
 R"(#version 100
@@ -66,24 +66,24 @@ void main()
 
 // Quad data
 constexpr std::size_t QUAD_VERTEX_COUNT = 4;
-static const glm::vec3 QUAD_VERTICES[QUAD_VERTEX_COUNT] =
-{
-	{ -1.0F, -1.0F, 0.0F}, // top-left corner
-	{ -1.0F,  1.0F, 0.0F}, // bottom-left corner
-	{  1.0F, -1.0F, 0.0F}, // top-right corner
-	{  1.0F,  1.0F, 0.0F}, // bottom-right corner
-};
-static const short QUAD_INDICES[QUAD_VERTEX_COUNT] =
+constexpr std::array<glm::vec3, QUAD_VERTEX_COUNT> QUAD_VERTICES =
+{ {
+	{-1.0F, -1.0F, 0.0F}, // top-left corner
+	{-1.0F,  1.0F, 0.0F}, // bottom-left corner
+	{ 1.0F, -1.0F, 0.0F}, // top-right corner
+	{ 1.0F,  1.0F, 0.0F}, // bottom-right corner
+} };
+constexpr std::array<short, QUAD_VERTEX_COUNT> QUAD_INDICES =
 {
 	0, 1, 2, 3
 };
-static const glm::vec2 QUAD_UVS[QUAD_VERTEX_COUNT] =
-{
+constexpr std::array<glm::vec2, QUAD_VERTEX_COUNT> QUAD_UVS =
+{ {
 	{0.0F, 0.0F},
 	{0.0F, 1.0F},
 	{1.0F, 0.0F},
 	{1.0F, 1.0F},
-};
+} };
 
 Renderer::Renderer() : initialScene(nullptr)
 {
@@ -103,11 +103,11 @@ Renderer::Renderer() : initialScene(nullptr)
 	
 	// Initialize quad vertex, indice and uv buffer
 	quad.vb = std::make_shared<VertBuf>(BUFFER_HINT_STATIC);
-	quad.vb->Submit(QUAD_VERTICES, QUAD_VERTEX_COUNT);
+	quad.vb->Submit(QUAD_VERTICES.data(), QUAD_VERTEX_COUNT);
 	quad.ib = std::make_shared<IndBuf>(BUFFER_HINT_STATIC);
-	quad.ib->Submit(QUAD_INDICES, QUAD_VERTEX_COUNT);
+	quad.ib->Submit(QUAD_INDICES.data(), QUAD_VERTEX_COUNT);
 	quad.ub = std::make_shared<UVBuf>(BUFFER_HINT_STATIC);
-	quad.ub->Submit(QUAD_UVS, QUAD_VERTEX_COUNT);
+	quad.ub->Submit(QUAD_UVS.data(), QUAD_VERTEX_COUNT);
 }
 
 MeshTopology Renderer::QuadTopology() const

@@ -1,5 +1,4 @@
 # TODO
-* Use std::array instead of normal arrays
 * Fix all warnings
 * Build on windows for testing purposes
 * Implement GLES2

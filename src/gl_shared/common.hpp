@@ -1,5 +1,6 @@
 #ifndef EGO_GL_SHARED_COMMON_HPP
 #define EGO_GL_SHARED_COMMON_HPP
+#include <array>
 #include <ego/enums.hpp>
 #include <ego/scene_createinfo.hpp>
 #include <glm/vec4.hpp>
@@ -23,14 +24,14 @@ enum Uniform
 	UNIFORM_COUNT // Total number of uniforms
 };
 
-constexpr const char* ATTRIBUTE_NAMES[ATTRIBUTE_COUNT] =
+constexpr std::array<const char*, ATTRIBUTE_COUNT> ATTRIBUTE_NAMES =
 {
 	"in_pos",
 	"in_color",
 	"in_uv",
 };
 
-constexpr const char* UNIFORM_NAMES[UNIFORM_COUNT] =
+constexpr std::array<const char*, UNIFORM_COUNT> UNIFORM_NAMES =
 {
 	"in_mvp",
 };
