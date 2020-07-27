@@ -1,6 +1,4 @@
 # TODO
-* Rewrite gl_include.hpp
-  * Remove static usage, let the end user pass in the correct function ptrs
 * Use std::array instead of normal arrays
 * Fix all warnings
 * Build on windows for testing purposes

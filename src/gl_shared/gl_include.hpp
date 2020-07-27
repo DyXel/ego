@@ -1,6 +1,3 @@
-// This code is a huge compilation of stuff from SDL2 source code
-// and my additions to be able to load OpenGL at runtime entirely or
-// static link functions directly by defining USE_PROTOTYPES_GL.
 #ifndef GL_INCLUDE_HPP
 #define GL_INCLUDE_HPP
 #include "gl_include_defines.h"
@@ -238,19 +235,11 @@
  * End system-specific stuff.
  **********************************************************************/
 
-#ifdef USE_PROTOTYPES_GL
-#define OGL_PROC(ret, func, params) GLAPI ret APIENTRY func params;
-#include "gl_es2_funcs.inl"
-#include "gl_core_funcs.inl"
-#undef OGL_PROC
-#else
 #ifndef DONT_DEFINE_POINTERS_GL
-// NOTE: actual functions located at gl_include.cpp
 #define OGL_PROC(ret,func,params) extern ret (APIENTRY *func) params;
 #include "gl_es2_funcs.inl"
 #include "gl_core_funcs.inl"
 #undef OGL_PROC
 #endif // DONT_DEFINE_POINTERS_GL
-#endif // USE_PROTOTYPES_GL
 
 #endif // GL_INCLUDE_HPP
