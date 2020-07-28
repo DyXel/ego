@@ -1,11 +1,9 @@
 # TODO
-* Fix all warnings
-* Build on windows for testing purposes
 * Implement GLES2
   * GLShared::Renderer can take the texture framebuffer color as ctor
     * Could also take vertex and fragment shader sources
   * Remove all unused functions
-
+* Build on windows for testing purposes
 # Wishlist
 * Separate Camera object
   * Should hold the View-Projection matrix
