@@ -17,7 +17,6 @@ class Scene : public IScene
 {
 public:
 	Scene(Cache& cache, IProgramProvider& pp, const SceneCreateInfo& info);
-	~Scene();
 	
 	Scene* Next() const;
 	GLuint FramebufferObject() const;
@@ -33,6 +32,7 @@ public:
 protected:
 	Cache& cache;
 	IProgramProvider& pp;
+	~Scene();
 	const glm::mat4& ViewProjection() const;
 	void CalculateMVP(Mesh& mesh) const;
 	bool WasViewProjectionSet() const;

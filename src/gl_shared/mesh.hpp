@@ -34,6 +34,8 @@ public:
 	void SetClipRect(const glm::ivec4* rect) override;
 	void SetModelMat4(const glm::mat4& mat) override;
 	glm::mat4 GetModelMat4() const override;
+protected:
+	inline ~Mesh() = default;
 };
 
 } // namespace Ego::GLShared

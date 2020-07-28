@@ -11,6 +11,8 @@ class IMeshListener
 public:
 	virtual void OnMeshTransparencyChange(Mesh& mesh) = 0;
 	virtual void OnMeshModelMatChange(Mesh& mesh) = 0;
+protected:
+	inline ~IMeshListener() = default;
 };
 
 } // namespace Ego::GLShared

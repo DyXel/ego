@@ -39,13 +39,6 @@ Scene::Scene(Cache& cache, IProgramProvider& pp, const SceneCreateInfo& info) :
 	SetNext(info.next);
 }
 
-Scene::~Scene()
-{
-	glDeleteRenderbuffers(1, &rbo);
-	glDeleteTextures(1, &to);
-	glDeleteFramebuffers(1, &fbo);
-}
-
 void Scene::Draw()
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, fbo);
@@ -100,6 +93,13 @@ void Scene::SetViewProjectionMat4(const glm::mat4& mat)
 }
 
 // protected
+
+Scene::~Scene()
+{
+	glDeleteRenderbuffers(1, &rbo);
+	glDeleteTextures(1, &to);
+	glDeleteFramebuffers(1, &fbo);
+}
 
 const glm::mat4& Scene::ViewProjection() const
 {

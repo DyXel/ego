@@ -49,6 +49,8 @@ protected:
 	}quad;
 	
 	std::shared_ptr<Scene> initialScene;
+	
+	inline ~Renderer() = default;
 };
 
 } // namespace Ego::GLShared

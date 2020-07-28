@@ -16,6 +16,8 @@ class IProgramProvider
 {
 public:
 	virtual const Program& GetProgram(ProgramTypes value) const = 0;
+protected:
+	inline ~IProgramProvider() = default;
 };
 
 } // namespace Ego::GLShared
