@@ -1,14 +1,9 @@
 #include "renderer.hpp"
 
-#include <exception>
-#include <glm/gtc/type_ptr.hpp> // glm::value_ptr, glm::identity
-
 #include "mesh.hpp"
 #include "scene2d.hpp"
 #include "scene3d.hpp"
 #include "../gl_shared/gl_include.hpp"
-#include "../gl_shared/shader.hpp"
-#include "../gl_shared/program.hpp"
 
 namespace Ego::GLCore
 {

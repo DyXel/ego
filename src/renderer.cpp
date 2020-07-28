@@ -15,18 +15,14 @@ namespace Ego
 
 SRenderer MakeGLCoreRenderer(Detail::GLProcAddrGetter glProcAddrGetter)
 {
-#ifndef USE_PROTOTYPES_GL
 #include "gl_shared/gl_core_funcs.inl"
 #include "gl_shared/gl_es2_funcs.inl"
-#endif
 	return std::make_shared<GLCore::Renderer>();
 }
 
 SRenderer MakeGLESRenderer(Detail::GLProcAddrGetter glProcAddrGetter)
 {
-#ifndef USE_PROTOTYPES_GL
 #include "gl_shared/gl_es2_funcs.inl"
-#endif
 	return nullptr; // TODO
 }
 
