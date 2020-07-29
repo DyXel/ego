@@ -5,23 +5,27 @@ glm_dep = dependency('glm')
 ego_inc = include_directories('include/')
 
 ego_src = files([
-	'src/renderer.cpp',
-	'src/gl_core/renderer.cpp',
-	'src/gl_core/scene3d.cpp',
 	'src/gl_core/mesh.cpp',
+	'src/gl_core/renderer.cpp',
 	'src/gl_core/scene2d.cpp',
-	'src/gl_shared/gl_include.cpp',
-	'src/gl_shared/renderer.cpp',
-	'src/gl_shared/texture.cpp',
-	'src/gl_shared/shader.cpp',
-	'src/gl_shared/indbuf.cpp',
-	'src/gl_shared/vertbuf.cpp',
-	'src/gl_shared/program.cpp',
-	'src/gl_shared/uvbuf.cpp',
-	'src/gl_shared/mesh.cpp',
+	'src/gl_core/scene3d.cpp',
+	'src/gl_es/mesh.cpp',
+	'src/gl_es/renderer.cpp',
+	'src/gl_es/scene2d.cpp',
+	'src/gl_es/scene3d.cpp',
 	'src/gl_shared/cache.cpp',
 	'src/gl_shared/colbuf.cpp',
-	'src/gl_shared/scene.cpp'
+	'src/gl_shared/gl_include.cpp',
+	'src/gl_shared/indbuf.cpp',
+	'src/gl_shared/mesh.cpp',
+	'src/gl_shared/program.cpp',
+	'src/gl_shared/renderer.cpp',
+	'src/gl_shared/scene.cpp',
+	'src/gl_shared/shader.cpp',
+	'src/gl_shared/texture.cpp',
+	'src/gl_shared/uvbuf.cpp',
+	'src/gl_shared/vertbuf.cpp',
+	'src/renderer.cpp'
 ])
 
 ego_cpp_args = [

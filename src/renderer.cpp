@@ -1,6 +1,7 @@
 #include <ego/renderer.hpp>
 
 #include "gl_core/renderer.hpp"
+#include "gl_es/renderer.hpp"
 
 namespace Ego
 {
@@ -23,7 +24,7 @@ SRenderer MakeGLCoreRenderer(Detail::GLProcAddrGetter glProcAddrGetter)
 SRenderer MakeGLESRenderer(Detail::GLProcAddrGetter glProcAddrGetter)
 {
 #include "gl_shared/gl_es2_funcs.inl"
-	return nullptr; // TODO
+	return std::make_shared<GLES::Renderer>();
 }
 
 #undef OGL_PROC
