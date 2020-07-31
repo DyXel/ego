@@ -6,7 +6,6 @@
   * Remove trivial getters/setters
   * Make all members either public or private
   * Only leave non-virtual interface dtors on protected
-* Use custom program for the purpose of blitting framebuffers on GLES
 * Remove all unused GLES functions
 * Add scene supersampling (SSAA)
 * Build on windows for testing purposes

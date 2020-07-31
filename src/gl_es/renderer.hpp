@@ -18,9 +18,7 @@ public:
 	// GLShared::Renderer overrides
 	void BlitToWindowFramebuffer(const GLShared::Scene& scene) override;
 private:
-	GLShared::Program& prog; // program used to draw textures
-	GLuint mvpUniLoc; // MVP Matrix Uniform Location
-	glm::mat4 im; // Identity Matrix, set as uniform for the Program
+	GLShared::Program prog; // GL Program used to blit to window framebuffer
 };
 
 } // namespace Ego::GLES

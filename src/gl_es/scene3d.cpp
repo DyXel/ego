@@ -92,7 +92,6 @@ void Scene3D::Draw()
 	// which shader we retrieve the location from.
 	auto& p = pp.GetProgram(GLShared::PROGRAM_ONLY_COLOR);
 	const GLint mvpLoc = p.GetUniformLocation(GLShared::UNIFORM_MVP_MAT);
-	glEnableVertexAttribArray(GLShared::ATTRIBUTE_VERTICES);
 	// Draw solid meshes
 	for(auto& meshPtr : solidMeshes)
 	{
@@ -102,10 +101,8 @@ void Scene3D::Draw()
 		UseMeshProgram(mesh);
 		UseMeshScissor(mesh);
 		glUniformMatrix4fv(mvpLoc, 1, GL_FALSE, glm::value_ptr(mesh.mvp));
-		//
 		glBindBuffer(GL_ARRAY_BUFFER, mesh.vertBuf->bo);
 		glVertexAttribPointer(GLShared::ATTRIBUTE_VERTICES, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
-		//
 		if(mesh.colBuf)
 		{
 			glBindBuffer(GL_ARRAY_BUFFER, mesh.colBuf->bo);
@@ -116,7 +113,6 @@ void Scene3D::Draw()
 		{
 			glDisableVertexAttribArray(GLShared::ATTRIBUTE_COLORS);
 		}
-		//
 		if(mesh.uvBuf)
 		{
 			glBindBuffer(GL_ARRAY_BUFFER, mesh.uvBuf->bo);
@@ -127,7 +123,6 @@ void Scene3D::Draw()
 		{
 			glDisableVertexAttribArray(GLShared::ATTRIBUTE_UVS);
 		}
-		//
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh.indBuf->bo);
 		glDrawElements(mesh.topology, mesh.indBuf->count, GL_UNSIGNED_SHORT, nullptr);
 	}
@@ -140,10 +135,8 @@ void Scene3D::Draw()
 		UseMeshProgram(mesh);
 		UseMeshScissor(mesh);
 		glUniformMatrix4fv(mvpLoc, 1, GL_FALSE, glm::value_ptr(mesh.mvp));
-		//
 		glBindBuffer(GL_ARRAY_BUFFER, mesh.vertBuf->bo);
 		glVertexAttribPointer(GLShared::ATTRIBUTE_VERTICES, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
-		//
 		if(mesh.colBuf)
 		{
 			glBindBuffer(GL_ARRAY_BUFFER, mesh.colBuf->bo);
@@ -154,7 +147,6 @@ void Scene3D::Draw()
 		{
 			glDisableVertexAttribArray(GLShared::ATTRIBUTE_COLORS);
 		}
-		//
 		if(mesh.uvBuf)
 		{
 			glBindBuffer(GL_ARRAY_BUFFER, mesh.uvBuf->bo);
@@ -165,7 +157,6 @@ void Scene3D::Draw()
 		{
 			glDisableVertexAttribArray(GLShared::ATTRIBUTE_UVS);
 		}
-		//
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh.indBuf->bo);
 		glDrawElements(mesh.topology, mesh.indBuf->count, GL_UNSIGNED_SHORT, nullptr);
 	}
