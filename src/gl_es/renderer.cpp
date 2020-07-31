@@ -34,9 +34,11 @@ SMesh Renderer::NewMesh(const MeshCreateInfo& info)
 
 void Renderer::BlitToWindowFramebuffer(const GLShared::Scene& scene)
 {
+	cache.SetDepthTest(false);
 	cache.SetCullFace(false);
 	cache.SetScissorTest(false);
 	const auto& vp = scene.Viewport();
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	glViewport(vp.x, vp.y, vp.z, vp.w);
 	glUseProgram(prog.spo);
 	glUniformMatrix4fv(mvpUniLoc, 1, GL_FALSE, glm::value_ptr(im));
@@ -44,7 +46,6 @@ void Renderer::BlitToWindowFramebuffer(const GLShared::Scene& scene)
 	//
 	glBindBuffer(GL_ARRAY_BUFFER, quad.vb->bo);
 	glVertexAttribPointer(GLShared::ATTRIBUTE_VERTICES, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
-	glEnableVertexAttribArray(GLShared::ATTRIBUTE_COLORS);
 	//
 	glBindBuffer(GL_ARRAY_BUFFER, quad.ub->bo);
 	glVertexAttribPointer(GLShared::ATTRIBUTE_UVS, 2, GL_FLOAT, GL_FALSE, 0, nullptr);

@@ -92,6 +92,7 @@ void Scene3D::Draw()
 	// which shader we retrieve the location from.
 	auto& p = pp.GetProgram(GLShared::PROGRAM_ONLY_COLOR);
 	const GLint mvpLoc = p.GetUniformLocation(GLShared::UNIFORM_MVP_MAT);
+	glEnableVertexAttribArray(GLShared::ATTRIBUTE_VERTICES);
 	// Draw solid meshes
 	for(auto& meshPtr : solidMeshes)
 	{
