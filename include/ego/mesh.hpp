@@ -22,7 +22,6 @@ public:
 	virtual void SetDiffuse(const SCTexture& object) = 0;
 	virtual void SetClipRect(const glm::ivec4* rect) = 0;
 	virtual void SetModelMat4(const glm::mat4& mat) = 0;
-	virtual glm::mat4 GetModelMat4() const = 0;
 protected:
 	inline ~IMesh() = default;
 };

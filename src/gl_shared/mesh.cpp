@@ -54,9 +54,4 @@ void Mesh::SetModelMat4(const glm::mat4& mat)
 		listener->OnMeshModelMatChange(*this);
 }
 
-glm::mat4 Mesh::GetModelMat4() const
-{
-	return model;
-}
-
 } // namespace Ego::GLShared
